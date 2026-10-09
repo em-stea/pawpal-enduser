@@ -16,6 +16,7 @@ Next.js template with App Router, React Compiler, Tailwind CSS v4, design tokens
 | Quality | ESLint (Next, React, a11y, Prettier, React Compiler) + Prettier |
 | Package manager | pnpm |
 
+
 ## Requirements
 
 - Node.js 22+
