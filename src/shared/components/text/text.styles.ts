@@ -1,6 +1,6 @@
 import {cva} from "class-variance-authority";
 
-const commonClassnames = ["font-primary"];
+const commonClassnames = ["font-secondary"];
 
 export const textVariants = cva(commonClassnames, {
   variants: {

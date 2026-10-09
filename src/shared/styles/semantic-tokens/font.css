@@ -1,4 +1,5 @@
 @theme {
   /* Maps Tailwind `font-primary` → Next.js localFont CSS variable */
-  --font-primary: var(--font-space-grotesk), ui-monospace, monospace;
+  --font-primary: var(--font-dm-sans), ui-monospace, monospace;
+  --font-secondary: var(--font-manrope), ui-monospace, monospace;
 }

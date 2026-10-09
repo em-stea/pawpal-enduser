@@ -3,7 +3,7 @@ import type {Metadata} from "next";
 import Link from "next/link";
 
 import "@/shared/styles/globals.css";
-import {SpaceGrotesk} from "@/shared/styles/foundations/fonts";
+import {DMSans, Manrope} from "@/shared/styles/foundations/fonts";
 import {Toaster} from "@/shared/components/toast/toast";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
-  const fonts = SpaceGrotesk.variable;
+  const fonts = `${DMSans.variable} ${Manrope.variable}`;
 
   return (
     <html suppressHydrationWarning className={fonts} lang="en">

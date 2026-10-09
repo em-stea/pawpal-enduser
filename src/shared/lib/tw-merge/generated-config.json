@@ -46,7 +46,8 @@
     "red-900"
   ],
   "font": [
-    "primary"
+    "primary",
+    "secondary"
   ],
   "text": [
     "1",
