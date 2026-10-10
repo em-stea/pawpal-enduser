@@ -1,7 +1,6 @@
-import {AppWindowIcon} from "lucide-react";
-
 import {Container} from "@/shared/components/container/container";
 import {Heading} from "@/shared/components/heading/heading";
+import {Pet} from "@/shared/components/icons/other/pet";
 import {Logo} from "@/shared/components/logo/logo";
 import {
   Tabs,
@@ -11,6 +10,7 @@ import {
   TabsTrigger,
 } from "@/shared/components/tabs/tabs";
 import {Text} from "@/shared/components/text/text";
+import {Vet} from "@/shared/components/icons/other/vet";
 
 export default function LoginPage() {
   return (
@@ -25,11 +25,14 @@ export default function LoginPage() {
         </Text>
         <Tabs>
           <TabsList variant="line">
-            <TabsTrigger value="register-tutor">
-              <AppWindowIcon />
+            <TabsTrigger className="data-active:text-secondary-500" value="register-tutor">
+              <Pet className="t mr-2" />
               Soy Tutor
             </TabsTrigger>
-            <TabsTrigger value="register-vet">Soy Veterinario</TabsTrigger>
+            <TabsTrigger className="data-active:text-secondary-500" value="register-vet">
+              <Vet className="mr-2" />
+              Soy Veterinario
+            </TabsTrigger>
             <TabsIndicator />
           </TabsList>
           <TabsContent value="register-tutor">
