@@ -5,7 +5,7 @@ const commonClassnames = ["font-primary"];
 export const headingVariants = cva(commonClassnames, {
   variants: {
     variant: {
-      "title.1": "text-8 leading-10 font-semibold lg:text-16 lg:leading-20",
+      "title.1": "text-10 leading-12 font-semibold lg:text-14 lg:leading-17",
       // "title.1-bold": "text-10 lg:text-12 leading-12 font-bold lg:leading-14",
       // "title.2": "text-8 lg:text-8 leading-10 font-bold lg:leading-10",
       // "title.3": "text-5 lg:text-5 leading-7 lg:leading-7",

@@ -1,7 +1,5 @@
 import type {Metadata} from "next";
 
-import Link from "next/link";
-
 import "@/shared/styles/globals.css";
 import {DMSans, Manrope} from "@/shared/styles/foundations/fonts";
 import {Toaster} from "@/shared/components/toast/toast";
@@ -17,13 +15,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html suppressHydrationWarning className={fonts} lang="en">
       <body>
-        <Toaster>
-          <header className="text-xl leading-16 font-bold">
-            <Link href="/">nextjs-template</Link>
-          </header>
-          {children}
-          <footer className="text-center leading-16 opacity-70">nextjs-template</footer>
-        </Toaster>
+        <Toaster>{children}</Toaster>
       </body>
     </html>
   );

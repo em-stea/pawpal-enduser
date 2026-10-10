@@ -6,12 +6,24 @@ import {textVariants} from "./text.styles";
 
 type TextVariants = VariantProps<typeof textVariants>;
 
-interface TextProps extends React.HTMLAttributes<HTMLParagraphElement>, TextVariants {}
+interface TextProps extends React.HTMLAttributes<HTMLParagraphElement>, TextVariants {
+  as?: "p" | "span";
+}
 
-export const Text: React.FC<TextProps> = ({children, variant, color, className, ...props}) => {
+export const Text: React.FC<TextProps> = ({
+  as: TextTag = "p",
+  children,
+  variant,
+  color,
+  className,
+  ...props
+}) => {
   return (
-    <p className={cn(textVariants({variant}), color && `text-${color}`, className)} {...props}>
+    <TextTag
+      className={cn(textVariants({variant}), color && `text-${color}`, className)}
+      {...props}
+    >
       {children}
-    </p>
+    </TextTag>
   );
 };
