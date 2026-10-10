@@ -1,6 +1,7 @@
 import {ArrowRight} from "./directional/arrow-right";
 import {ChevronLeft} from "./directional/chevron-left";
 import {ChevronRight} from "./directional/chevron-right";
+import {Isotipo} from "./isotipo/isotipo";
 
 export {ArrowRight} from "./directional/arrow-right";
 
@@ -13,6 +14,9 @@ const IconsType = {
     arrowRight: ArrowRight,
     chevronLeft: ChevronLeft,
     chevronRight: ChevronRight,
+  },
+  isotipo: {
+    isotipo: Isotipo,
   },
 };
 

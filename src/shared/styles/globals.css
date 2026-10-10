@@ -2,6 +2,7 @@
 @import "./semantic-tokens/font.css";
 @import "./foundations/colors.css";
 @import "./semantic-tokens/colors.css";
+@import "./semantic-tokens/text.css";
 
 /* @import "tw-animate-css"; */
 
