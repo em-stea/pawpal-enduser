@@ -4,7 +4,7 @@ import {Controller, FieldPath, FieldValues, useFormContext} from "react-hook-for
 import {Input as InputPrimitive} from "@base-ui/react/input";
 
 import {cn} from "@/shared/lib/tw-merge/utils";
-import {Field, FieldError, FieldLabel} from "@/shared/components/field/field";
+import {Field, FieldError, FieldLabel} from "@/shared/components/form/field";
 
 import {inputVariants} from "./input.styles";
 
