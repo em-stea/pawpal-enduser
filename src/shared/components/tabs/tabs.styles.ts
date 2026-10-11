@@ -10,13 +10,17 @@ export const tabsListVariants = cva(
     variants: {
       variant: {
         default: "bg-tertiary-800",
-        line: "gap-1 bg-neutral-800",
+        line: "gap-1 bg-neutral-800 px-3 pb-3 before:pointer-events-none before:absolute before:inset-x-3 before:bottom-3 before:h-1 before:rounded-full before:bg-neutral-700",
       },
     },
     defaultVariants: {
       variant: "default",
     },
   },
+);
+
+export const tabsIndicatorVariants = cva(
+  "absolute rounded-full bg-secondary-500 transition-[translate,width,height] duration-300 ease-out data-[orientation=horizontal]:bottom-3 data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-(--active-tab-width) data-[orientation=horizontal]:translate-x-(--active-tab-left) data-[orientation=vertical]:top-0 data-[orientation=vertical]:right-0 data-[orientation=vertical]:h-(--active-tab-height) data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:translate-y-(--active-tab-top) motion-reduce:transition-none",
 );
 
 export const tabsTriggerVariants = cva([
@@ -26,8 +30,8 @@ export const tabsTriggerVariants = cva([
   headingVariants({variant: "subtitle.1"}),
 ]);
 
-export const tabsIndicatorVariants = cva(
-  "absolute bg-secondary-500 transition-[translate,width,height] duration-300 ease-out data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-(--active-tab-width) data-[orientation=horizontal]:translate-x-(--active-tab-left) data-[orientation=vertical]:top-0 data-[orientation=vertical]:right-0 data-[orientation=vertical]:h-(--active-tab-height) data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:translate-y-(--active-tab-top) motion-reduce:transition-none",
-);
+// export const tabsIndicatorVariants = cva(
+//   "absolute bg-secondary-500 transition-[translate,width,height] duration-300 ease-out data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-(--active-tab-width) data-[orientation=horizontal]:translate-x-(--active-tab-left) data-[orientation=vertical]:top-0 data-[orientation=vertical]:right-0 data-[orientation=vertical]:h-(--active-tab-height) data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:translate-y-(--active-tab-top) motion-reduce:transition-none",
+// );
 
 export const tabsContentVariants = cva("flex-1 text-sm outline-none");
