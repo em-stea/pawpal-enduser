@@ -26,9 +26,7 @@ export default function RoleTab() {
         <TabsIndicator />
       </TabsList>
       <TabsContent value="register-tutor">
-        <div>
-          <TutorForm />
-        </div>
+        <TutorForm />
       </TabsContent>
       <TabsContent value="register-vet">
         <div>

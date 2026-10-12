@@ -46,7 +46,9 @@ export function InputField<T extends FieldValues>({
             {...props}
           />
 
-          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+          {fieldState.invalid && (
+            <FieldError className="text-red-400" errors={[fieldState.error]} />
+          )}
         </Field>
       )}
     />

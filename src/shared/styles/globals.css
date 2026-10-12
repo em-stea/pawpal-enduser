@@ -29,6 +29,7 @@
 
   body {
     font-family: var(--font-secondary);
+    font-size: var(--text-4);
     background-color: var(--color-neutral-900);
     color: var(--color-neutral-50);
   }

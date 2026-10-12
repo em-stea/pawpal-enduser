@@ -1,5 +1,7 @@
 import {cva} from "class-variance-authority";
 
+import {textVariants} from "../text/text.styles";
+
 export const fieldSetVariants = cva(
   "flex flex-col gap-6 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3",
 );
@@ -13,7 +15,7 @@ export const fieldGroupVariants = cva(
 );
 
 export const fieldVariants = cva(
-  "group/field data-[invalid=true]:text-destructive flex w-full gap-3",
+  "group/field data-[invalid=true]:text-destructive flex w-full gap-2",
   {
     variants: {
       orientation: {
@@ -31,12 +33,13 @@ export const fieldVariants = cva(
 );
 
 export const fieldContentVariants = cva(
-  "group/field-content flex flex-1 flex-col gap-1 leading-snug",
+  "group/field-content flex flex-1 flex-col gap-0 leading-snug",
 );
 
 export const fieldLabelVariants = cva([
-  "group/field-label peer/field-label has-data-checked:border-primary/30 has-data-checked:bg-primary/5 has-[>[data-slot=field]]:not-has-[:disabled,[data-disabled]]:hover:bg-muted/50 has-[>[data-slot=field]]:has-[:focus-visible]:border-ring has-[>[data-slot=field]]:has-[:focus-visible]:ring-ring/50 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border has-[>[data-slot=field]]:has-[:focus-visible]:ring-3 *:data-[slot=field]:p-3",
+  "group/field-label peer/field-label has-data-checked:border-primary/30 has-data-checked:bg-primary/5 has-[>[data-slot=field]]:not-has-[:disabled,[data-disabled]]:hover:bg-muted/50 has-[>[data-slot=field]]:has-[:focus-visible]:border-ring has-[>[data-slot=field]]:has-[:focus-visible]:ring-ring/50 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 flex w-fit gap-2 leading-snug text-tertiary-500 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border has-[>[data-slot=field]]:has-[:focus-visible]:ring-3 *:data-[slot=field]:p-3",
   "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
+  textVariants({variant: "body.2"}),
 ]);
 
 export const fieldTitleVariants = cva(

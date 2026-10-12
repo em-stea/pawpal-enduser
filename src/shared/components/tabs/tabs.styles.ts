@@ -34,4 +34,4 @@ export const tabsTriggerVariants = cva([
 //   "absolute bg-secondary-500 transition-[translate,width,height] duration-300 ease-out data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-(--active-tab-width) data-[orientation=horizontal]:translate-x-(--active-tab-left) data-[orientation=vertical]:top-0 data-[orientation=vertical]:right-0 data-[orientation=vertical]:h-(--active-tab-height) data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:translate-y-(--active-tab-top) motion-reduce:transition-none",
 // );
 
-export const tabsContentVariants = cva("flex-1 text-sm outline-none");
+export const tabsContentVariants = cva("flex-1 py-8 text-sm outline-none");

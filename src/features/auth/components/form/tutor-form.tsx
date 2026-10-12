@@ -9,19 +9,14 @@ import {Form} from "@/shared/components/form/form";
 import {toast} from "@/shared/components/toast/toast";
 import {InputField} from "@/shared/components/form/input";
 
-const formSchema = z.object({
-  title: z
-    .string()
-    .min(5, "Name must be at least 5 characters.")
-    .max(32, "Name title must be at most 32 characters."),
-});
+import {tutorFormSchema} from "../../schemas/tutor-schema";
 
-type FormValues = z.infer<typeof formSchema>;
+type FormValues = z.infer<typeof tutorFormSchema>;
 
 export default function TutorForm() {
   const form = useForm<FormValues>({
-    resolver: standardSchemaResolver(formSchema),
-    defaultValues: {title: ""},
+    resolver: standardSchemaResolver(tutorFormSchema),
+    defaultValues: {nombre: "", apellido: ""},
   });
 
   function onSubmit(data: FormValues) {
@@ -31,7 +26,8 @@ export default function TutorForm() {
 
   return (
     <Form form={form} onSubmit={onSubmit}>
-      <InputField label="Nombre" name="title" placeholder="Nombre" />
+      <InputField label="Nombre" name="nombre" placeholder="Nombre" />
+      <InputField label="Apellido" name="apellido" placeholder="Apellido" />
       <Button className="mt-4" type="submit">
         Enviar
       </Button>
