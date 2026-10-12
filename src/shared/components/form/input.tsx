@@ -7,13 +7,15 @@ import {cn} from "@/shared/lib/tw-merge/utils";
 import {Field, FieldError, FieldLabel} from "@/shared/components/form/field";
 
 import {inputVariants} from "./input.styles";
+import {InputGroup, InputGroupAddon, InputGroupInput} from "./input-group";
 
 interface InputFieldProps<T extends FieldValues> extends React.ComponentProps<
   typeof InputPrimitive
 > {
-  label: string;
+  label?: string;
   name: FieldPath<T>;
   placeholder?: string;
+  icon?: React.ReactNode;
 }
 
 export function InputField<T extends FieldValues>({
@@ -22,6 +24,7 @@ export function InputField<T extends FieldValues>({
   placeholder,
   className,
   type = "text",
+  icon,
   ...props
 }: InputFieldProps<T>) {
   const {control} = useFormContext<T>();
@@ -34,17 +37,33 @@ export function InputField<T extends FieldValues>({
         <Field data-invalid={fieldState.invalid}>
           {label && <FieldLabel htmlFor={field.name}>{label}</FieldLabel>}
 
-          <InputPrimitive
-            {...field}
-            aria-invalid={fieldState.invalid}
-            className={cn(inputVariants(), className)}
-            data-slot="input"
-            id={field.name}
-            placeholder={placeholder}
-            type={type}
-            value={field.value ?? ""}
-            {...props}
-          />
+          {icon ? (
+            <InputGroup>
+              <InputGroupInput
+                {...field}
+                aria-invalid={fieldState.invalid}
+                className={className}
+                id={field.name}
+                placeholder={placeholder}
+                type={type}
+                value={field.value ?? ""}
+                {...props}
+              />
+              <InputGroupAddon align="inline-end">{icon}</InputGroupAddon>
+            </InputGroup>
+          ) : (
+            <InputPrimitive
+              {...field}
+              aria-invalid={fieldState.invalid}
+              className={cn(inputVariants(), className)}
+              data-slot="input"
+              id={field.name}
+              placeholder={placeholder}
+              type={type}
+              value={field.value ?? ""}
+              {...props}
+            />
+          )}
 
           {fieldState.invalid && (
             <FieldError className="text-red-400" errors={[fieldState.error]} />
