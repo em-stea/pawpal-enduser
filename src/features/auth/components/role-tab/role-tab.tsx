@@ -10,6 +10,7 @@ import {
 } from "@/shared/components/tabs/tabs";
 
 import TutorForm from "../form/tutor-form";
+import {VetStepper} from "../stepper/vet-stepper";
 
 export default function RoleTab() {
   return (
@@ -29,9 +30,7 @@ export default function RoleTab() {
         <TutorForm />
       </TabsContent>
       <TabsContent value="register-vet">
-        <div>
-          <Heading variant="subtitle.1">Soy Vet</Heading>
-        </div>
+        <VetStepper />
       </TabsContent>
     </Tabs>
   );

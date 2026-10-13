@@ -2,20 +2,19 @@
 "use client";
 
 import {standardSchemaResolver} from "@hookform/resolvers/standard-schema";
+import {ArrowRightIcon, LockKeyhole, LockKeyholeOpen, Mail, Phone, UserIcon} from "lucide-react";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
-import {ArrowRightIcon, LockKeyhole, LockKeyholeOpen, Mail, Phone, UserIcon} from "lucide-react";
 
 import {Button} from "@/shared/components/button/button";
+import {CheckboxField} from "@/shared/components/checkbox/checkbox-field";
 import {Form} from "@/shared/components/form/form";
-import {toast} from "@/shared/components/toast/toast";
 import {InputField} from "@/shared/components/form/input";
 import {InputPassword} from "@/shared/components/form/input-password";
-import {Checkbox} from "@/shared/components/checkbox/checkbox";
 import {Text} from "@/shared/components/text/text";
-import {CheckboxField} from "@/shared/components/checkbox/checkbox-field";
+import {toast} from "@/shared/components/toast/toast";
 
-import {tutorFormSchema} from "../../shemas/tutor-schema";
+import {tutorFormSchema} from "../../schemas/tutor-schema";
 
 type FormValues = z.output<typeof tutorFormSchema>;
 
@@ -82,7 +81,7 @@ export default function TutorForm() {
       </div>
       <Button className="mt-4 gap-2" size="fullWidth" type="submit" variant="primary">
         Registrarme
-        <ArrowRightIcon className="size-4" />
+        <ArrowRightIcon className="size-5" />
       </Button>
     </Form>
   );
