@@ -49,7 +49,7 @@ export function InputField<T extends FieldValues>({
                 value={field.value ?? ""}
                 {...props}
               />
-              <InputGroupAddon align="inline-end">{icon}</InputGroupAddon>
+              <InputGroupAddon align="inline-start">{icon}</InputGroupAddon>
             </InputGroup>
           ) : (
             <InputPrimitive
