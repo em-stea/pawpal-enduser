@@ -2,7 +2,6 @@
 
 import {useStep} from "usehooks-ts";
 
-import {Button} from "@/shared/components/button/button";
 import {Progress, ProgressLabel} from "@/shared/components/progress/progress";
 
 import VetForm from "../form/vet-form";
@@ -15,7 +14,7 @@ const STEPS = [
 export const VetStepper = () => {
   const [currentStep, helpers] = useStep(STEPS.length);
 
-  const {canGoToPrevStep, canGoToNextStep, goToNextStep, goToPrevStep, reset, setStep} = helpers;
+  const {goToNextStep, goToPrevStep} = helpers;
 
   return (
     <>
@@ -30,10 +29,12 @@ export const VetStepper = () => {
         </div>
       </Progress>
 
-      <Button onClick={goToPrevStep}>Go to previous step</Button>
-      <Button onClick={goToNextStep}>Go to next step</Button>
-
-      {/* <VetForm canGoToNextStep={canGoToNextStep}/> */}
+      <VetForm
+        currentStep={currentStep}
+        goToNextStep={goToNextStep}
+        goToPrevStep={goToPrevStep}
+        isLastStep={currentStep === STEPS.length}
+      />
     </>
   );
 };
