@@ -1,28 +1,43 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import {standardSchemaResolver} from "@hookform/resolvers/standard-schema";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
-import {LockKeyhole, LockKeyholeOpen, Mail, Phone, UserIcon} from "lucide-react";
+import {ArrowRightIcon, LockKeyhole, LockKeyholeOpen, Mail, Phone, UserIcon} from "lucide-react";
 
 import {Button} from "@/shared/components/button/button";
 import {Form} from "@/shared/components/form/form";
 import {toast} from "@/shared/components/toast/toast";
 import {InputField} from "@/shared/components/form/input";
 import {InputPassword} from "@/shared/components/form/input-password";
+import {Checkbox} from "@/shared/components/checkbox/checkbox";
+import {Text} from "@/shared/components/text/text";
+import {CheckboxField} from "@/shared/components/checkbox/checkbox-field";
 
 import {tutorFormSchema} from "../../shemas/tutor-schema";
 
-type FormValues = z.infer<typeof tutorFormSchema>;
+type FormValues = z.output<typeof tutorFormSchema>;
 
 export default function TutorForm() {
   const form = useForm<FormValues>({
     resolver: standardSchemaResolver(tutorFormSchema),
-    defaultValues: {nombre: "", apellido: ""},
+    defaultValues: {
+      nombre: "",
+      apellido: "",
+      email: "",
+      telefono: "",
+      password: "",
+      confirmPassword: "",
+      acceptTerms: false,
+    },
   });
 
   function onSubmit(data: FormValues) {
-    console.log(data);
+    const {confirmPassword, ...rest} = data;
+
+    console.log(rest);
+
     toast.add({type: "success", title: "Formulario enviado"});
   }
 
@@ -45,21 +60,29 @@ export default function TutorForm() {
         type="tel"
       />
       <InputPassword
-        // icon={<LockKeyholeOpen />}
+        icon={<LockKeyholeOpen />}
         label="Contraseña"
-        name="contrasena"
+        name="password"
         placeholder="********"
         type="password"
       />
       <InputPassword
         icon={<LockKeyhole />}
         label="Confirmar Contraseña"
-        name="confirmarContrasena"
+        name="confirmPassword"
         placeholder="********"
         type="password"
       />
-      <Button className="mt-4" type="submit">
-        Enviar
+      <div className="items-flex-start flex gap-2">
+        <CheckboxField name="acceptTerms">
+          <Text variant="body.1">
+            Acepto los Términos y Condiciones y las Políticas de Privacidad.
+          </Text>
+        </CheckboxField>
+      </div>
+      <Button className="mt-4 gap-2" size="fullWidth" type="submit" variant="primary">
+        Registrarme
+        <ArrowRightIcon className="size-4" />
       </Button>
     </Form>
   );
