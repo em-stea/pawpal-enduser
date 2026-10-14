@@ -22,8 +22,8 @@ export const selectContentVariants = cva(
 );
 
 export const selectLabelVariants = cva([
-  "px-3 py-1.5 text-tertiary-200",
-  textVariants({variant: "body.3"}),
+  "px-3 py-1.5 !text-tertiary-600",
+  textVariants({variant: "button"}),
 ]);
 
 export const selectItemVariants = cva([
@@ -37,7 +37,7 @@ export const selectItemIndicatorVariants = cva(
   "pointer-events-none absolute top-2.5 right-2 flex size-4 items-center justify-center",
 );
 
-export const selectSeparatorVariants = cva("bg-border pointer-events-none -mx-1 my-1 h-px");
+export const selectSeparatorVariants = cva("pointer-events-none -mx-1 my-1 h-px bg-tertiary-800");
 
 export const selectScrollButtonVariants = cva(
   "bg-popover z-10 flex w-full cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4",

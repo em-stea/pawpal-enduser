@@ -1,12 +1,11 @@
 "use client";
 
 import * as React from "react";
-import {Toggle as TogglePrimitive} from "@base-ui/react/toggle";
 import {ToggleGroup as ToggleGroupPrimitive} from "@base-ui/react/toggle-group";
 import {type VariantProps} from "class-variance-authority";
-import {cn} from "cn";
 
-import {toggleVariants} from "@/shared/components/toggle/toggle";
+import {cn} from "@/shared/lib/tw-merge/utils";
+import {Toggle, toggleVariants} from "@/shared/components/toggle/toggle";
 
 import {toggleGroupItemVariants, toggleGroupVariants} from "./toggle-group.styles";
 
@@ -64,33 +63,28 @@ function ToggleGroup({
 function ToggleGroupItem({
   className,
   children,
-  variant = "default",
-  size = "default",
+  variant,
+  size,
   ...props
-}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {
+}: React.ComponentProps<typeof Toggle>) {
   const context = React.use(ToggleGroupContext);
 
   const finalVariant = variant ?? context.itemVariant;
-  const finalSize = context.size ?? size;
+  const finalSize = size ?? context.size;
 
   return (
-    <TogglePrimitive
-      className={cn(
-        toggleGroupItemVariants,
-        toggleVariants({
-          variant: finalVariant,
-          size: finalSize,
-        }),
-        className,
-      )}
+    <Toggle
+      className={cn(toggleGroupItemVariants, className)}
       data-size={finalSize}
       data-slot="toggle-group-item"
       data-spacing={context.spacing}
       data-variant={finalVariant}
+      size={finalSize}
+      variant={finalVariant}
       {...props}
     >
       {children}
-    </TogglePrimitive>
+    </Toggle>
   );
 }
 

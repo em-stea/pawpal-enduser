@@ -1,9 +1,10 @@
 "use client";
 
 import * as React from "react";
-import {Select as SelectPrimitive} from "@base-ui/react/select";
-import {cn} from "cn";
+import {SelectLabelProps, Select as SelectPrimitive} from "@base-ui/react/select";
 import {ChevronDownIcon, CheckIcon, ChevronUpIcon} from "lucide-react";
+
+import {cn} from "@/shared/lib/tw-merge/utils";
 
 import {
   selectContentVariants,
@@ -101,15 +102,8 @@ function SelectContent({
     </SelectPrimitive.Portal>
   );
 }
-
-function SelectLabel({className, ...props}: SelectPrimitive.GroupLabel.Props) {
-  return (
-    <SelectPrimitive.GroupLabel
-      className={cn(selectLabelVariants(), className)}
-      data-slot="select-label"
-      {...props}
-    />
-  );
+function SelectLabel({className, ...props}: SelectLabelProps) {
+  return <SelectPrimitive.Label className={cn(selectLabelVariants(), className)} {...props} />;
 }
 
 function SelectItem({className, children, ...props}: SelectPrimitive.Item.Props) {

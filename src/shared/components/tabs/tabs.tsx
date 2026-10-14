@@ -3,7 +3,8 @@
 import type {VariantProps} from "class-variance-authority";
 
 import {Tabs as TabsPrimitive} from "@base-ui/react/tabs";
-import {cn} from "cn";
+
+import {cn} from "@/shared/lib/tw-merge/utils";
 
 import {
   tabsContentVariants,

@@ -2,7 +2,8 @@
 
 import {Toggle as TogglePrimitive} from "@base-ui/react/toggle";
 import {type VariantProps} from "class-variance-authority";
-import {cn} from "cn";
+
+import {cn} from "@/shared/lib/tw-merge/utils";
 
 import {toggleVariants} from "./toggle.styles";
 

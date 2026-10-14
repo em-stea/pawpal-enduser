@@ -2,8 +2,8 @@
 
 import {useMemo} from "react";
 import {type VariantProps} from "class-variance-authority";
-import {cn} from "cn";
 
+import {cn} from "@/shared/lib/tw-merge/utils";
 import {Text} from "@/shared/components/text/text";
 
 import {

@@ -32,6 +32,7 @@ export const vetFormSchema = z
       .max(100, "El colegio debe tener como máximo 100 caracteres.")
       .regex(/^[a-zA-ZáéíóúñÁÉÍÓÚÑ\s]+$/, "El colegio solo puede contener letras y espacios."),
     cobertura: z.array(z.string()).min(1, "Selecciona al menos una opción"),
+    especialidad: z.array(z.string()).min(1, "Ingresa al menos una especialidad."),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],

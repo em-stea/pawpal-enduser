@@ -1,8 +1,9 @@
 "use client";
 
 import {Checkbox as CheckboxPrimitive} from "@base-ui/react/checkbox";
-import {cn} from "cn";
 import {CheckIcon} from "lucide-react";
+
+import {cn} from "@/shared/lib/tw-merge/utils";
 
 import {checkboxIndicatorVariants, checkboxVariants} from "./checkbox.styles";
 

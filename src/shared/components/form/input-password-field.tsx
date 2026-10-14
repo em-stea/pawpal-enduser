@@ -62,7 +62,11 @@ export function InputPasswordField<T extends FieldValues>({
                 variant="icon"
                 onClick={() => setShowPassword((prev) => !prev)}
               >
-                {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
+                {showPassword ? (
+                  <EyeOff className="mr-2 size-5" />
+                ) : (
+                  <Eye className="mr-2 size-5" />
+                )}
               </Button>
             </InputGroupAddon>
           </InputGroup>
