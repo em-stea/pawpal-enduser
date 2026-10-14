@@ -139,12 +139,12 @@ export default function VetForm({
             /> */}
             <Select
               // icon={<Landmark />}
-              // label="Colegio Veterinario"
+
               items={VETERINARY_COLLEGES}
               name="colegio"
             >
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Colegio" />
+                <SelectValue placeholder="Colegio Veterinario" />
               </SelectTrigger>
               <SelectContent>
                 {VETERINARY_COLLEGES.map((college) => (
