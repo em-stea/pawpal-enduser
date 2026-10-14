@@ -15,28 +15,30 @@ import {useForm} from "react-hook-form";
 import {z} from "zod";
 
 import {Button} from "@/shared/components/button/button";
-import {CheckboxField} from "@/shared/components/checkbox/checkbox-field";
+import {CheckboxField} from "@/shared/components/form/checkbox-field";
 import {Form} from "@/shared/components/form/form";
-import {InputField} from "@/shared/components/form/input";
-import {InputPassword} from "@/shared/components/form/input-password";
+import {InputField} from "@/shared/components/form/input-field";
+import {InputPasswordField} from "@/shared/components/form/input-password-field";
+import {SelectField} from "@/shared/components/form/select-field";
+import {ToggleGroupField, ToggleGroupItem} from "@/shared/components/form/toggle-group-field";
 import {
-  Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/form/select";
+} from "@/shared/components/select/select";
 import {Text} from "@/shared/components/text/text";
 import {toast} from "@/shared/components/toast/toast";
 
+import {CARE_COVERAGE_OPTIONS} from "../../data/care-coverage";
 import {VETERINARY_COLLEGES} from "../../data/veterinary-colleges";
-import {tutorFormSchema} from "../../schemas/tutor-schema";
+import {vetFormSchema} from "../../schemas/vet-schema";
 
-type FormValues = z.output<typeof tutorFormSchema>;
+type FormValues = z.output<typeof vetFormSchema>;
 
 const STEP_FIELDS: (keyof FormValues)[][] = [
   ["nombre", "apellido", "email", "telefono", "password", "confirmPassword", "acceptTerms"],
-  ["matricula", "colegio"],
+  ["matricula", "colegio", "cobertura"],
 ];
 
 interface VetFormProps {
@@ -53,7 +55,7 @@ export default function VetForm({
   isLastStep,
 }: VetFormProps) {
   const form = useForm<FormValues>({
-    resolver: standardSchemaResolver(tutorFormSchema),
+    resolver: standardSchemaResolver(vetFormSchema),
     defaultValues: {
       nombre: "",
       apellido: "",
@@ -64,8 +66,12 @@ export default function VetForm({
       acceptTerms: false,
       matricula: "",
       colegio: "",
+      cobertura: [],
     },
   });
+
+  const selectedCobertura = form.watch("cobertura");
+  const count = selectedCobertura.length;
 
   async function handleNext() {
     const isValid = await form.trigger(STEP_FIELDS[currentStep - 1]);
@@ -102,13 +108,13 @@ export default function VetForm({
               placeholder="(+54) 11-1234-5678"
               type="tel"
             />
-            <InputPassword
+            <InputPasswordField
               icon={<LockKeyholeOpen />}
               label="Contraseña"
               name="password"
               placeholder="********"
             />
-            <InputPassword
+            <InputPasswordField
               icon={<LockKeyhole />}
               label="Confirmar Contraseña"
               name="confirmPassword"
@@ -124,6 +130,27 @@ export default function VetForm({
 
         {currentStep === 2 && (
           <>
+            <div className="flex items-center justify-between gap-2">
+              <Text variant="body.2">Cobertura de Atención</Text>
+              <Text className="text-tertiary-500" variant="body.1">
+                {count} {count === 1 ? "Seleccionado" : "Seleccionados"}
+              </Text>
+            </div>
+            <ToggleGroupField multiple name="cobertura" variant="fill">
+              {CARE_COVERAGE_OPTIONS.map((option) => (
+                <ToggleGroupItem
+                  key={option.value as string}
+                  value={option.value as string}
+                  variant="fullColor"
+                >
+                  <div className="flex items-center gap-2">
+                    {option.icon}
+                    <Text variant="button">{option.label}</Text>
+                  </div>
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroupField>
+
             <InputField
               icon={<IdCard />}
               label="Matrícula Veterinaria (M.V.)"
@@ -131,18 +158,8 @@ export default function VetForm({
               placeholder="12345"
               type="number"
             />
-            {/* <InputField
-              icon={<Landmark />}
-              label="Colegio Veterinario"
-              name="colegio"
-              placeholder="Colegio"
-            /> */}
-            <Select
-              // icon={<Landmark />}
 
-              items={VETERINARY_COLLEGES}
-              name="colegio"
-            >
+            <SelectField items={VETERINARY_COLLEGES} name="colegio">
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Colegio Veterinario" />
               </SelectTrigger>
@@ -153,7 +170,7 @@ export default function VetForm({
                   </SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </SelectField>
           </>
         )}
 

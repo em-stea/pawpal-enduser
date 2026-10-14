@@ -5,10 +5,10 @@ import type {VariantProps} from "class-variance-authority";
 import * as React from "react";
 import {Input as InputPrimitive} from "@base-ui/react/input";
 
+import {Button} from "@/shared/components/button/button";
+import {Textarea} from "@/shared/components/textarea/textarea";
 import {cn} from "@/shared/lib/tw-merge/utils";
-import {Textarea} from "@/shared/components/form/textarea";
-
-import {Button} from "../button/button";
+import {inputVariants} from "@/shared/components/input/input.styles";
 
 import {
   inputGroupAddonVariants,
@@ -18,7 +18,6 @@ import {
   inputGroupTextVariants,
   inputGroupVariants,
 } from "./input-group.styles";
-import {inputVariants} from "./input.styles";
 
 function InputGroup({className, ...props}: React.ComponentProps<"div">) {
   return (

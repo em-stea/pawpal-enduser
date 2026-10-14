@@ -2,7 +2,9 @@ import {cva} from "class-variance-authority";
 
 import {textVariants} from "../text/text.styles";
 
-export const progressVariants = cva("flex flex-wrap gap-3 rounded-lg bg-tertiary-850 px-3 py-5");
+export const progressVariants = cva(
+  "flex w-full flex-wrap gap-3 rounded-lg bg-tertiary-850 px-3 py-5",
+);
 
 export const progressTrackVariants = cva(
   "relative flex h-1.5 w-full items-center overflow-x-hidden rounded-full bg-tertiary-800",

@@ -4,7 +4,7 @@ import {useMemo} from "react";
 import {type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
 
-import {Text} from "../text/text";
+import {Text} from "@/shared/components/text/text";
 
 import {
   fieldContentVariants,

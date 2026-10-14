@@ -13,7 +13,7 @@ export function Form<T extends FieldValues>({form, onSubmit, children, ...props}
   return (
     <FormProvider {...form}>
       <form
-        className="flex flex-col gap-4"
+        className="flex w-full flex-col gap-4"
         onSubmit={(event) => {
           void form.handleSubmit(onSubmit)(event);
         }}

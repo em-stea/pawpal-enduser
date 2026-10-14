@@ -21,16 +21,6 @@ export const tutorFormSchema = z
     acceptTerms: z.boolean().refine((value) => value, {
       error: "Debés aceptar los términos y condiciones.",
     }),
-    matricula: z
-      .string()
-      .min(3, "Ingresá tu matrícula.")
-      .max(6, "La matrícula debe tener como máximo 6 números.")
-      .regex(/^\d+$/, "La matrícula solo puede contener números."),
-    colegio: z
-      .string()
-      .min(1, "Ingresá el nombre del colegio.")
-      .max(100, "El colegio debe tener como máximo 100 caracteres.")
-      .regex(/^[a-zA-ZáéíóúñÁÉÍÓÚÑ\s]+$/, "El colegio solo puede contener letras y espacios."),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],

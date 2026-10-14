@@ -7,10 +7,10 @@ import {useForm} from "react-hook-form";
 import {z} from "zod";
 
 import {Button} from "@/shared/components/button/button";
-import {CheckboxField} from "@/shared/components/checkbox/checkbox-field";
+import {CheckboxField} from "@/shared/components/form/checkbox-field";
 import {Form} from "@/shared/components/form/form";
-import {InputField} from "@/shared/components/form/input";
-import {InputPassword} from "@/shared/components/form/input-password";
+import {InputField} from "@/shared/components/form/input-field";
+import {InputPasswordField} from "@/shared/components/form/input-password-field";
 import {Text} from "@/shared/components/text/text";
 import {toast} from "@/shared/components/toast/toast";
 
@@ -58,19 +58,17 @@ export default function TutorForm() {
         placeholder="(+54) 11-1234-5678"
         type="tel"
       />
-      <InputPassword
+      <InputPasswordField
         icon={<LockKeyholeOpen />}
         label="Contraseña"
         name="password"
         placeholder="********"
-        type="password"
       />
-      <InputPassword
+      <InputPasswordField
         icon={<LockKeyhole />}
         label="Confirmar Contraseña"
         name="confirmPassword"
         placeholder="********"
-        type="password"
       />
       <div className="items-flex-start flex gap-2">
         <CheckboxField name="acceptTerms">

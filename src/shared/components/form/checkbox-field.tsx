@@ -3,7 +3,7 @@
 import {Controller, FieldPath, FieldValues, useFormContext} from "react-hook-form";
 
 import {Checkbox} from "@/shared/components/checkbox/checkbox";
-import {Field, FieldError, FieldLabel} from "@/shared/components/form/field";
+import {Field, FieldError, FieldLabel} from "@/shared/components/field/field";
 
 interface CheckboxFieldProps<T extends FieldValues> {
   name: FieldPath<T>;

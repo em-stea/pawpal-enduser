@@ -1,6 +1,6 @@
 import {cva} from "class-variance-authority";
 
-import {textVariants} from "../text/text.styles";
+import {textVariants} from "@/shared/components/text/text.styles";
 
 export const selectGroupVariants = cva("scroll-my-1 p-1");
 
@@ -18,7 +18,7 @@ export const selectTriggerIconVariants = cva("pointer-events-none size-5 text-te
 export const selectPositionerVariants = cva("isolate z-50");
 
 export const selectContentVariants = cva(
-  "ring-foreground/10 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 relative bottom-1 isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-tertiary-850 text-tertiary-200 shadow-md ring-1 duration-100 data-[align-trigger=true]:animate-none",
+  "ring-foreground/10 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 relative bottom-1 isolate z-50 max-h-[min(34rem,var(--available-height))] w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-tertiary-850 text-tertiary-200 shadow-md ring-1 duration-100 data-[align-trigger=true]:animate-none",
 );
 
 export const selectLabelVariants = cva([
@@ -27,14 +27,14 @@ export const selectLabelVariants = cva([
 ]);
 
 export const selectItemVariants = cva([
-  "focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm px-3 py-1.5 outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+  "focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground relative flex w-full cursor-default items-start gap-2 rounded-sm px-3 py-1.5 outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
   textVariants({variant: "body.3"}),
 ]);
 
-export const selectItemTextVariants = cva("flex min-w-0 flex-1 gap-2 break-words");
+export const selectItemTextVariants = cva("flex max-w-[22rem] min-w-0 flex-1 gap-2 break-words");
 
 export const selectItemIndicatorVariants = cva(
-  "pointer-events-none absolute right-2 flex size-4 items-center justify-center",
+  "pointer-events-none absolute top-2.5 right-2 flex size-4 items-center justify-center",
 );
 
 export const selectSeparatorVariants = cva("bg-border pointer-events-none -mx-1 my-1 h-px");

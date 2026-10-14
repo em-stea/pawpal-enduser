@@ -1,37 +1,40 @@
-import {Heading} from "@/shared/components/heading/heading";
+"use client";
+
+import Link from "next/link";
+import {usePathname} from "next/navigation";
+
 import {Pet} from "@/shared/components/icons/other/pet";
 import {Vet} from "@/shared/components/icons/other/vet";
-import {
-  Tabs,
-  TabsContent,
-  TabsIndicator,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/tabs/tabs";
-
-import TutorForm from "../form/tutor-form";
-import {VetStepper} from "../stepper/vet-stepper";
+import {Tabs, TabsIndicator, TabsList, TabsTrigger} from "@/shared/components/tabs/tabs";
+import {ROUTES} from "@/shared/lib/route";
 
 export default function RoleTab() {
+  const pathname = usePathname();
+  const value = pathname.startsWith(ROUTES.signupVet) ? "vet" : "tutor";
+
   return (
-    <Tabs>
+    <Tabs value={value}>
       <TabsList variant="line">
-        <TabsTrigger className="data-active:text-secondary-500" value="register-tutor">
+        <TabsTrigger
+          className="data-active:text-secondary-500"
+          nativeButton={false}
+          render={<Link href={ROUTES.signupTutor} />}
+          value="tutor"
+        >
           <Pet className="t mr-2" />
           Soy Tutor
         </TabsTrigger>
-        <TabsTrigger className="data-active:text-secondary-500" value="register-vet">
+        <TabsTrigger
+          className="data-active:text-secondary-500"
+          nativeButton={false}
+          render={<Link href={ROUTES.signupVet} />}
+          value="vet"
+        >
           <Vet className="mr-2" />
           Soy Veterinario
         </TabsTrigger>
         <TabsIndicator />
       </TabsList>
-      <TabsContent value="register-tutor">
-        <TutorForm />
-      </TabsContent>
-      <TabsContent value="register-vet">
-        <VetStepper />
-      </TabsContent>
     </Tabs>
   );
 }
