@@ -50,7 +50,7 @@ function InputGroupAddon({
 function InputGroupButton({
   className,
   type = "button",
-  variant = "ghost",
+  variant = "icon",
   size = "xs",
   ...props
 }: Omit<React.ComponentProps<typeof Button>, "size" | "type"> &

@@ -1,0 +1,48 @@
+import {cva} from "class-variance-authority";
+
+import {textVariants} from "../text/text.styles";
+
+export const selectGroupVariants = cva("scroll-my-1 p-1");
+
+export const selectValueVariants = cva("flex flex-1 text-left");
+
+export const selectTriggerVariants = cva(
+  "focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 flex h-10 w-fit items-center justify-between gap-1.5 rounded-lg border border-tertiary-500 bg-transparent py-2 pr-4 pl-3 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 data-placeholder:text-tertiary-500 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+);
+
+export const selectTriggerIconVariants = cva("text-muted-foreground pointer-events-none size-4");
+
+export const selectPositionerVariants = cva("isolate z-50");
+
+export const selectContentVariants = cva(
+  "ring-foreground/10 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-md bg-tertiary-850 text-tertiary-200 shadow-md ring-1 duration-100 data-[align-trigger=true]:animate-none",
+);
+
+export const selectLabelVariants = cva([
+  "px-3 py-1.5 text-tertiary-200",
+  textVariants({variant: "body.2"}),
+]);
+
+export const selectItemVariants = cva(
+  "focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+);
+
+export const selectItemTextVariants = cva("flex flex-1 shrink-0 gap-2 whitespace-nowrap");
+
+export const selectItemIndicatorVariants = cva(
+  "pointer-events-none absolute right-2 flex size-4 items-center justify-center",
+);
+
+export const selectSeparatorVariants = cva("bg-border pointer-events-none -mx-1 my-1 h-px");
+
+export const selectScrollButtonVariants = cva(
+  "bg-popover z-10 flex w-full cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4",
+  {
+    variants: {
+      direction: {
+        up: "top-0",
+        down: "bottom-0",
+      },
+    },
+  },
+);

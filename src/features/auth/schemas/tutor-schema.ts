@@ -23,8 +23,8 @@ export const tutorFormSchema = z
     }),
     matricula: z
       .string()
-      .min(1, "Ingresá tu matrícula.")
-      .max(10, "La matrícula debe tener como máximo 10 números.")
+      .min(3, "Ingresá tu matrícula.")
+      .max(6, "La matrícula debe tener como máximo 6 números.")
       .regex(/^\d+$/, "La matrícula solo puede contener números."),
     colegio: z
       .string()

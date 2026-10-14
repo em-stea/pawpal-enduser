@@ -5,7 +5,6 @@ import {standardSchemaResolver} from "@hookform/resolvers/standard-schema";
 import {
   ArrowRightIcon,
   IdCard,
-  Landmark,
   LockKeyhole,
   LockKeyholeOpen,
   Mail,
@@ -20,9 +19,17 @@ import {CheckboxField} from "@/shared/components/checkbox/checkbox-field";
 import {Form} from "@/shared/components/form/form";
 import {InputField} from "@/shared/components/form/input";
 import {InputPassword} from "@/shared/components/form/input-password";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/shared/components/form/select";
 import {Text} from "@/shared/components/text/text";
 import {toast} from "@/shared/components/toast/toast";
 
+import {VETERINARY_COLLEGES} from "../../data/veterinary-colleges";
 import {tutorFormSchema} from "../../schemas/tutor-schema";
 
 type FormValues = z.output<typeof tutorFormSchema>;
@@ -124,12 +131,29 @@ export default function VetForm({
               placeholder="12345"
               type="number"
             />
-            <InputField
+            {/* <InputField
               icon={<Landmark />}
               label="Colegio Veterinario"
               name="colegio"
               placeholder="Colegio"
-            />
+            /> */}
+            <Select
+              // icon={<Landmark />}
+              // label="Colegio Veterinario"
+              items={VETERINARY_COLLEGES}
+              name="colegio"
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Colegio" />
+              </SelectTrigger>
+              <SelectContent>
+                {VETERINARY_COLLEGES.map((college) => (
+                  <SelectItem key={college.value} value={college.value}>
+                    {college.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </>
         )}
 
