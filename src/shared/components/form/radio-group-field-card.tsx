@@ -1,6 +1,7 @@
 "use client";
 
 import {Controller, FieldPath, FieldValues, useFormContext, useWatch} from "react-hook-form";
+import {AnimatePresence, motion} from "motion/react";
 
 import {
   Field,
@@ -85,9 +86,21 @@ export function RadioGroupFieldCard<T extends FieldValues, O extends RadioGroupC
                     </Field>
                   </FieldLabel>
 
-                  {isSelected && renderContent && (
-                    <div className="px-3.5 py-4">{renderContent(option)}</div>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {isSelected && renderContent && (
+                      <motion.div
+                        animate={{height: "auto", opacity: 1, y: 0}}
+                        exit={{height: 0, opacity: 0, y: -10}}
+                        initial={{height: 0, opacity: 0, y: -10}}
+                        transition={{
+                          duration: 0.7,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                      >
+                        <div className="px-3.5 py-4">{renderContent(option)}</div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}

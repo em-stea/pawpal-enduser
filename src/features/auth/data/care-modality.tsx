@@ -1,4 +1,4 @@
-import {Clock, Hospital, Map, Navigation, Phone} from "lucide-react";
+import {Calendar, Clock, Hospital, Map, Navigation, Phone} from "lucide-react";
 
 export interface CareModality {
   value: string;
@@ -61,7 +61,7 @@ const CLINIC_FIELDS: ModalityField[] = [
     name: "daysOfAttention",
     label: "Horarios de Atención",
     variant: "schedule",
-    icon: <Clock />,
+    icon: <Calendar />,
   },
 ];
 
