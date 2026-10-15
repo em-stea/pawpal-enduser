@@ -1,23 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import {standardSchemaResolver} from "@hookform/resolvers/standard-schema";
 import {ArrowRightIcon} from "lucide-react";
-import {useForm} from "react-hook-form";
 
+import {useVetForm} from "@/features/auth/hooks/use-vet-form";
 import {Button} from "@/shared/components/button/button";
 import {Form} from "@/shared/components/form/form";
-import {toast} from "@/shared/components/toast/toast";
-
-import {type FormVetValues, vetFormSchema} from "../../../schemas/vet-schema";
 
 import {FirstStep} from "./first-step";
 import {SecondStep} from "./second-step";
-
-const STEP_FIELDS: (keyof FormVetValues)[][] = [
-  ["nombre", "apellido", "email", "telefono", "password", "confirmPassword", "acceptTerms"],
-  ["matricula", "colegio", "cobertura", "especialidad", "modalidad_atencion"],
-];
 
 interface VetFormProps {
   currentStep: number;
@@ -32,37 +22,12 @@ export default function VetForm({
   goToPrevStep,
   isLastStep,
 }: VetFormProps) {
-  const form = useForm<FormVetValues>({
-    resolver: standardSchemaResolver(vetFormSchema),
-    defaultValues: {
-      nombre: "",
-      apellido: "",
-      email: "",
-      telefono: "",
-      password: "",
-      confirmPassword: "",
-      acceptTerms: false,
-      matricula: "",
-      colegio: "",
-      cobertura: [],
-      especialidad: [],
-      modalidad_atencion: "",
-    },
+  const {form, handleNext, onSubmit} = useVetForm({
+    currentStep,
+    goToNextStep,
+    goToPrevStep,
+    isLastStep,
   });
-
-  async function handleNext() {
-    const isValid = await form.trigger(STEP_FIELDS[currentStep - 1]);
-
-    if (isValid) goToNextStep();
-  }
-
-  function onSubmit(data: FormVetValues) {
-    const {confirmPassword, acceptTerms, ...rest} = data;
-
-    console.log(rest);
-
-    toast.add({type: "success", title: "Formulario enviado"});
-  }
 
   return (
     <Form form={form} onSubmit={onSubmit}>

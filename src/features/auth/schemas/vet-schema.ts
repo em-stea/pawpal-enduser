@@ -34,10 +34,44 @@ export const vetFormSchema = z
     cobertura: z.array(z.string()).min(1, "Selecciona al menos una opción"),
     especialidad: z.array(z.string()).min(1, "Ingresa al menos una especialidad."),
     modalidad_atencion: z.string().min(1, "Selecciona una modalidad de atención."),
+    clinic_name: z.string(),
+    address: z.string(),
+    coverage_zones: z.array(z.string()),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
     error: "Las contraseñas no coinciden.",
+  })
+  .superRefine((data, ctx) => {
+    const needsClinic =
+      data.modalidad_atencion === "at_veterinary_clinic" || data.modalidad_atencion === "hybrid";
+    const needsHome = data.modalidad_atencion === "at_home" || data.modalidad_atencion === "hybrid";
+
+    if (needsClinic) {
+      if (!data.clinic_name.trim()) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["clinic_name"],
+          message: "Ingresá el nombre del centro o clínica.",
+        });
+      }
+
+      if (!data.address.trim()) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["address"],
+          message: "Ingresá la dirección de atención.",
+        });
+      }
+    }
+
+    if (needsHome && data.coverage_zones.length === 0) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["coverage_zones"],
+        message: "Agregá al menos una zona de cobertura.",
+      });
+    }
   });
 
 export type FormVetValues = z.output<typeof vetFormSchema>;

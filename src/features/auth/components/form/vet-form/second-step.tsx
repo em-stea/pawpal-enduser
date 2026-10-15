@@ -24,6 +24,8 @@ import {Text} from "@/shared/components/text/text";
 import {RadioGroupFieldCard} from "@/shared/components/form/radio-group-field-card";
 import {CARE_MODALITY} from "@/features/auth/data/care-modality";
 
+import {ModalityFields} from "../../field-components/modality-fields";
+
 export const SecondStep = () => {
   const {control, setValue} = useFormContext<FormVetValues>();
 
@@ -111,7 +113,8 @@ export const SecondStep = () => {
           ))}
         </SelectContent>
       </SelectField>
-      <div className="flex flex-wrap items-center gap-2">
+
+      <div className="mb-6.5 flex flex-wrap items-center gap-2">
         {selectedEspecialidades.map((especialidad) => (
           <Badge key={especialidad} variant="default">
             <CircleCheckBig /> {especialidad}{" "}
@@ -130,6 +133,7 @@ export const SecondStep = () => {
         label="Modalidad de Atención"
         name="modalidad_atencion"
         options={CARE_MODALITY}
+        renderContent={(modality) => <ModalityFields fields={modality.fields} />}
       />
     </>
   );

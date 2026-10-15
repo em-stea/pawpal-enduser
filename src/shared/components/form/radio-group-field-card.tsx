@@ -15,27 +15,30 @@ import {cn} from "@/shared/lib/tw-merge/utils";
 import {RadioGroup, RadioGroupItem} from "../radio-group/radio-group";
 
 interface RadioGroupCardOption {
+  value: string;
   label: string;
   description?: string;
-  value: string;
 }
 
-interface RadioGroupFieldCardProps<T extends FieldValues> extends React.ComponentProps<
-  typeof RadioGroup
-> {
+interface RadioGroupFieldCardProps<
+  T extends FieldValues,
+  O extends RadioGroupCardOption,
+> extends React.ComponentProps<typeof RadioGroup> {
   name: FieldPath<T>;
   label?: string;
-  options: RadioGroupCardOption[];
+  options: O[];
   className?: string;
+  renderContent?: (option: O) => React.ReactNode;
 }
 
-export function RadioGroupFieldCard<T extends FieldValues>({
+export function RadioGroupFieldCard<T extends FieldValues, O extends RadioGroupCardOption>({
   name,
   label,
   options,
   className,
+  renderContent,
   ...props
-}: RadioGroupFieldCardProps<T>) {
+}: RadioGroupFieldCardProps<T, O>) {
   const {control} = useFormContext<T>();
   const selectedValue = useWatch({control, name});
 
@@ -55,27 +58,32 @@ export function RadioGroupFieldCard<T extends FieldValues>({
           >
             {options.map((option) => {
               const itemId = `${name}-${option.value}`;
+              const isSelected = selectedValue === option.value;
 
               return (
-                <FieldLabel
-                  key={option.value}
-                  className={cn(
-                    "cursor-pointer border-tertiary-500",
-                    selectedValue === option.value &&
-                      "border-2! border-primary-500 bg-tertiary-800",
+                <div key={option.value}>
+                  <FieldLabel
+                    className={cn(
+                      "cursor-pointer",
+                      isSelected && "border-2 border-primary-500 bg-tertiary-800",
+                    )}
+                    htmlFor={itemId}
+                  >
+                    <Field orientation="horizontal">
+                      <FieldContent>
+                        <FieldTitle>{option.label}</FieldTitle>
+                        {option.description && (
+                          <FieldDescription>{option.description}</FieldDescription>
+                        )}
+                      </FieldContent>
+                      <RadioGroupItem id={itemId} value={option.value} />
+                    </Field>
+                  </FieldLabel>
+
+                  {isSelected && renderContent && (
+                    <div className="px-4 py-4">{renderContent(option)}</div>
                   )}
-                  htmlFor={itemId}
-                >
-                  <Field orientation="horizontal">
-                    <FieldContent>
-                      <FieldTitle>{option.label}</FieldTitle>
-                      {option.description && (
-                        <FieldDescription>{option.description}</FieldDescription>
-                      )}
-                    </FieldContent>
-                    <RadioGroupItem id={itemId} value={option.value} />
-                  </Field>
-                </FieldLabel>
+                </div>
               );
             })}
           </RadioGroup>
