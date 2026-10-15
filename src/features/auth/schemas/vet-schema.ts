@@ -33,8 +33,11 @@ export const vetFormSchema = z
       .regex(/^[a-zA-ZáéíóúñÁÉÍÓÚÑ\s]+$/, "El colegio solo puede contener letras y espacios."),
     cobertura: z.array(z.string()).min(1, "Selecciona al menos una opción"),
     especialidad: z.array(z.string()).min(1, "Ingresa al menos una especialidad."),
+    modalidad_atencion: z.string().min(1, "Selecciona una modalidad de atención."),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
     error: "Las contraseñas no coinciden.",
   });
+
+export type FormVetValues = z.output<typeof vetFormSchema>;

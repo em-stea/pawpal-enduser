@@ -4,7 +4,7 @@ import {useStep} from "usehooks-ts";
 
 import {Progress, ProgressLabel} from "@/shared/components/progress/progress";
 
-import VetForm from "../form/vet-form";
+import VetForm from "../form/vet-form/vet-form";
 
 const STEPS = [
   {step: "Paso 1 de 2", title: "Datos Personales"},

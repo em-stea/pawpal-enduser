@@ -13,6 +13,7 @@ import {
 
 import {Button} from "@/shared/components/button/button";
 import {cn} from "@/shared/lib/tw-merge/utils";
+
 import {
   toastActionVariants,
   toastCloseVariants,
@@ -82,7 +83,7 @@ function ToastDescription({className, ...props}: ToastPrimitive.Description.Prop
 
 function ToastAction({
   className,
-  render = <Button size="sm" variant="ghost-outline" />,
+  render = <Button size="sm" variant="secondary" />,
   ...props
 }: ToastPrimitive.Action.Props) {
   return (
@@ -98,7 +99,7 @@ function ToastAction({
 function ToastClose({
   className,
   children,
-  render = <Button size="xs" variant="ghost" />,
+  render = <Button size="xs" variant="secondary" />,
   ...props
 }: ToastPrimitive.Close.Props) {
   return (
