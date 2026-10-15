@@ -1,14 +1,14 @@
-import {CircleCheckBig, IdCard, X} from "lucide-react";
+import {CircleCheckBig, IdCard} from "lucide-react";
 import {Fragment} from "react/jsx-runtime";
-import {useFormContext, useWatch} from "react-hook-form";
 
 import {CARE_COVERAGE_OPTIONS} from "@/features/auth/data/care-coverage";
+import {CARE_MODALITY} from "@/features/auth/data/care-modality";
 import {VETERINARY_COLLEGES} from "@/features/auth/data/veterinary-colleges";
 import {VETERINARY_SPECIALTIES_GROUPS} from "@/features/auth/data/veterinary-specialties";
-import {type FormVetValues} from "@/features/auth/schemas/vet-schema";
-import {Badge} from "@/shared/components/badge/badge";
-import {Button} from "@/shared/components/button/button";
+import {useVetFormSelectors} from "@/features/auth/hooks/use-vet-form-selectors";
+import {FieldLabel} from "@/shared/components/field/field";
 import {InputField} from "@/shared/components/form/input-field";
+import {RadioGroupFieldCard} from "@/shared/components/form/radio-group-field-card";
 import {SelectField} from "@/shared/components/form/select-field";
 import {ToggleGroupField, ToggleGroupItem} from "@/shared/components/form/toggle-group-field";
 import {
@@ -21,42 +21,26 @@ import {
   SelectValue,
 } from "@/shared/components/select/select";
 import {Text} from "@/shared/components/text/text";
-import {RadioGroupFieldCard} from "@/shared/components/form/radio-group-field-card";
-import {CARE_MODALITY} from "@/features/auth/data/care-modality";
 
-import {ModalityFields} from "../../field-components/modality-fields";
+import {ModalityFields} from "../../modality-fields/modality-fields";
+import {RemovableBadge} from "../../removable-badge/removable-badge";
 
 export const SecondStep = () => {
-  const {control, setValue} = useFormContext<FormVetValues>();
-
-  const selectedCobertura = useWatch({control, name: "cobertura"});
-  const countCobertura = selectedCobertura.length;
-
-  const selectedEspecialidades = useWatch({control, name: "especialidad"});
-  const countEspecialidades = selectedEspecialidades.length;
-
-  function handleRemoveEspecialidad(especialidad: string) {
-    setValue(
-      "especialidad",
-      selectedEspecialidades.filter((e) => e !== especialidad),
-    );
-  }
+  const {
+    countCobertura,
+    selectedEspecialidades,
+    countEspecialidades,
+    handleRemoveEspecialidad,
+    handleModalityChange,
+  } = useVetFormSelectors();
 
   return (
     <>
-      <div className="flex items-center justify-between gap-2">
-        <Text variant="body.2">Cobertura de Atención</Text>
-        <Text className="text-tertiary-500" variant="body.1">
-          {countCobertura} {countCobertura === 1 ? "Seleccionado" : "Seleccionados"}
-        </Text>
-      </div>
-      <ToggleGroupField multiple className="mb-6.5" name="cobertura" variant="fill">
+      <FieldLabel count={countCobertura}>Cobertura de Atención</FieldLabel>
+
+      <ToggleGroupField multiple className="mb-6.5" name="animalTypes" variant="fill">
         {CARE_COVERAGE_OPTIONS.map((option) => (
-          <ToggleGroupItem
-            key={option.value as string}
-            value={option.value as string}
-            variant="fullColor"
-          >
+          <ToggleGroupItem key={option.value} size="lg" value={option.value} variant="fill">
             <div className="flex items-center gap-2">
               {option.icon}
               <Text variant="button">{option.label}</Text>
@@ -67,15 +51,16 @@ export const SecondStep = () => {
 
       <InputField
         icon={<IdCard />}
+        inputMode="numeric"
         label="Matrícula Veterinaria (M.V.)"
-        name="matricula"
+        name="enrollment"
         placeholder="12345"
-        type="number"
+        type="text"
       />
 
-      <SelectField items={VETERINARY_COLLEGES} label="Colegio Veterinario" name="colegio">
+      <SelectField items={VETERINARY_COLLEGES} label="Colegio Veterinario" name="college">
         <SelectTrigger className="w-full">
-          <SelectValue placeholder="Selecciona un colegio" />
+          <SelectValue placeholder="Selecciona un Colegio" />
         </SelectTrigger>
         <SelectContent>
           {VETERINARY_COLLEGES.map((college) => (
@@ -90,7 +75,7 @@ export const SecondStep = () => {
         multiple
         items={VETERINARY_SPECIALTIES_GROUPS}
         label="Área de Especialidad"
-        name="especialidad"
+        name="specialty"
       >
         <SelectTrigger className="w-full">
           <SelectValue>
@@ -116,24 +101,21 @@ export const SecondStep = () => {
 
       <div className="mb-6.5 flex flex-wrap items-center gap-2">
         {selectedEspecialidades.map((especialidad) => (
-          <Badge key={especialidad} variant="default">
-            <CircleCheckBig /> {especialidad}{" "}
-            <Button
-              size="intrinsic"
-              variant="icon"
-              onClick={() => handleRemoveEspecialidad(especialidad)}
-            >
-              <X className="ml-2 size-4.5 stroke-[2.5]" />
-            </Button>
-          </Badge>
+          <RemovableBadge
+            key={especialidad}
+            icon={CircleCheckBig}
+            value={especialidad}
+            onRemove={() => handleRemoveEspecialidad(especialidad)}
+          />
         ))}
       </div>
 
       <RadioGroupFieldCard
         label="Modalidad de Atención"
-        name="modalidad_atencion"
+        name="modality"
         options={CARE_MODALITY}
         renderContent={(modality) => <ModalityFields fields={modality.fields} />}
+        onValueChange={handleModalityChange}
       />
     </>
   );

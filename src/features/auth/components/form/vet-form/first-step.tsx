@@ -8,8 +8,8 @@ import {Text} from "@/shared/components/text/text";
 export const FirstStep = () => {
   return (
     <>
-      <InputField icon={<UserIcon />} label="Nombre" name="nombre" placeholder="Jordan" />
-      <InputField icon={<UserIcon />} label="Apellido" name="apellido" placeholder="Lee" />
+      <InputField icon={<UserIcon />} label="Nombre" name="name" placeholder="Jordan" />
+      <InputField icon={<UserIcon />} label="Apellido" name="lastName" placeholder="Lee" />
       <InputField
         icon={<Mail />}
         label="Email"
@@ -20,7 +20,7 @@ export const FirstStep = () => {
       <InputField
         icon={<Phone />}
         label="Teléfono"
-        name="telefono"
+        name="phone"
         placeholder="(+54) 11-1234-5678"
         type="tel"
       />

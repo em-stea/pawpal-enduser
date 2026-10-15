@@ -1,21 +1,4 @@
-import type {FormVetValues} from "../schemas/vet-schema";
-
-import {Hospital, Map, Navigation} from "lucide-react";
-
-export type FieldType = "text" | "tags";
-
-export type ModalityFieldName = Extract<
-  keyof FormVetValues,
-  "clinic_name" | "address" | "coverage_zones"
->;
-
-export interface ModalityField {
-  name: ModalityFieldName;
-  label: string;
-  type: FieldType;
-  placeholder: string;
-  icon: React.ReactNode;
-}
+import {Clock, Hospital, Map, Navigation, Phone} from "lucide-react";
 
 export interface CareModality {
   value: string;
@@ -24,29 +7,70 @@ export interface CareModality {
   fields?: ModalityField[];
 }
 
+export interface BaseModalityField {
+  name: string;
+  label: string;
+  icon: React.ReactNode;
+}
+
+export interface TextModalityField extends BaseModalityField {
+  variant: "text";
+  inputType?: "text" | "tel" | "email";
+  placeholder: string;
+}
+
+export interface TagsModalityField extends BaseModalityField {
+  variant: "tags";
+  placeholder: string;
+}
+
+export interface ScheduleModalityField extends BaseModalityField {
+  variant: "schedule";
+}
+
+export type ModalityField = TextModalityField | TagsModalityField | ScheduleModalityField;
+
+export type FieldVariant = ModalityField["variant"];
+
 const CLINIC_FIELDS: ModalityField[] = [
   {
-    name: "clinic_name",
+    name: "clinicName",
     label: "Nombre del Centro / Clínica",
     placeholder: "Centro Veterinario San Juan",
-    type: "text",
+    variant: "text",
+    inputType: "text",
     icon: <Hospital />,
   },
   {
-    name: "address",
-    label: "Dirección de Atención Física",
+    name: "clinicAddress",
+    label: "Dirección del Centro",
     placeholder: "Calle 123, Ciudad",
-    type: "text",
+    variant: "text",
+    inputType: "text",
     icon: <Map />,
+  },
+  {
+    name: "clinicPhone",
+    label: "Teléfono del Centro",
+    placeholder: "(+54) 11-1234-5678",
+    variant: "text",
+    inputType: "tel",
+    icon: <Phone />,
+  },
+  {
+    name: "daysOfAttention",
+    label: "Horarios de Atención",
+    variant: "schedule",
+    icon: <Clock />,
   },
 ];
 
 const HOME_FIELDS: ModalityField[] = [
   {
-    name: "coverage_zones",
+    name: "coverageZones",
     label: "Zonas y Barrios de Cobertura",
-    type: "tags",
-    placeholder: "Agregar barrio",
+    variant: "tags",
+    placeholder: "Palermo",
     icon: <Navigation />,
   },
 ];

@@ -8,13 +8,12 @@ export const toggleVariants = cva(
       variant: {
         default: "bg-transparent",
         outline: "border-input hover:bg-muted border bg-transparent shadow-xs",
-        fullColor:
-          "w-full cursor-pointer gap-3 bg-tertiary-500 text-tertiary-900 hover:bg-primary-600 hover:text-tertiary-200 aria-pressed:bg-primary-600 aria-pressed:text-tertiary-200 data-[pressed]:bg-primary-600 data-[pressed]:text-tertiary-200",
+        fill: "cursor-pointer gap-3 bg-tertiary-500 text-tertiary-900 hover:bg-primary-600 hover:text-tertiary-200 aria-pressed:bg-primary-600 aria-pressed:text-tertiary-200 data-[pressed]:bg-primary-600 data-[pressed]:text-tertiary-200",
       },
       size: {
         default: "min-w-9 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        sm: "h-8 min-w-8 px-2.5 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5",
-        lg: "h-10 min-w-10 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+        sm: "w-full px-5 py-3",
+        lg: "w-full py-4",
       },
     },
     defaultVariants: {

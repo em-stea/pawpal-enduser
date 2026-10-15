@@ -7,16 +7,18 @@ import {toast} from "@/shared/components/toast/toast";
 import {FormVetValues, vetFormSchema} from "../schemas/vet-schema";
 
 const STEP_FIELDS: (keyof FormVetValues)[][] = [
-  ["nombre", "apellido", "email", "telefono", "password", "confirmPassword", "acceptTerms"],
+  ["name", "lastName", "email", "phone", "password", "confirmPassword", "acceptTerms"],
   [
-    "matricula",
-    "colegio",
-    "cobertura",
-    "especialidad",
-    "modalidad_atencion",
-    "clinic_name",
-    "address",
-    "coverage_zones",
+    "enrollment",
+    "college",
+    "animalTypes",
+    "specialty",
+    "modality",
+    "clinicName",
+    "clinicAddress",
+    "clinicPhone",
+    "coverageZones",
+    "daysOfAttention",
   ],
 ];
 
@@ -31,21 +33,23 @@ export function useVetForm({currentStep, goToNextStep}: VetFormProps) {
   const form = useForm<FormVetValues>({
     resolver: standardSchemaResolver(vetFormSchema),
     defaultValues: {
-      nombre: "",
-      apellido: "",
+      name: "",
+      lastName: "",
       email: "",
-      telefono: "",
+      phone: "",
       password: "",
       confirmPassword: "",
       acceptTerms: false,
-      matricula: "",
-      colegio: "",
-      cobertura: [],
-      especialidad: [],
-      modalidad_atencion: "",
-      clinic_name: "",
-      address: "",
-      coverage_zones: [],
+      enrollment: "",
+      college: "",
+      animalTypes: [],
+      specialty: [],
+      modality: "",
+      clinicName: "",
+      clinicAddress: "",
+      clinicPhone: "",
+      coverageZones: [],
+      daysOfAttention: [],
     },
   });
 

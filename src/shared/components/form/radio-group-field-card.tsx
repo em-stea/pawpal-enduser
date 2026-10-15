@@ -29,6 +29,7 @@ interface RadioGroupFieldCardProps<
   options: O[];
   className?: string;
   renderContent?: (option: O) => React.ReactNode;
+  onValueChange?: (value: string) => void;
 }
 
 export function RadioGroupFieldCard<T extends FieldValues, O extends RadioGroupCardOption>({
@@ -37,6 +38,7 @@ export function RadioGroupFieldCard<T extends FieldValues, O extends RadioGroupC
   options,
   className,
   renderContent,
+  onValueChange,
   ...props
 }: RadioGroupFieldCardProps<T, O>) {
   const {control} = useFormContext<T>();
@@ -53,7 +55,10 @@ export function RadioGroupFieldCard<T extends FieldValues, O extends RadioGroupC
           <RadioGroup
             name={field.name}
             value={field.value}
-            onValueChange={field.onChange}
+            onValueChange={(value) => {
+              field.onChange(value);
+              onValueChange?.(value as string);
+            }}
             {...props}
           >
             {options.map((option) => {
@@ -81,7 +86,7 @@ export function RadioGroupFieldCard<T extends FieldValues, O extends RadioGroupC
                   </FieldLabel>
 
                   {isSelected && renderContent && (
-                    <div className="px-4 py-4">{renderContent(option)}</div>
+                    <div className="px-3.5 py-4">{renderContent(option)}</div>
                   )}
                 </div>
               );

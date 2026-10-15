@@ -9,23 +9,8 @@ import {Toggle, toggleVariants} from "@/shared/components/toggle/toggle";
 
 import {toggleGroupItemVariants, toggleGroupVariants} from "./toggle-group.styles";
 
-interface ToggleGroupContextValue {
-  itemVariant?: VariantProps<typeof toggleVariants>["variant"];
-  size?: VariantProps<typeof toggleVariants>["size"];
-  spacing?: number;
-  orientation?: "horizontal" | "vertical";
-}
-
-const ToggleGroupContext = React.createContext<ToggleGroupContextValue>({
-  size: "default",
-  itemVariant: "default",
-  spacing: 2,
-  orientation: "horizontal",
-});
-
 export type ToggleGroupProps = ToggleGroupPrimitive.Props &
   VariantProps<typeof toggleGroupVariants> & {
-    itemVariant?: VariantProps<typeof toggleVariants>["variant"];
     size?: VariantProps<typeof toggleVariants>["size"];
     spacing?: number;
     orientation?: "horizontal" | "vertical";
@@ -34,12 +19,10 @@ export type ToggleGroupProps = ToggleGroupPrimitive.Props &
 function ToggleGroup({
   className,
   variant,
-  itemVariant,
   size,
   spacing = 2,
   orientation = "horizontal",
   children,
-
   ...props
 }: ToggleGroupProps) {
   return (
@@ -53,34 +36,23 @@ function ToggleGroup({
       style={{"--gap": spacing} as React.CSSProperties}
       {...props}
     >
-      <ToggleGroupContext value={{itemVariant, size, spacing, orientation}}>
-        {children}
-      </ToggleGroupContext>
+      {children}
     </ToggleGroupPrimitive>
   );
 }
 
-function ToggleGroupItem({
-  className,
-  children,
-  variant,
-  size,
-  ...props
-}: React.ComponentProps<typeof Toggle>) {
-  const context = React.use(ToggleGroupContext);
+export type ToggleGroupItemProps = React.ComponentProps<typeof Toggle> &
+  VariantProps<typeof toggleVariants>;
 
-  const finalVariant = variant ?? context.itemVariant;
-  const finalSize = size ?? context.size;
-
+function ToggleGroupItem({className, children, variant, size, ...props}: ToggleGroupItemProps) {
   return (
     <Toggle
-      className={cn(toggleGroupItemVariants, className)}
-      data-size={finalSize}
+      className={cn(toggleGroupItemVariants(), className)}
+      data-size={size}
       data-slot="toggle-group-item"
-      data-spacing={context.spacing}
-      data-variant={finalVariant}
-      size={finalSize}
-      variant={finalVariant}
+      data-variant={variant}
+      size={size}
+      variant={variant}
       {...props}
     >
       {children}

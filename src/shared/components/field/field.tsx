@@ -68,14 +68,29 @@ function FieldContent({className, ...props}: React.ComponentProps<"div">) {
   );
 }
 
-function FieldLabel({className, ...props}: React.ComponentProps<typeof Text>) {
+function FieldLabel({
+  className,
+  count,
+  icon,
+  ...props
+}: React.ComponentProps<typeof Text> & {count?: number; icon?: React.ReactNode}) {
   return (
-    <Text
-      as="label"
-      className={cn(fieldLabelVariants(), className)}
-      data-slot="field-label"
-      {...props}
-    />
+    <div className="flex w-full items-center justify-between gap-2">
+      <div className="flex items-center gap-2">
+        {!!icon && <span className="shrink-0 [&>svg]:size-4">{icon}</span>}
+        <Text
+          as="label"
+          className={cn(fieldLabelVariants(), className)}
+          data-slot="field-label"
+          {...props}
+        />
+      </div>
+      {!!count && count > 0 && (
+        <Text className="text-tertiary-500" variant="body.1">
+          {count} {count === 1 ? "Seleccionado" : "Seleccionados"}
+        </Text>
+      )}
+    </div>
   );
 }
 

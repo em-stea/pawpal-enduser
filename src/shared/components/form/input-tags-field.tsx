@@ -1,15 +1,14 @@
 "use client";
 
 import {useState} from "react";
-import {X} from "lucide-react";
 import {Controller, FieldPath, FieldValues, useFormContext} from "react-hook-form";
 
-import {Badge} from "@/shared/components/badge/badge";
-import {Button} from "@/shared/components/button/button";
+import {RemovableBadge} from "@/features/auth/components/removable-badge/removable-badge";
 import {Field, FieldError, FieldLabel} from "@/shared/components/field/field";
 import {Input} from "@/shared/components/input/input";
 
 import {InputGroup, InputGroupAddon, InputGroupInput} from "../input-group/input-group";
+import {Text} from "../text/text";
 
 interface TagsFieldProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -17,9 +16,10 @@ interface TagsFieldProps<T extends FieldValues> {
   placeholder?: string;
   className?: string;
   icon?: React.ReactNode;
+  countItems?: number;
 }
 
-export function TagsField<T extends FieldValues>({
+export function InputTagsField<T extends FieldValues>({
   name,
   label,
   placeholder,
@@ -45,9 +45,17 @@ export function TagsField<T extends FieldValues>({
           setDraft("");
         };
 
+        const handleRemove = (tag: string) => {
+          field.onChange(tags.filter((item) => item !== tag));
+        };
+
         return (
           <Field className={className} data-invalid={fieldState.invalid}>
-            {label && <FieldLabel htmlFor={field.name}>{label}</FieldLabel>}
+            {label && (
+              <FieldLabel count={tags.length} htmlFor={field.name}>
+                {label}
+              </FieldLabel>
+            )}
 
             {icon ? (
               <InputGroup>
@@ -90,16 +98,7 @@ export function TagsField<T extends FieldValues>({
             {tags.length > 0 && (
               <div className="my-2 flex flex-wrap items-center gap-2">
                 {tags.map((tag) => (
-                  <Badge key={tag} variant="default">
-                    {tag}
-                    <Button
-                      size="intrinsic"
-                      variant="icon"
-                      onClick={() => field.onChange(tags.filter((item) => item !== tag))}
-                    >
-                      <X className="size-4.5 stroke-[2.5]" />
-                    </Button>
-                  </Badge>
+                  <RemovableBadge key={tag} value={tag} onRemove={() => handleRemove(tag)} />
                 ))}
               </div>
             )}
