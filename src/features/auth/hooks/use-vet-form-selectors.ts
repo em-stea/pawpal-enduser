@@ -22,6 +22,7 @@ export const useVetFormSelectors = () => {
     resetField("clinicName");
     resetField("clinicAddress");
     resetField("clinicPhone");
+    resetField("coverageProvince");
     resetField("coverageZones");
   }
 

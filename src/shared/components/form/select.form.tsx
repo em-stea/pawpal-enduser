@@ -34,7 +34,12 @@ export function SelectBase<
       render={({field, fieldState}) => (
         <Field className={className} data-invalid={fieldState.invalid}>
           {label && <FieldLabel htmlFor={field.name}>{label}</FieldLabel>}
-          <Select name={field.name} value={field.value} onValueChange={field.onChange} {...props}>
+          <Select
+            name={field.name}
+            value={field.value ?? null}
+            onValueChange={field.onChange}
+            {...props}
+          >
             {children}
           </Select>
 

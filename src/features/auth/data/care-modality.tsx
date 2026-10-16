@@ -28,7 +28,7 @@ export interface SelectModalityField extends BaseModalityField {
   placeholder: string;
 }
 
-export interface SelectGroupModalityField extends BaseModalityField {
+export interface SelectBadgeModalityField extends BaseModalityField {
   variant: "selectGroup";
   placeholder: string;
   multiple?: boolean;
@@ -45,7 +45,7 @@ export interface ScheduleModalityField extends BaseModalityField {
 export type ModalityField =
   | TextModalityField
   | SelectModalityField
-  | SelectGroupModalityField
+  | SelectBadgeModalityField
   | ScheduleModalityField;
 
 export type FieldVariant = ModalityField["variant"];
@@ -94,7 +94,7 @@ const HOME_FIELDS: ModalityField[] = [
   },
   {
     name: "coverageZones",
-    label: "Barrios",
+    label: "Ciudad / Barrio",
     variant: "selectGroup",
     placeholder: "Barrio",
     multiple: true,

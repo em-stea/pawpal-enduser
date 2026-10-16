@@ -17,7 +17,7 @@ export const CITIES_AND_REGIONS_GROUPS = [
     ],
   },
   {
-    label: "Buenos Aires (GBA y Interior)",
+    label: "Buenos Aires",
     items: [
       {label: "La Plata", value: "la_plata"},
       {label: "Mar del Plata", value: "mar_del_plata"},

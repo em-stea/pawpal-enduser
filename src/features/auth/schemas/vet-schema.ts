@@ -37,6 +37,7 @@ export const vetFormSchema = z
     clinicName: z.string(),
     clinicAddress: z.string(),
     clinicPhone: z.string(),
+    coverageProvince: z.string(),
     coverageZones: z.array(z.string()),
     daysOfAttention: z.array(z.string()),
     fromBusinessHours: z.string(),
@@ -95,12 +96,21 @@ export const vetFormSchema = z
       }
     }
 
-    if (needsHome && data.coverageZones.length === 0) {
-      ctx.addIssue({
-        code: "custom",
-        path: ["coverageZones"],
-        message: "Agrega al menos una zona de cobertura.",
-      });
+    if (needsHome) {
+      if (!data.coverageProvince.trim()) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["coverageProvince"],
+          message: "Selecciona una provincia.",
+        });
+      }
+      if (data.coverageZones.length === 0) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["coverageZones"],
+          message: "Agrega al menos una zona de cobertura.",
+        });
+      }
     }
   });
 

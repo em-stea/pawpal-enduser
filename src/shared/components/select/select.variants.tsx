@@ -27,12 +27,21 @@ export interface SelectOptionGroup {
   items: SelectOption[];
 }
 
+export interface SelectedBadgesConfig {
+  selectedItems: string[];
+  onRemove: (item: string) => void;
+}
+
 export interface SelectFieldProps<T extends FieldValues> {
   label: string;
   name: FieldPath<T>;
   options: SelectOption[];
   placeholder?: string;
   className?: string;
+  multiple?: boolean;
+  disabled?: boolean;
+  valueLabel?: React.ReactNode;
+  showSelectedBadges?: SelectedBadgesConfig;
 }
 
 export function SelectField<T extends FieldValues>({
@@ -41,11 +50,29 @@ export function SelectField<T extends FieldValues>({
   options,
   placeholder = "Selecciona una opción",
   className,
+  multiple,
+  disabled,
+  valueLabel,
+  showSelectedBadges,
 }: SelectFieldProps<T>) {
+  const isEmptyValue = (value: unknown) =>
+    value == null || value === "" || (Array.isArray(value) && value.length === 0);
+
   return (
-    <SelectBase className={className} items={options} label={label} name={name}>
+    <SelectBase
+      className={className}
+      disabled={disabled}
+      items={options}
+      label={label}
+      multiple={multiple}
+      name={name}
+    >
       <SelectTrigger className="w-full">
-        <SelectValue placeholder={placeholder} />
+        <SelectValue placeholder={placeholder}>
+          {valueLabel != null
+            ? (value) => (isEmptyValue(value) ? placeholder : valueLabel)
+            : undefined}
+        </SelectValue>
       </SelectTrigger>
       <SelectContent>
         {options.map((item) => (
@@ -54,6 +81,12 @@ export function SelectField<T extends FieldValues>({
           </SelectItem>
         ))}
       </SelectContent>
+      {showSelectedBadges && (
+        <SelectedBadges
+          selectedItems={showSelectedBadges.selectedItems}
+          onRemove={showSelectedBadges.onRemove}
+        />
+      )}
     </SelectBase>
   );
 }
@@ -66,9 +99,7 @@ export interface SelectGroupFieldProps<T extends FieldValues> {
   valueLabel?: React.ReactNode;
   className?: string;
   multiple?: boolean;
-  showSelectedBadges?: boolean;
-  selectedItems?: string[];
-  onRemove?: (item: string) => void;
+  showSelectedBadges?: SelectedBadgesConfig;
 }
 
 export function SelectGroupField<T extends FieldValues>({
@@ -80,8 +111,6 @@ export function SelectGroupField<T extends FieldValues>({
   className,
   multiple,
   showSelectedBadges,
-  selectedItems,
-  onRemove,
 }: SelectGroupFieldProps<T>) {
   const items = groups.flatMap((group) => group.items);
 
@@ -112,8 +141,11 @@ export function SelectGroupField<T extends FieldValues>({
           </Fragment>
         ))}
       </SelectContent>
-      {showSelectedBadges && selectedItems && onRemove && (
-        <SelectedBadges selectedItems={selectedItems} onRemove={onRemove} />
+      {showSelectedBadges && (
+        <SelectedBadges
+          selectedItems={showSelectedBadges.selectedItems}
+          onRemove={showSelectedBadges.onRemove}
+        />
       )}
     </SelectBase>
   );

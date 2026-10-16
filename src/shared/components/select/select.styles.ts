@@ -18,7 +18,7 @@ export const selectTriggerIconVariants = cva("pointer-events-none size-5 text-te
 export const selectPositionerVariants = cva("isolate z-50");
 
 export const selectContentVariants = cva(
-  "ring-foreground/10 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 relative bottom-1 isolate z-50 max-h-[min(34rem,var(--available-height))] w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-tertiary-850 text-tertiary-200 shadow-md ring-1 duration-100 data-[align-trigger=true]:animate-none",
+  "ring-foreground/10 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 relative isolate z-50 my-1 max-h-[min(34rem,var(--available-height))] w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-tertiary-850 py-1 text-tertiary-200 shadow-md ring-1 duration-100 data-[align-trigger=true]:animate-none",
 );
 
 export const selectLabelVariants = cva([

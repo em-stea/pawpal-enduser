@@ -51,26 +51,16 @@ export const SecondStep = () => {
 
       <SelectGroupField
         multiple
-        showSelectedBadges
         groups={VETERINARY_SPECIALTIES_GROUPS}
         label="Área de Especialidad"
         name="specialty"
         placeholder="Especialidad"
-        selectedItems={selectedEspecialidades}
+        showSelectedBadges={{
+          selectedItems: selectedEspecialidades,
+          onRemove: handleRemoveEspecialidad,
+        }}
         valueLabel={`Especialidad ${countEspecialidades === 0 ? "" : `(${countEspecialidades.toString()})`}`}
-        onRemove={(item) => handleRemoveEspecialidad(item)}
       />
-
-      {/* <div className="mb-6.5 flex flex-wrap items-center gap-2">
-        {selectedEspecialidades.map((especialidad) => (
-          <RemovableBadge
-            key={especialidad}
-            icon={CircleCheckBig}
-            value={especialidad}
-            onRemove={() => handleRemoveEspecialidad(especialidad)}
-          />
-        ))}
-      </div> */}
 
       <RadioGroupFieldCard
         label="Modalidad de Atención"

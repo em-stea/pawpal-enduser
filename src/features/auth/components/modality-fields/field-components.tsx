@@ -1,20 +1,18 @@
 "use client";
 
-import {useFormContext, useWatch} from "react-hook-form";
-
 import {InputField} from "@/shared/components/form/input-field.form";
-import {SelectField, SelectGroupField} from "@/shared/components/select/select.variants";
+import {SelectField} from "@/shared/components/select/select.variants";
 
 import {
   FieldVariant,
   ModalityField,
   ScheduleModalityField,
-  SelectGroupModalityField,
+  SelectBadgeModalityField,
   SelectModalityField,
   TextModalityField,
 } from "../../data/care-modality";
+import {useLocationGroups} from "../../hooks/use-location-groups";
 import {BusinessHours} from "../business-hours/business-hours";
-import {FormVetValues} from "../../schemas/vet-schema";
 
 function ModalityInputTextField({field}: {field: TextModalityField}) {
   return (
@@ -39,35 +37,20 @@ function ModalitySelectField({field}: {field: SelectModalityField}) {
   );
 }
 
-type StringArrayField = {
-  [K in keyof FormVetValues]: FormVetValues[K] extends string[] ? K : never;
-}[keyof FormVetValues];
-
-function ModalitySelectGroupField({field}: {field: SelectGroupModalityField}) {
-  const {control, setValue} = useFormContext<FormVetValues>();
-  const name = field.name as StringArrayField;
-
-  const selectedItems = useWatch({control, name});
-  const count = selectedItems.length;
-
-  function handleRemove(item: string) {
-    setValue(
-      name,
-      selectedItems.filter((value) => value !== item),
-    );
-  }
+function ModalitySelectBadgesField({field}: {field: SelectBadgeModalityField}) {
+  const {filteredData, count, selectedItems, isProvinceSelected, handleRemove, cityLabel} =
+    useLocationGroups(field);
 
   return (
-    <SelectGroupField
-      showSelectedBadges
-      groups={field.data}
-      label={field.label}
+    <SelectField
+      disabled={!isProvinceSelected}
+      label={cityLabel}
       multiple={field.multiple}
-      name={name}
-      placeholder={field.placeholder}
-      selectedItems={selectedItems}
-      valueLabel={`${field.label}${count === 0 ? "" : ` (${count.toString()})`}`}
-      onRemove={handleRemove}
+      name={field.name}
+      options={filteredData[0]?.items ?? []}
+      placeholder={cityLabel}
+      showSelectedBadges={{selectedItems, onRemove: handleRemove}}
+      valueLabel={`${cityLabel}${count === 0 ? "" : ` (${count.toString()})`}`}
     />
   );
 }
@@ -83,6 +66,6 @@ export type FieldComponentMap = {
 export const FIELD_COMPONENTS: FieldComponentMap = {
   text: ModalityInputTextField,
   select: ModalitySelectField,
-  selectGroup: ModalitySelectGroupField,
+  selectGroup: ModalitySelectBadgesField,
   schedule: ModalityScheduleField,
 };
