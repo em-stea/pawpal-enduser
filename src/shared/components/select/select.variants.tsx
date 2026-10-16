@@ -2,8 +2,10 @@
 
 import {FieldPath, FieldValues} from "react-hook-form";
 import {Fragment} from "react/jsx-runtime";
+import {CircleCheckBig} from "lucide-react";
 
 import {SelectBase} from "@/shared/components/form/select.form";
+import {RemovableBadge} from "@/features/auth/components/removable-badge/removable-badge";
 
 import {
   SelectContent,
@@ -64,23 +66,36 @@ export interface SelectGroupFieldProps<T extends FieldValues> {
   valueLabel?: React.ReactNode;
   className?: string;
   multiple?: boolean;
+  showSelectedBadges?: boolean;
+  selectedItems?: string[];
+  onRemove?: (item: string) => void;
 }
 
 export function SelectGroupField<T extends FieldValues>({
   label,
   name,
   groups,
-  placeholder = "Selecciona una opción",
+  placeholder,
   valueLabel,
   className,
   multiple,
+  showSelectedBadges,
+  selectedItems,
+  onRemove,
 }: SelectGroupFieldProps<T>) {
   const items = groups.flatMap((group) => group.items);
+
+  const isEmptyValue = (value: unknown) =>
+    value == null || value === "" || (Array.isArray(value) && value.length === 0);
 
   return (
     <SelectBase className={className} items={items} label={label} multiple={multiple} name={name}>
       <SelectTrigger className="w-full">
-        <SelectValue>{valueLabel ?? placeholder}</SelectValue>
+        <SelectValue placeholder={placeholder}>
+          {valueLabel != null
+            ? (value) => (isEmptyValue(value) ? placeholder : valueLabel)
+            : undefined}
+        </SelectValue>
       </SelectTrigger>
       <SelectContent>
         {groups.map((group) => (
@@ -97,6 +112,30 @@ export function SelectGroupField<T extends FieldValues>({
           </Fragment>
         ))}
       </SelectContent>
+      {showSelectedBadges && selectedItems && onRemove && (
+        <SelectedBadges selectedItems={selectedItems} onRemove={onRemove} />
+      )}
     </SelectBase>
   );
 }
+
+const SelectedBadges = ({
+  selectedItems,
+  onRemove,
+}: {
+  selectedItems: string[];
+  onRemove: (item: string) => void;
+}) => {
+  return (
+    <div className="mb-6.5 flex flex-wrap items-center gap-2">
+      {selectedItems.map((item) => (
+        <RemovableBadge
+          key={item}
+          icon={CircleCheckBig}
+          value={item}
+          onRemove={() => onRemove(item)}
+        />
+      ))}
+    </div>
+  );
+};

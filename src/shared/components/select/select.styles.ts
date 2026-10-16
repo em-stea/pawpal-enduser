@@ -5,7 +5,7 @@ import {textVariants} from "@/shared/components/text/text.styles";
 export const selectGroupVariants = cva("scroll-my-1 p-1");
 
 export const selectValueVariants = cva([
-  "flex flex-1 text-left",
+  "flex flex-1 text-left text-white data-placeholder:text-tertiary-500",
   textVariants({variant: "body.3"}),
 ]);
 

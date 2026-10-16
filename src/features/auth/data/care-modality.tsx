@@ -31,6 +31,7 @@ export interface SelectModalityField extends BaseModalityField {
 export interface SelectGroupModalityField extends BaseModalityField {
   variant: "selectGroup";
   placeholder: string;
+  multiple?: boolean;
   data: {
     label: string;
     items: {label: string; value: string}[];
@@ -95,7 +96,8 @@ const HOME_FIELDS: ModalityField[] = [
     name: "coverageZones",
     label: "Barrios",
     variant: "selectGroup",
-    placeholder: "Palermo",
+    placeholder: "Barrio",
+    multiple: true,
     data: CITIES_AND_REGIONS_GROUPS,
     icon: <Navigation />,
   },

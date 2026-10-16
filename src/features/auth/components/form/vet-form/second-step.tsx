@@ -1,4 +1,4 @@
-import {CircleCheckBig, IdCard} from "lucide-react";
+import {IdCard} from "lucide-react";
 
 import {CARE_COVERAGE_OPTIONS} from "@/features/auth/data/care-coverage";
 import {CARE_MODALITY} from "@/features/auth/data/care-modality";
@@ -13,7 +13,6 @@ import {SelectField, SelectGroupField} from "@/shared/components/select/select.v
 import {Text} from "@/shared/components/text/text";
 
 import {ModalityFields} from "../../modality-fields/modality-fields";
-import {RemovableBadge} from "../../removable-badge/removable-badge";
 
 export const SecondStep = () => {
   const {
@@ -52,13 +51,17 @@ export const SecondStep = () => {
 
       <SelectGroupField
         multiple
+        showSelectedBadges
         groups={VETERINARY_SPECIALTIES_GROUPS}
         label="Área de Especialidad"
         name="specialty"
+        placeholder="Especialidad"
+        selectedItems={selectedEspecialidades}
         valueLabel={`Especialidad ${countEspecialidades === 0 ? "" : `(${countEspecialidades.toString()})`}`}
+        onRemove={(item) => handleRemoveEspecialidad(item)}
       />
 
-      <div className="mb-6.5 flex flex-wrap items-center gap-2">
+      {/* <div className="mb-6.5 flex flex-wrap items-center gap-2">
         {selectedEspecialidades.map((especialidad) => (
           <RemovableBadge
             key={especialidad}
@@ -67,7 +70,7 @@ export const SecondStep = () => {
             onRemove={() => handleRemoveEspecialidad(especialidad)}
           />
         ))}
-      </div>
+      </div> */}
 
       <RadioGroupFieldCard
         label="Modalidad de Atención"
