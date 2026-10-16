@@ -1,16 +1,17 @@
 "use client";
 
-import {InputField} from "@/shared/components/form/input-field";
-import {InputTagsField} from "@/shared/components/form/input-tags-field";
+import {InputField} from "@/shared/components/form/input-field.form";
+import {SelectField, SelectGroupField} from "@/shared/components/select/select.variants";
 
-import {BusinessHours} from "../business-hours/business-hours";
 import {
   FieldVariant,
   ModalityField,
   ScheduleModalityField,
-  TagsModalityField,
+  SelectGroupModalityField,
+  SelectModalityField,
   TextModalityField,
 } from "../../data/care-modality";
+import {BusinessHours} from "../business-hours/business-hours";
 
 function ModalityInputTextField({field}: {field: TextModalityField}) {
   return (
@@ -24,10 +25,21 @@ function ModalityInputTextField({field}: {field: TextModalityField}) {
   );
 }
 
-function ModalityInputTagsField({field}: {field: TagsModalityField}) {
+function ModalitySelectField({field}: {field: SelectModalityField}) {
   return (
-    <InputTagsField
-      icon={field.icon}
+    <SelectField
+      label={field.label}
+      name={field.name}
+      options={field.items}
+      placeholder={field.placeholder}
+    />
+  );
+}
+
+function ModalitySelectGroupField({field}: {field: SelectGroupModalityField}) {
+  return (
+    <SelectGroupField
+      groups={field.data}
       label={field.label}
       name={field.name}
       placeholder={field.placeholder}
@@ -45,6 +57,7 @@ export type FieldComponentMap = {
 
 export const FIELD_COMPONENTS: FieldComponentMap = {
   text: ModalityInputTextField,
-  tags: ModalityInputTagsField,
+  select: ModalitySelectField,
+  selectGroup: ModalitySelectGroupField,
   schedule: ModalityScheduleField,
 };

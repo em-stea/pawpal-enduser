@@ -19,6 +19,8 @@ const STEP_FIELDS: (keyof FormVetValues)[][] = [
     "clinicPhone",
     "coverageZones",
     "daysOfAttention",
+    "fromBusinessHours",
+    "toBusinessHours",
   ],
 ];
 
@@ -50,6 +52,8 @@ export function useVetForm({currentStep, goToNextStep}: VetFormProps) {
       clinicPhone: "",
       coverageZones: [],
       daysOfAttention: [],
+      fromBusinessHours: "",
+      toBusinessHours: "",
     },
   });
 

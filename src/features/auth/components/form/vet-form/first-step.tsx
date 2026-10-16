@@ -1,8 +1,8 @@
 import {LockKeyhole, LockKeyholeOpen, Mail, Phone, UserIcon} from "lucide-react";
 
-import {InputField} from "@/shared/components/form/input-field";
-import {InputPasswordField} from "@/shared/components/form/input-password-field";
-import {CheckboxField} from "@/shared/components/form/checkbox-field";
+import {InputField} from "@/shared/components/form/input-field.form";
+import {InputPasswordField} from "@/shared/components/form/input-password-field.form";
+import {CheckboxField} from "@/shared/components/form/checkbox-field.form";
 import {Text} from "@/shared/components/text/text";
 
 export const FirstStep = () => {

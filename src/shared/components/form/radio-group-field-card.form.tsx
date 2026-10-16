@@ -86,15 +86,16 @@ export function RadioGroupFieldCard<T extends FieldValues, O extends RadioGroupC
                     </Field>
                   </FieldLabel>
 
-                  <AnimatePresence initial={false}>
+                  <AnimatePresence initial={false} mode="wait">
                     {isSelected && renderContent && (
                       <motion.div
-                        animate={{height: "auto", opacity: 1, y: 0}}
-                        exit={{height: 0, opacity: 0, y: -10}}
-                        initial={{height: 0, opacity: 0, y: -10}}
+                        animate={{height: "auto", opacity: 1}}
+                        className="overflow-hidden"
+                        exit={{height: 0, opacity: 0}}
+                        initial={{height: 0, opacity: 0}}
                         transition={{
                           duration: 0.7,
-                          ease: [0.22, 1, 0.36, 1],
+                          ease: [0.16, 1, 0.3, 1],
                         }}
                       >
                         <div className="px-3.5 py-4">{renderContent(option)}</div>

@@ -2,9 +2,9 @@ import {useFormContext, useWatch} from "react-hook-form";
 import {Clock} from "lucide-react";
 
 import {FieldLabel} from "@/shared/components/field/field";
-import {ToggleGroupField, ToggleGroupItem} from "@/shared/components/form/toggle-group-field";
+import {ToggleGroupField, ToggleGroupItem} from "@/shared/components/form/toggle-group-field.form";
 import {Text} from "@/shared/components/text/text";
-import {TimeInputField} from "@/shared/components/form/time-input-field";
+import {TimeInputField} from "@/shared/components/form/time-input-field.form";
 import {Separator} from "@/shared/components/separator/separator";
 
 import {DAYS_OF_ATTENTION} from "../../data/days-attention";

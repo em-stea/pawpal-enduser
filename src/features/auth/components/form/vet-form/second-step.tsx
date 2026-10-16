@@ -1,5 +1,4 @@
 import {CircleCheckBig, IdCard} from "lucide-react";
-import {Fragment} from "react/jsx-runtime";
 
 import {CARE_COVERAGE_OPTIONS} from "@/features/auth/data/care-coverage";
 import {CARE_MODALITY} from "@/features/auth/data/care-modality";
@@ -7,19 +6,10 @@ import {VETERINARY_COLLEGES} from "@/features/auth/data/veterinary-colleges";
 import {VETERINARY_SPECIALTIES_GROUPS} from "@/features/auth/data/veterinary-specialties";
 import {useVetFormSelectors} from "@/features/auth/hooks/use-vet-form-selectors";
 import {FieldLabel} from "@/shared/components/field/field";
-import {InputField} from "@/shared/components/form/input-field";
-import {RadioGroupFieldCard} from "@/shared/components/form/radio-group-field-card";
-import {SelectField} from "@/shared/components/form/select-field";
-import {ToggleGroupField, ToggleGroupItem} from "@/shared/components/form/toggle-group-field";
-import {
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from "@/shared/components/select/select";
+import {InputField} from "@/shared/components/form/input-field.form";
+import {RadioGroupFieldCard} from "@/shared/components/form/radio-group-field-card.form";
+import {ToggleGroupField, ToggleGroupItem} from "@/shared/components/form/toggle-group-field.form";
+import {SelectField, SelectGroupField} from "@/shared/components/select/select.variants";
 import {Text} from "@/shared/components/text/text";
 
 import {ModalityFields} from "../../modality-fields/modality-fields";
@@ -58,46 +48,15 @@ export const SecondStep = () => {
         type="text"
       />
 
-      <SelectField items={VETERINARY_COLLEGES} label="Colegio Veterinario" name="college">
-        <SelectTrigger className="w-full">
-          <SelectValue placeholder="Selecciona un Colegio" />
-        </SelectTrigger>
-        <SelectContent>
-          {VETERINARY_COLLEGES.map((college) => (
-            <SelectItem key={college.value} value={college.value}>
-              {college.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </SelectField>
+      <SelectField label="Colegio Veterinario" name="college" options={VETERINARY_COLLEGES} />
 
-      <SelectField
+      <SelectGroupField
         multiple
-        items={VETERINARY_SPECIALTIES_GROUPS}
+        groups={VETERINARY_SPECIALTIES_GROUPS}
         label="Área de Especialidad"
         name="specialty"
-      >
-        <SelectTrigger className="w-full">
-          <SelectValue>
-            {` Especialidad ${countEspecialidades === 0 ? "" : `(${countEspecialidades.toString()})`}`}
-          </SelectValue>
-        </SelectTrigger>
-        <SelectContent>
-          {VETERINARY_SPECIALTIES_GROUPS.map((group) => (
-            <Fragment key={group.label}>
-              <SelectGroup>
-                <SelectLabel>{group.label}</SelectLabel>
-                {group.items.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
-                    {item.label}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-              <SelectSeparator />
-            </Fragment>
-          ))}
-        </SelectContent>
-      </SelectField>
+        valueLabel={`Especialidad ${countEspecialidades === 0 ? "" : `(${countEspecialidades.toString()})`}`}
+      />
 
       <div className="mb-6.5 flex flex-wrap items-center gap-2">
         {selectedEspecialidades.map((especialidad) => (

@@ -7,10 +7,10 @@ import {useForm} from "react-hook-form";
 import {z} from "zod";
 
 import {Button} from "@/shared/components/button/button";
-import {CheckboxField} from "@/shared/components/form/checkbox-field";
+import {CheckboxField} from "@/shared/components/form/checkbox-field.form";
 import {Form} from "@/shared/components/form/form";
-import {InputField} from "@/shared/components/form/input-field";
-import {InputPasswordField} from "@/shared/components/form/input-password-field";
+import {InputField} from "@/shared/components/form/input-field.form";
+import {InputPasswordField} from "@/shared/components/form/input-password-field.form";
 import {Text} from "@/shared/components/text/text";
 import {toast} from "@/shared/components/toast/toast";
 

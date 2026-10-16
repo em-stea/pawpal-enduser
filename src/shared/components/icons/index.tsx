@@ -1,27 +1,27 @@
-import {ArrowRight} from "./directional/arrow-right";
-import {ChevronLeft} from "./directional/chevron-left";
-import {ChevronRight} from "./directional/chevron-right";
+import {ArrowRight} from "./directional/arrow-right.directional";
+import {ChevronLeft} from "./directional/chevron-left.directional";
+import {ChevronRight} from "./directional/chevron-right.directional";
 import {Isotipo} from "./isotipo/isotipo";
-import {Pet} from "./other/pet";
-import {Vet} from "./other/vet";
-import {Bird} from "./other/bird";
-import {Cat} from "./other/cat";
-import {Dog} from "./other/dog";
-import {Sheep} from "./other/sheep";
+import {Pet} from "./other/pet.other";
+import {Vet} from "./other/vet.other";
+import {Bird} from "./other/bird.other";
+import {Cat} from "./other/cat.other";
+import {Dog} from "./other/dog.other";
+import {Sheep} from "./other/sheep.other";
 
-export {ArrowRight} from "./directional/arrow-right";
+export {ArrowRight} from "./directional/arrow-right.directional";
 
-export {Bird} from "./other/bird";
+export {Bird} from "./other/bird.other";
 
-export {Cat} from "./other/cat";
+export {Cat} from "./other/cat.other";
 
-export {Dog} from "./other/dog";
+export {Dog} from "./other/dog.other";
 
-export {Sheep} from "./other/sheep";
+export {Sheep} from "./other/sheep.other";
 
-export {ChevronLeft} from "./directional/chevron-left";
+export {ChevronLeft} from "./directional/chevron-left.directional";
 
-export {ChevronRight} from "./directional/chevron-right";
+export {ChevronRight} from "./directional/chevron-right.directional";
 
 const IconsType = {
   directional: {

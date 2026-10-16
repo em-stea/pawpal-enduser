@@ -1,4 +1,7 @@
-import {Calendar, Clock, Hospital, Map, Navigation, Phone} from "lucide-react";
+import {Calendar, Hospital, Map, Navigation, Phone} from "lucide-react";
+
+import {PROVINCES_LIST} from "./provinces-list";
+import {CITIES_AND_REGIONS_GROUPS} from "./cities-list";
 
 export interface CareModality {
   value: string;
@@ -19,16 +22,30 @@ export interface TextModalityField extends BaseModalityField {
   placeholder: string;
 }
 
-export interface TagsModalityField extends BaseModalityField {
-  variant: "tags";
+export interface SelectModalityField extends BaseModalityField {
+  variant: "select";
+  items: {label: string; value: string}[];
   placeholder: string;
+}
+
+export interface SelectGroupModalityField extends BaseModalityField {
+  variant: "selectGroup";
+  placeholder: string;
+  data: {
+    label: string;
+    items: {label: string; value: string}[];
+  }[];
 }
 
 export interface ScheduleModalityField extends BaseModalityField {
   variant: "schedule";
 }
 
-export type ModalityField = TextModalityField | TagsModalityField | ScheduleModalityField;
+export type ModalityField =
+  | TextModalityField
+  | SelectModalityField
+  | SelectGroupModalityField
+  | ScheduleModalityField;
 
 export type FieldVariant = ModalityField["variant"];
 
@@ -67,10 +84,19 @@ const CLINIC_FIELDS: ModalityField[] = [
 
 const HOME_FIELDS: ModalityField[] = [
   {
+    name: "coverageProvince",
+    label: "Provincia",
+    variant: "select",
+    placeholder: "Buenos Aires",
+    items: PROVINCES_LIST,
+    icon: <Navigation />,
+  },
+  {
     name: "coverageZones",
-    label: "Zonas y Barrios de Cobertura",
-    variant: "tags",
+    label: "Barrios",
+    variant: "selectGroup",
     placeholder: "Palermo",
+    data: CITIES_AND_REGIONS_GROUPS,
     icon: <Navigation />,
   },
 ];

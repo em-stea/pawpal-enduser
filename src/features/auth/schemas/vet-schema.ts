@@ -39,6 +39,8 @@ export const vetFormSchema = z
     clinicPhone: z.string(),
     coverageZones: z.array(z.string()),
     daysOfAttention: z.array(z.string()),
+    fromBusinessHours: z.string(),
+    toBusinessHours: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
@@ -68,6 +70,27 @@ export const vetFormSchema = z
           code: "custom",
           path: ["clinicPhone"],
           message: "El teléfono debe tener entre 10 y 15 números.",
+        });
+      }
+      if (!data.daysOfAttention.length) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["daysOfAttention"],
+          message: "Selecciona al menos un día de atención.",
+        });
+      }
+      if (!data.fromBusinessHours.trim()) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["fromBusinessHours"],
+          message: "Ingresa el horario de atención.",
+        });
+      }
+      if (!data.toBusinessHours.trim()) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["toBusinessHours"],
+          message: "Ingresa el horario de atención.",
         });
       }
     }

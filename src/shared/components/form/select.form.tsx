@@ -6,7 +6,7 @@ import {Controller, FieldPath, FieldValues, useFormContext} from "react-hook-for
 import {Field, FieldError, FieldLabel} from "@/shared/components/field/field";
 import {Select} from "@/shared/components/select/select";
 
-export type SelectFieldProps<
+export type SelectBaseProps<
   T extends FieldValues,
   Value = string,
   Multiple extends boolean | undefined = false,
@@ -20,11 +20,11 @@ export type SelectFieldProps<
   label?: string;
 };
 
-export function SelectField<
+export function SelectBase<
   T extends FieldValues,
   Value = string,
   Multiple extends boolean | undefined = false,
->({name, children, className, label, ...props}: SelectFieldProps<T, Value, Multiple>) {
+>({name, children, className, label, ...props}: SelectBaseProps<T, Value, Multiple>) {
   const {control} = useFormContext<T>();
 
   return (
