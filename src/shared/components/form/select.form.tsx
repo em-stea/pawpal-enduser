@@ -24,7 +24,7 @@ export function SelectBase<
   T extends FieldValues,
   Value = string,
   Multiple extends boolean | undefined = false,
->({name, children, className, label, ...props}: SelectBaseProps<T, Value, Multiple>) {
+>({name, children, className, label, disabled, ...props}: SelectBaseProps<T, Value, Multiple>) {
   const {control} = useFormContext<T>();
 
   return (
@@ -32,9 +32,10 @@ export function SelectBase<
       control={control}
       name={name}
       render={({field, fieldState}) => (
-        <Field className={className} data-invalid={fieldState.invalid}>
+        <Field className={className} data-disabled={disabled} data-invalid={fieldState.invalid}>
           {label && <FieldLabel htmlFor={field.name}>{label}</FieldLabel>}
           <Select
+            disabled={disabled}
             name={field.name}
             value={field.value ?? null}
             onValueChange={field.onChange}

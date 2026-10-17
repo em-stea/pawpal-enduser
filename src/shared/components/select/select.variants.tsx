@@ -158,8 +158,10 @@ const SelectedBadges = ({
   selectedItems: string[];
   onRemove: (item: string) => void;
 }) => {
+  if (!selectedItems.length) return null;
+
   return (
-    <div className="mb-6.5 flex flex-wrap items-center gap-2">
+    <div className="mb-1 flex flex-wrap items-center gap-2">
       {selectedItems.map((item) => (
         <RemovableBadge
           key={item}

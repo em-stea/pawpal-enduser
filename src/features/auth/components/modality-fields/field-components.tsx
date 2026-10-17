@@ -12,6 +12,7 @@ import {
   TextModalityField,
 } from "../../data/care-modality";
 import {useLocationGroups} from "../../hooks/use-location-groups";
+import {useMultipleSelectField} from "../../hooks/use-multiple-select-field";
 import {BusinessHours} from "../business-hours/business-hours";
 
 function ModalityInputTextField({field}: {field: TextModalityField}) {
@@ -27,17 +28,22 @@ function ModalityInputTextField({field}: {field: TextModalityField}) {
 }
 
 function ModalitySelectField({field}: {field: SelectModalityField}) {
+  const {showBadges, valueLabel} = useMultipleSelectField({field});
+
   return (
     <SelectField
       label={field.label}
+      multiple={field.multiple}
       name={field.name}
       options={field.items}
       placeholder={field.placeholder}
+      showSelectedBadges={showBadges}
+      valueLabel={valueLabel}
     />
   );
 }
 
-function ModalitySelectBadgesField({field}: {field: SelectBadgeModalityField}) {
+function ModalitySelectGroupBadgesField({field}: {field: SelectBadgeModalityField}) {
   const {filteredData, count, selectedItems, isProvinceSelected, handleRemove, cityLabel} =
     useLocationGroups(field);
 
@@ -66,6 +72,6 @@ export type FieldComponentMap = {
 export const FIELD_COMPONENTS: FieldComponentMap = {
   text: ModalityInputTextField,
   select: ModalitySelectField,
-  selectGroup: ModalitySelectBadgesField,
+  selectGroup: ModalitySelectGroupBadgesField,
   schedule: ModalityScheduleField,
 };

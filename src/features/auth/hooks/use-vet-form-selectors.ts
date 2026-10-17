@@ -24,6 +24,11 @@ export const useVetFormSelectors = () => {
     resetField("clinicPhone");
     resetField("coverageProvince");
     resetField("coverageZones");
+    resetField("onlinePlatform");
+    resetField("daysOfAttention");
+    resetField("fromBusinessHours");
+    resetField("toBusinessHours");
+    resetField("onlinePlatform");
   }
 
   return {

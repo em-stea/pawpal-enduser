@@ -22,6 +22,7 @@ const STEP_FIELDS: (keyof FormVetValues)[][] = [
     "daysOfAttention",
     "fromBusinessHours",
     "toBusinessHours",
+    "onlinePlatform",
   ],
 ];
 
@@ -56,6 +57,7 @@ export function useVetForm({currentStep, goToNextStep}: VetFormProps) {
       daysOfAttention: [],
       fromBusinessHours: "",
       toBusinessHours: "",
+      onlinePlatform: [],
     },
   });
 

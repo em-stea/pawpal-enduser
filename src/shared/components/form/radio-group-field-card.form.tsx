@@ -98,7 +98,7 @@ export function RadioGroupFieldCard<T extends FieldValues, O extends RadioGroupC
                           ease: [0.16, 1, 0.3, 1],
                         }}
                       >
-                        <div className="px-3.5 py-4">{renderContent(option)}</div>
+                        <div className="px-3.5 pt-6 pb-3.5">{renderContent(option)}</div>
                       </motion.div>
                     )}
                   </AnimatePresence>

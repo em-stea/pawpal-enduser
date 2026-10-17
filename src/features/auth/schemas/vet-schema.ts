@@ -42,6 +42,7 @@ export const vetFormSchema = z
     daysOfAttention: z.array(z.string()),
     fromBusinessHours: z.string(),
     toBusinessHours: z.string(),
+    onlinePlatform: z.array(z.string()),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
@@ -50,6 +51,7 @@ export const vetFormSchema = z
   .superRefine((data, ctx) => {
     const needsClinic = data.modality === "at_veterinary_clinic" || data.modality === "hybrid";
     const needsHome = data.modality === "at_home" || data.modality === "hybrid";
+    const needsOnlinePlatform = data.modality === "online";
 
     if (needsClinic) {
       if (!data.clinicName.trim()) {
@@ -71,6 +73,37 @@ export const vetFormSchema = z
           code: "custom",
           path: ["clinicPhone"],
           message: "El teléfono debe tener entre 10 y 15 números.",
+        });
+      }
+      if (!data.daysOfAttention.length) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["daysOfAttention"],
+          message: "Selecciona al menos un día de atención.",
+        });
+      }
+      if (!data.fromBusinessHours.trim()) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["fromBusinessHours"],
+          message: "Ingresa el horario de atención.",
+        });
+      }
+      if (!data.toBusinessHours.trim()) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["toBusinessHours"],
+          message: "Ingresa el horario de atención.",
+        });
+      }
+    }
+
+    if (needsOnlinePlatform) {
+      if (!data.onlinePlatform.length) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["onlinePlatform"],
+          message: "Selecciona al menos un medio de contacto.",
         });
       }
       if (!data.daysOfAttention.length) {

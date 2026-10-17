@@ -37,7 +37,7 @@ export const fieldContentVariants = cva(
 );
 
 export const fieldLabelVariants = cva([
-  "group/field-label peer/field-label has-data-checked:border-primary/30 has-data-checked:bg-primary/5 has-[>[data-slot=field]]:not-has-[:disabled,[data-disabled]]:hover:bg-muted/50 has-[>[data-slot=field]]:has-[:focus-visible]:border-ring has-[>[data-slot=field]]:has-[:focus-visible]:ring-ring/50 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 flex w-fit gap-2 border-tertiary-500 leading-snug text-tertiary-200 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border has-[>[data-slot=field]]:has-[:focus-visible]:ring-3 *:data-[slot=field]:p-3",
+  "group/field-label peer/field-label has-data-checked:border-primary/30 has-data-checked:bg-primary/5 has-[>[data-slot=field]]:not-has-[:disabled,[data-disabled]]:hover:bg-muted/50 has-[>[data-slot=field]]:has-[:focus-visible]:border-ring has-[>[data-slot=field]]:has-[:focus-visible]:ring-ring/50 dark:has-data-checked:border-primary/20 flex w-fit gap-2 border-tertiary-500 leading-snug text-tertiary-200 group-has-[:disabled]:text-tertiary-500 group-has-[[data-disabled]]:text-tertiary-500 group-data-[disabled=true]/field:text-tertiary-500 group-data-[disabled=true]/field:opacity-50 group-data-[disabled=true]/field-label:text-red-500 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border has-[>[data-slot=field]]:has-[:focus-visible]:ring-3 *:data-[slot=field]:p-3",
   "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
   textVariants({variant: "body.2"}),
 ]);

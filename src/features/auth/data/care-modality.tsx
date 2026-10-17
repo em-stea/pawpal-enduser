@@ -2,12 +2,18 @@ import {Calendar, Hospital, Map, Navigation, Phone} from "lucide-react";
 
 import {PROVINCES_LIST} from "./provinces-list";
 import {CITIES_AND_REGIONS_GROUPS} from "./cities-list";
+import {ONLINE_PLATFORMS} from "./online-platforms";
+
+export interface ModalitySection {
+  title?: string;
+  fields: ModalityField[];
+}
 
 export interface CareModality {
   value: string;
   label: string;
   description: string;
-  fields?: ModalityField[];
+  sections?: ModalitySection[];
 }
 
 export interface BaseModalityField {
@@ -24,13 +30,13 @@ export interface TextModalityField extends BaseModalityField {
 
 export interface SelectModalityField extends BaseModalityField {
   variant: "select";
+  multiple?: boolean;
   items: {label: string; value: string}[];
   placeholder: string;
 }
 
 export interface SelectBadgeModalityField extends BaseModalityField {
   variant: "selectGroup";
-  placeholder: string;
   multiple?: boolean;
   data: {
     label: string;
@@ -96,10 +102,27 @@ const HOME_FIELDS: ModalityField[] = [
     name: "coverageZones",
     label: "Ciudad / Barrio",
     variant: "selectGroup",
-    placeholder: "Barrio",
     multiple: true,
     data: CITIES_AND_REGIONS_GROUPS,
     icon: <Navigation />,
+  },
+];
+
+const ONLINE_FIELDS: ModalityField[] = [
+  {
+    name: "onlinePlatform",
+    label: "Plataforma de Consulta",
+    placeholder: "Medio de Contacto",
+    variant: "select",
+    multiple: true,
+    items: ONLINE_PLATFORMS,
+    icon: <Navigation />,
+  },
+  {
+    name: "daysOfAttention",
+    label: "Horarios de Atención",
+    variant: "schedule",
+    icon: <Calendar />,
   },
 ];
 
@@ -108,23 +131,33 @@ export const CARE_MODALITY: CareModality[] = [
     value: "at_veterinary_clinic",
     label: "En Veterinaria / Consultorio",
     description: "Atención en sede física fija habilitada con sala clínica",
-    fields: CLINIC_FIELDS,
+    sections: [{fields: CLINIC_FIELDS}],
   },
   {
     value: "at_home",
     label: "Atención a Domicilio",
     description: "Visitas domiciliarias programadas con radio geográfico móvil",
-    fields: HOME_FIELDS,
+    sections: [{fields: HOME_FIELDS}],
   },
   {
     value: "online",
     label: "Online",
     description: "Atención a través de videollamadas o consultas en línea",
+    sections: [{fields: ONLINE_FIELDS}],
   },
   {
     value: "hybrid",
     label: "Modalidad Mixta (Sede & Visita)",
     description: "Flexibilidad completa combinando consultorio y consultas móviles",
-    fields: [...CLINIC_FIELDS, ...HOME_FIELDS],
+    sections: [
+      {
+        title: "Datos del Consultorio",
+        fields: CLINIC_FIELDS,
+      },
+      {
+        title: "Zona de Atención a Domicilio",
+        fields: HOME_FIELDS,
+      },
+    ],
   },
 ];

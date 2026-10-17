@@ -36,7 +36,7 @@ export default function VetForm({
 
         {currentStep === 2 && <SecondStep />}
 
-        <div className="mt-4 flex gap-2">
+        <div className="flex gap-2">
           {isLastStep ? (
             <div className="flex w-full flex-col gap-2">
               <Button className="gap-2" size="fullWidth" type="submit" variant="primary">

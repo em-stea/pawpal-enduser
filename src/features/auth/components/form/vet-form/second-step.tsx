@@ -66,7 +66,7 @@ export const SecondStep = () => {
         label="Modalidad de Atención"
         name="modality"
         options={CARE_MODALITY}
-        renderContent={(modality) => <ModalityFields fields={modality.fields} />}
+        renderContent={(modality) => <ModalityFields selectedModality={modality} />}
         onValueChange={handleModalityChange}
       />
     </>
