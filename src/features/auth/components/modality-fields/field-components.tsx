@@ -1,13 +1,8 @@
 "use client";
 
-import {useEffect, useRef, useState, type RefObject} from "react";
-import {useFormContext, useWatch} from "react-hook-form";
-import {useOnClickOutside} from "usehooks-ts";
-
+import {Button} from "@/shared/components/button/button";
 import {InputField} from "@/shared/components/form/input-field.form";
 import {SelectField} from "@/shared/components/select/select.variants";
-import {fetchPlaceSuggestions, type PlaceSuggestion} from "@/shared/lib/google-places";
-import {Button} from "@/shared/components/button/button";
 import {Text} from "@/shared/components/text/text";
 
 import {
@@ -21,7 +16,7 @@ import {
 } from "../../data/care-modality";
 import {useLocationGroups} from "../../hooks/use-location-groups";
 import {useMultipleSelectField} from "../../hooks/use-multiple-select-field";
-import {FormVetValues} from "../../schemas/vet-schema";
+import {usePlaceAutocomplete} from "../../hooks/use-place-autocomplete";
 import {BusinessHours} from "../business-hours/business-hours";
 
 function ModalityInputTextField({field}: {field: TextModalityField}) {
@@ -75,52 +70,8 @@ function ModalityScheduleField({field}: {field: ScheduleModalityField}) {
 }
 
 function ModalityPlacesField({field}: {field: PlacesModalityField}) {
-  const {control, setValue} = useFormContext<FormVetValues>();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [suggestions, setSuggestions] = useState<PlaceSuggestion[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const fieldName = field.name as keyof FormVetValues;
-  const inputValue = (useWatch({control, name: fieldName}) as string | undefined) ?? "";
-
-  useOnClickOutside(containerRef as RefObject<HTMLElement>, () => {
-    setIsOpen(false);
-    setSuggestions([]);
-  });
-
-  useEffect(() => {
-    if (!isOpen || inputValue.trim().length < 3) {
-      return;
-    }
-
-    const controller = new AbortController();
-    const timer = setTimeout(() => {
-      void fetchPlaceSuggestions(inputValue, controller.signal)
-        .then((results) => {
-          if (!controller.signal.aborted) {
-            setSuggestions(results);
-          }
-        })
-        .catch(() => {
-          if (!controller.signal.aborted) {
-            setSuggestions([]);
-          }
-        });
-    }, 300);
-
-    return () => {
-      clearTimeout(timer);
-      controller.abort();
-    };
-  }, [inputValue, isOpen]);
-
-  const handleSelect = (item: PlaceSuggestion) => {
-    setValue(fieldName, item.text, {shouldValidate: true});
-    setIsOpen(false);
-    setSuggestions([]);
-  };
-
-  const showSuggestions = isOpen && inputValue.trim().length >= 3 && suggestions.length > 0;
+  const {containerRef, suggestions, setIsOpen, showSuggestions, handleSelect} =
+    usePlaceAutocomplete(field);
 
   return (
     <div ref={containerRef} className="relative w-full">

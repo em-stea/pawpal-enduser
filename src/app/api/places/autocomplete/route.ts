@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 
-import {searchGooglePlaces} from "@/shared/lib/google-places";
+import {searchGooglePlaces} from "@/features/auth/lib/google-places";
 
 export async function POST(request: Request) {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
