@@ -35,7 +35,6 @@ export const vetFormSchema = z
     specialty: z.array(z.string()).min(1, "Ingresa al menos una especialidad."),
     modality: z.string().min(1, "Selecciona una modalidad de atención."),
     clinicName: z.string(),
-    clinicAddress: z.string(),
     clinicPhone: z.string(),
     coverageProvince: z.string(),
     coverageZones: z.array(z.string()),
@@ -59,13 +58,6 @@ export const vetFormSchema = z
           code: "custom",
           path: ["clinicName"],
           message: "Ingresa el nombre del centro o clínica.",
-        });
-      }
-      if (!data.clinicAddress.trim()) {
-        ctx.addIssue({
-          code: "custom",
-          path: ["clinicAddress"],
-          message: "Ingresa la dirección de atención.",
         });
       }
       if (!/^\d{10,15}$/.test(data.clinicPhone)) {

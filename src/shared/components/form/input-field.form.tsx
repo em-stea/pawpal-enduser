@@ -24,6 +24,8 @@ export function InputField<T extends FieldValues>({
   className,
   type = "text",
   icon,
+  onChange,
+  onBlur,
   ...props
 }: InputFieldProps<T>) {
   const {control} = useFormContext<T>();
@@ -32,42 +34,45 @@ export function InputField<T extends FieldValues>({
     <Controller
       control={control}
       name={name}
-      render={({field, fieldState}) => (
-        <Field data-invalid={fieldState.invalid}>
-          {label && <FieldLabel htmlFor={field.name}>{label}</FieldLabel>}
+      render={({field, fieldState}) => {
+        const inputProps = {
+          ...field,
+          ...props,
+          "aria-invalid": fieldState.invalid,
+          className,
+          id: field.name,
+          placeholder,
+          type,
+          value: field.value ?? "",
+          onBlur: (event: React.FocusEvent<HTMLInputElement>) => {
+            field.onBlur();
+            onBlur?.(event);
+          },
+          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+            field.onChange(event);
+            onChange?.(event);
+          },
+        };
 
-          {icon ? (
-            <InputGroup>
-              <InputGroupInput
-                {...field}
-                aria-invalid={fieldState.invalid}
-                className={className}
-                id={field.name}
-                placeholder={placeholder}
-                type={type}
-                value={field.value ?? ""}
-                {...props}
-              />
-              <InputGroupAddon align="inline-start">{icon}</InputGroupAddon>
-            </InputGroup>
-          ) : (
-            <Input
-              {...field}
-              aria-invalid={fieldState.invalid}
-              className={className}
-              id={field.name}
-              placeholder={placeholder}
-              type={type}
-              value={field.value ?? ""}
-              {...props}
-            />
-          )}
+        return (
+          <Field data-invalid={fieldState.invalid}>
+            {label && <FieldLabel htmlFor={field.name}>{label}</FieldLabel>}
 
-          {fieldState.invalid && (
-            <FieldError className="text-red-400" errors={[fieldState.error]} />
-          )}
-        </Field>
-      )}
+            {icon ? (
+              <InputGroup>
+                <InputGroupInput {...inputProps} />
+                <InputGroupAddon align="inline-start">{icon}</InputGroupAddon>
+              </InputGroup>
+            ) : (
+              <Input {...inputProps} />
+            )}
+
+            {fieldState.invalid && (
+              <FieldError className="text-red-400" errors={[fieldState.error]} />
+            )}
+          </Field>
+        );
+      }}
     />
   );
 }

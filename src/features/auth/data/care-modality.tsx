@@ -48,11 +48,17 @@ export interface ScheduleModalityField extends BaseModalityField {
   variant: "schedule";
 }
 
+export interface PlacesModalityField extends BaseModalityField {
+  variant: "places";
+  placeholder: string;
+}
+
 export type ModalityField =
   | TextModalityField
   | SelectModalityField
   | SelectBadgeModalityField
-  | ScheduleModalityField;
+  | ScheduleModalityField
+  | PlacesModalityField;
 
 export type FieldVariant = ModalityField["variant"];
 
@@ -61,18 +67,10 @@ const CLINIC_FIELDS: ModalityField[] = [
     name: "clinicName",
     label: "Nombre del Centro / Clínica",
     placeholder: "Centro Veterinario San Juan",
-    variant: "text",
-    inputType: "text",
+    variant: "places",
     icon: <Hospital />,
   },
-  {
-    name: "clinicAddress",
-    label: "Dirección del Centro",
-    placeholder: "Calle 123, Ciudad",
-    variant: "text",
-    inputType: "text",
-    icon: <Map />,
-  },
+
   {
     name: "clinicPhone",
     label: "Teléfono del Centro",

@@ -24,6 +24,7 @@ export const buttonVariants = cva(commonClassnames, {
       // "ghost-outline":
       //   "group dark:border-basic-00 dark:text-basic-00 flex items-center justify-center rounded-full border border-gray-800 p-1 text-gray-800 transition-colors hover:border-blue-600 hover:text-blue-600 active:border-blue-600 active:text-blue-600 disabled:pointer-events-none disabled:opacity-40 dark:hover:border-blue-200 dark:hover:text-blue-200 dark:active:border-blue-200 dark:active:text-blue-200",
       icon: "flex size-10 h-auto items-center justify-center bg-transparent",
+      tertiary: "flex flex-col items-start bg-transparent text-left text-tertiary-200",
     },
     size: {
       sm: "px-0.9 py-0.9",

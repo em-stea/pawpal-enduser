@@ -20,7 +20,7 @@ export const BusinessHours = ({icon}: BusinessHoursProps) => {
   const countDaysOfAttention = selectedDaysOfAttention.length;
 
   return (
-    <div className="mt-2flex flex-col gap-2 rounded-lg border border-tertiary-500 pt-4">
+    <div className="mt-2 flex flex-col gap-2 rounded-lg border border-tertiary-500 pt-4">
       <div className="px-4">
         <FieldLabel count={countDaysOfAttention} icon={icon}>
           Horarios de Atención
