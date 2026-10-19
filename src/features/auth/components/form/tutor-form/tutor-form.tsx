@@ -14,7 +14,7 @@ import {InputPasswordField} from "@/shared/components/form/input-password-field.
 import {Text} from "@/shared/components/text/text";
 import {toast} from "@/shared/components/toast/toast";
 
-import {tutorFormSchema} from "../../schemas/tutor-schema";
+import {tutorFormSchema} from "../../../schemas/tutor-schema";
 
 type FormValues = z.output<typeof tutorFormSchema>;
 

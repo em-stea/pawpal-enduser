@@ -1,5 +1,5 @@
-import {Text} from "@/shared/components/text/text";
+import {LoginForm} from "@/features/auth/components/form/login-form/login-form";
 
 export default function LoginPage() {
-  return <Text>hola</Text>;
+  return <LoginForm />;
 }
