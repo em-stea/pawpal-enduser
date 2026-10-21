@@ -1,7 +1,7 @@
-import {Bird} from "@/shared/components/icons/other/bird.other";
-import {Cat} from "@/shared/components/icons/other/cat.other";
-import {Dog} from "@/shared/components/icons/other/dog.other";
-import {Sheep} from "@/shared/components/icons/other/sheep.other";
+import {Bird} from "@/shared/components/icons/other/bird";
+import {Cat} from "@/shared/components/icons/other/cat";
+import {Dog} from "@/shared/components/icons/other/dog";
+import {Sheep} from "@/shared/components/icons/other/sheep";
 
 interface CareCoverageOption {
   label: string;

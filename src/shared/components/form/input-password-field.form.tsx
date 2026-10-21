@@ -3,6 +3,7 @@
 import {Eye, EyeOff} from "lucide-react";
 import {useState} from "react";
 import {Controller, FieldPath, FieldValues, useFormContext} from "react-hook-form";
+import Link from "next/link";
 
 import {Button} from "@/shared/components/button/button";
 import {Field, FieldError, FieldLabel} from "@/shared/components/field/field";
@@ -11,6 +12,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/shared/components/input-group/input-group";
+import {ROUTES} from "@/shared/lib/route";
 
 interface InputPasswordFieldProps<T extends FieldValues> extends Omit<
   React.ComponentProps<typeof InputGroupInput>,
@@ -20,6 +22,7 @@ interface InputPasswordFieldProps<T extends FieldValues> extends Omit<
   name: FieldPath<T>;
   placeholder?: string;
   icon?: React.ReactNode;
+  hasForgotPassword?: boolean;
 }
 
 export function InputPasswordField<T extends FieldValues>({
@@ -28,6 +31,7 @@ export function InputPasswordField<T extends FieldValues>({
   placeholder,
   className,
   icon,
+  hasForgotPassword,
   ...props
 }: InputPasswordFieldProps<T>) {
   const {control} = useFormContext<T>();
@@ -39,8 +43,14 @@ export function InputPasswordField<T extends FieldValues>({
       name={name}
       render={({field, fieldState}) => (
         <Field data-invalid={fieldState.invalid}>
-          {label && <FieldLabel htmlFor={field.name}>{label}</FieldLabel>}
-
+          <div className="flex flex-row items-center justify-between">
+            {label && <FieldLabel htmlFor={field.name}>{label}</FieldLabel>}
+            {hasForgotPassword && (
+              <Button asChild isHighlight size="intrinsic" variant="tertiary">
+                <Link href={ROUTES.forgotPassword}>¿Olvidaste tu contraseña?</Link>
+              </Button>
+            )}
+          </div>
           <InputGroup>
             <InputGroupInput
               {...field}

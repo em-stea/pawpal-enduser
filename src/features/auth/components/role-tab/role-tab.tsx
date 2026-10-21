@@ -3,8 +3,8 @@
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 
-import {Pet} from "@/shared/components/icons/other/pet.other";
-import {Vet} from "@/shared/components/icons/other/vet.other";
+import {Pet} from "@/shared/components/icons/other/pet";
+import {Vet} from "@/shared/components/icons/other/vet";
 import {Tabs, TabsIndicator, TabsList, TabsTrigger} from "@/shared/components/tabs/tabs";
 import {ROUTES} from "@/shared/lib/route";
 

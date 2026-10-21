@@ -25,6 +25,7 @@ export function Button({
   disabled,
   loading,
   active,
+  isHighlight,
   asChild = false,
   ...props
 }: ButtonProps) {
@@ -33,7 +34,7 @@ export function Button({
   return (
     <Comp
       aria-busy={loading ?? undefined}
-      className={cn(buttonVariants({variant, size, loading, active}), className)}
+      className={cn(buttonVariants({variant, size, loading, active, isHighlight}), className)}
       disabled={loading ? true : disabled}
       {...props}
     >
