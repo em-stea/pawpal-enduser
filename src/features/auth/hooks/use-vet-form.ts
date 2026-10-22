@@ -1,8 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {standardSchemaResolver} from "@hookform/resolvers/standard-schema";
+import {useRouter} from "next/navigation";
+import {useAction} from "next-safe-action/hooks";
 import {useForm} from "react-hook-form";
 
+import {signupVet} from "@/features/auth/actions/signup";
 import {toast} from "@/shared/components/toast/toast";
+import {ROUTES} from "@/shared/lib/route";
 
 import {FormVetValues, vetFormSchema} from "../schemas/vet-schema";
 
@@ -33,6 +36,8 @@ interface VetFormProps {
 }
 
 export function useVetForm({currentStep, goToNextStep}: VetFormProps) {
+  const router = useRouter();
+
   const form = useForm<FormVetValues>({
     resolver: standardSchemaResolver(vetFormSchema),
     defaultValues: {
@@ -59,19 +64,28 @@ export function useVetForm({currentStep, goToNextStep}: VetFormProps) {
     },
   });
 
+  const {executeAsync, isPending} = useAction(signupVet, {
+    onSuccess: () => {
+      router.push(ROUTES.home);
+      router.refresh();
+    },
+    onError: ({error}) => {
+      toast.add({
+        type: "error",
+        title: error.serverError ?? "No se pudo crear la cuenta",
+      });
+    },
+  });
+
   async function handleNext() {
     const isValid = await form.trigger(STEP_FIELDS[currentStep - 1]);
 
     if (isValid) goToNextStep();
   }
 
-  function onSubmit(data: FormVetValues) {
-    const {confirmPassword, acceptTerms, ...rest} = data;
-
-    console.log(rest);
-
-    toast.add({type: "success", title: "Formulario enviado"});
+  async function onSubmit(data: FormVetValues) {
+    await executeAsync(data);
   }
 
-  return {form, handleNext, onSubmit};
+  return {form, handleNext, onSubmit, isPending};
 }

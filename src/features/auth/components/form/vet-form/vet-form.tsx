@@ -22,7 +22,7 @@ export default function VetForm({
   goToPrevStep,
   isLastStep,
 }: VetFormProps) {
-  const {form, handleNext, onSubmit} = useVetForm({
+  const {form, handleNext, onSubmit, isPending} = useVetForm({
     currentStep,
     goToNextStep,
     goToPrevStep,
@@ -39,11 +39,23 @@ export default function VetForm({
         <div className="flex gap-2">
           {isLastStep ? (
             <div className="flex w-full flex-col gap-2">
-              <Button className="gap-2" size="fullWidth" type="submit" variant="primary">
+              <Button
+                className="gap-2"
+                disabled={isPending}
+                size="fullWidth"
+                type="submit"
+                variant="primary"
+              >
                 Registrarme
                 <ArrowRightIcon className="size-5" />
               </Button>
-              <Button size="fullWidth" type="button" variant="secondary" onClick={goToPrevStep}>
+              <Button
+                disabled={isPending}
+                size="fullWidth"
+                type="button"
+                variant="secondary"
+                onClick={goToPrevStep}
+              >
                 Atrás
               </Button>
             </div>

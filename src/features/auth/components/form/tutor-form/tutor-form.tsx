@@ -1,11 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import {standardSchemaResolver} from "@hookform/resolvers/standard-schema";
 import {ArrowRightIcon, LockKeyhole, LockKeyholeOpen, Mail, Phone, UserIcon} from "lucide-react";
+import {useRouter} from "next/navigation";
+import {useAction} from "next-safe-action/hooks";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
 
+import {signupTutor} from "@/features/auth/actions/signup";
+import {tutorFormSchema} from "@/features/auth/schemas/tutor-schema";
 import {Button} from "@/shared/components/button/button";
 import {CheckboxField} from "@/shared/components/form/checkbox-field.form";
 import {Form} from "@/shared/components/form/form";
@@ -13,12 +16,13 @@ import {InputField} from "@/shared/components/form/input-field.form";
 import {InputPasswordField} from "@/shared/components/form/input-password-field.form";
 import {Text} from "@/shared/components/text/text";
 import {toast} from "@/shared/components/toast/toast";
-
-import {tutorFormSchema} from "../../../schemas/tutor-schema";
+import {ROUTES} from "@/shared/lib/route";
 
 type FormValues = z.output<typeof tutorFormSchema>;
 
 export default function TutorForm() {
+  const router = useRouter();
+
   const form = useForm<FormValues>({
     resolver: standardSchemaResolver(tutorFormSchema),
     defaultValues: {
@@ -32,12 +36,21 @@ export default function TutorForm() {
     },
   });
 
-  function onSubmit(data: FormValues) {
-    const {confirmPassword, ...rest} = data;
+  const {executeAsync, isPending} = useAction(signupTutor, {
+    onSuccess: () => {
+      router.push(ROUTES.home);
+      router.refresh();
+    },
+    onError: ({error}) => {
+      toast.add({
+        type: "error",
+        title: error.serverError ?? "No se pudo crear la cuenta",
+      });
+    },
+  });
 
-    console.log(rest);
-
-    toast.add({type: "success", title: "Formulario enviado"});
+  async function onSubmit(data: FormValues) {
+    await executeAsync(data);
   }
 
   return (
@@ -77,7 +90,13 @@ export default function TutorForm() {
           </Text>
         </CheckboxField>
       </div>
-      <Button className="mt-4 gap-2" size="fullWidth" type="submit" variant="primary">
+      <Button
+        className="mt-4 gap-2"
+        loading={isPending}
+        size="fullWidth"
+        type="submit"
+        variant="primary"
+      >
         Registrarme
         <ArrowRightIcon className="size-5" />
       </Button>

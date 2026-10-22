@@ -1,4 +1,5 @@
 export const ROUTES = {
+  home: "/",
   // Auth
   login: "/auth/login",
   signupTutor: "/auth/signup/tutor",

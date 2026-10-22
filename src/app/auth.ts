@@ -1,77 +1,42 @@
-import {PrismaAdapter} from "@auth/prisma-adapter";
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-import Google from "next-auth/providers/google";
-import Passkey from "next-auth/providers/passkey";
+import {passkey} from "@better-auth/passkey";
+import {betterAuth} from "better-auth";
+import {prismaAdapter} from "better-auth/adapters/prisma";
+import {nextCookies} from "better-auth/next-js";
 
-import {verifyPassword} from "@/shared/lib/password";
 import {prisma} from "@/shared/lib/prisma";
 
+const baseURL = process.env.AUTH_URL ?? "http://localhost:3000";
+
 function getRelayingParty() {
-  const authUrl = process.env.AUTH_URL ?? "http://localhost:3000";
-  const url = new URL(authUrl);
+  const url = new URL(baseURL);
 
   return {
-    name: "PawPal",
-    id: url.hostname,
+    rpName: "PawPal",
+    rpID: url.hostname,
     origin: url.origin,
   };
 }
 
-export const {handlers, signIn, signOut, auth} = NextAuth({
-  adapter: PrismaAdapter(prisma),
-  providers: [
-    Credentials({
-      name: "Credentials",
-      credentials: {
-        email: {label: "Email", type: "email"},
-        password: {label: "Password", type: "password"},
-      },
-      async authorize(credentials) {
-        const email = typeof credentials.email === "string" ? credentials.email : "";
-        const password = typeof credentials.password === "string" ? credentials.password : "";
-
-        if (!email || !password) {
-          return null;
-        }
-
-        const user = await prisma.user.findUnique({
-          where: {email},
-        });
-
-        if (!user?.password) {
-          return null;
-        }
-
-        const isValid = await verifyPassword(password, user.password);
-
-        if (!isValid) {
-          return null;
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          image: user.image,
-        };
-      },
-    }),
-    // Google returns verified emails, so an existing user with the
-    // same address is the same person. Without this, signing in with a provider
-    // after an email/password signup fails with OAuthAccountNotLinked.
-    Google({allowDangerousEmailAccountLinking: true}),
-    Passkey({
-      relayingParty: getRelayingParty(),
-    }),
-  ],
-  pages: {
-    signIn: "/auth/login",
+export const auth = betterAuth({
+  baseURL,
+  secret: process.env.AUTH_SECRET,
+  database: prismaAdapter(prisma, {
+    provider: "postgresql",
+  }),
+  emailAndPassword: {
+    enabled: true,
   },
-  session: {
-    strategy: "jwt",
+  socialProviders: {
+    google: {
+      clientId: process.env.AUTH_GOOGLE_ID ?? "",
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
+    },
   },
-  experimental: {
-    enableWebAuthn: true,
+  account: {
+    accountLinking: {
+      enabled: true,
+      trustedProviders: ["google"],
+    },
   },
+  plugins: [passkey(getRelayingParty()), nextCookies()],
 });
