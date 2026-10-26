@@ -1,12 +1,12 @@
 import {cva, type VariantProps} from "class-variance-authority";
 
 export const cardVariants = cva(
-  "group/card text-card-foreground flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl py-(--card-spacing) text-sm shadow-xs [--card-spacing:--spacing(6)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(4)] *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
+  "group/card text-card-foreground flex flex-col overflow-hidden rounded-xl py-(--card-spacing) text-sm shadow-xs [--card-spacing:--spacing(6)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(4)] *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
   {
     variants: {
       variant: {
         default: "bg-card",
-        petCard: "bg-tertiary-850",
+        petCard: "gap-4 bg-tertiary-850",
       },
     },
     defaultVariants: {
@@ -18,7 +18,17 @@ export const cardVariants = cva(
 export type CardVariantProps = VariantProps<typeof cardVariants>;
 
 export const cardHeaderVariants = cva(
-  "group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
+  "group/card-header @container/card-header grid auto-rows-min items-start gap-4 rounded-t-xl px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
+  {
+    variants: {
+      variant: {
+        petCard: "flex flex-row",
+      },
+    },
+    defaultVariants: {
+      variant: "petCard",
+    },
+  },
 );
 
 export const cardTitleVariants = cva(

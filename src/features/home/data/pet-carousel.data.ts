@@ -4,7 +4,7 @@ export const PETS_CAROUSEL_DATA: Pet[] = [
   {
     id: 1,
     name: "Menta",
-    image: "images/menta.jpg",
+    image: "/images/menta.jpg",
     age: 3,
     breed: "Labrador",
     gender: "Male",
@@ -17,7 +17,7 @@ export const PETS_CAROUSEL_DATA: Pet[] = [
   {
     id: 2,
     name: "Limón",
-    image: "images/limon.heic",
+    image: "/images/limon.jpg",
     age: 3,
     breed: "Labrador",
     gender: "Male",
