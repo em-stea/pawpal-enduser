@@ -1,11 +1,12 @@
 import {Carousel, CarouselContent, CarouselItem} from "@/shared/components/carousel/carousel";
-import {cn} from "@/shared/lib/tw-merge/utils";
-import {Heading} from "@/shared/components/heading/heading";
 import {Container} from "@/shared/components/container/container";
+import {Heading} from "@/shared/components/heading/heading";
+import {PetPrint} from "@/shared/components/icons/other/pet-print";
 import {Text} from "@/shared/components/text/text";
+import {cn} from "@/shared/lib/tw-merge/utils";
 
-import {Pet} from "../../types/pet.types";
 import {PetCard} from "../card/pet.card";
+import {Pet} from "../../types/pet.types";
 
 interface PetsCarouselProps {
   pets: Pet[];
@@ -15,7 +16,10 @@ export const PetsCarousel = ({pets}: PetsCarouselProps) => {
   return (
     <>
       <Container className="flex flex-row items-center justify-between pt-4">
-        <Heading variant="subtitle.2">Mis Mascotas</Heading>
+        <div className="flex flex-row items-center gap-3.5">
+          <PetPrint className="h-6 w-auto text-secondary-500" />
+          <Heading variant="subtitle.2">Mis Mascotas</Heading>
+        </div>
         <Text variant="body.1">{pets.length} Registrados</Text>
       </Container>
       <Carousel className="pt-2" opts={{align: "start"}}>

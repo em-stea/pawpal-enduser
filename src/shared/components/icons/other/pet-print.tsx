@@ -1,4 +1,4 @@
-export function Pet({...props}) {
+export function PetPrint({...props}) {
   return (
     <svg
       fill="none"

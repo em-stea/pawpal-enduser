@@ -2,13 +2,13 @@ import {ArrowRight} from "./directional/arrow-right";
 import {ChevronLeft} from "./directional/chevron-left";
 import {ChevronRight} from "./directional/chevron-right";
 import {Isotipo} from "./isotipo/isotipo";
-import {Pet} from "./other/pet";
-import {Vet} from "./other/vet";
 import {Bird} from "./other/bird";
 import {Cat} from "./other/cat";
 import {Dog} from "./other/dog";
-import {Sheep} from "./other/sheep";
 import {Google} from "./other/google";
+import {PetPrint} from "./other/pet-print";
+import {Sheep} from "./other/sheep";
+import {Vet} from "./other/vet";
 
 export {ArrowRight} from "./directional/arrow-right";
 
@@ -36,7 +36,7 @@ const IconsType = {
     isotipo: Isotipo,
   },
   other: {
-    pet: Pet,
+    petPrint: PetPrint,
     vet: Vet,
     bird: Bird,
     cat: Cat,

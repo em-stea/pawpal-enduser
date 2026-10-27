@@ -9,6 +9,7 @@ export const headingVariants = cva(commonClassnames, {
       "title.2": "text-8 leading-10 font-semibold lg:text-10 lg:leading-13",
       "subtitle.1": "text-4 leading-10 font-semibold tracking-wide lg:text-5 lg:leading-12",
       "subtitle.2": "text-6 leading-10 font-semibold tracking-wide lg:text-8 lg:leading-12",
+      "subtitle.3": "text-5.5 leading-10 font-medium tracking-wide lg:text-7 lg:leading-12",
     },
   },
   defaultVariants: {

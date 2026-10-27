@@ -3,10 +3,10 @@
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 
-import {Pet} from "@/shared/components/icons/other/pet";
 import {Vet} from "@/shared/components/icons/other/vet";
 import {Tabs, TabsIndicator, TabsList, TabsTrigger} from "@/shared/components/tabs/tabs";
 import {ROUTES} from "@/shared/lib/route";
+import {PetPrint} from "@/shared/components/icons/other/pet-print";
 
 export default function RoleTab() {
   const pathname = usePathname();
@@ -21,7 +21,7 @@ export default function RoleTab() {
           render={<Link href={ROUTES.signupTutor} />}
           value="tutor"
         >
-          <Pet className="t mr-2" />
+          <PetPrint className="mr-2" />
           Soy Tutor
         </TabsTrigger>
         <TabsTrigger
