@@ -8,7 +8,7 @@ export const cardVariants = cva(
     variants: {
       variant: {
         default: "bg-card",
-        petCard: "gap-4 bg-tertiary-850",
+        petCard: "relative gap-4 bg-tertiary-850",
       },
     },
     defaultVariants: {
@@ -26,7 +26,7 @@ export const cardHeaderVariants = cva(
       variant: {
         default:
           "grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
-        petCard: "flex flex-row items-center",
+        petCard: "flex flex-row items-center px-6",
       },
     },
     defaultVariants: {
@@ -55,4 +55,14 @@ export const cardActionVariants = cva(
 
 export const cardContentVariants = cva("flex flex-col gap-3 px-(--card-spacing)");
 
-export const cardFooterVariants = cva("flex items-center rounded-b-xl px-(--card-spacing)");
+export const cardFooterVariants = cva("flex items-center rounded-b-xl px-(--card-spacing)", {
+  variants: {
+    variant: {
+      default: "flex items-center rounded-b-xl px-(--card-spacing)",
+      petCard: "flex flex-col items-start px-6",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});

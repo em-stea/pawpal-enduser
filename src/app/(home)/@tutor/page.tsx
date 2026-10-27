@@ -9,7 +9,7 @@ export default function TutorPage() {
     <div>
       <Container>
         <Heading variant="title.2">Hola, Juan.</Heading>
-        <Text className="pt-1 pb-3 text-tertiary-500">Tus mascotas y cuidados al día</Text>
+        <Text className="pt-1 pb-3 text-tertiary-400">Tus mascotas y cuidados al día</Text>
       </Container>
 
       <PetsCarousel pets={PETS_CAROUSEL_DATA} />

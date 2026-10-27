@@ -11,6 +11,7 @@ export const badgeVariants = cva(
     variants: {
       variant: {
         default: "bg-primary-600 text-tertiary-200",
+        health: textVariants({variant: "caption.1.bold"}),
       },
     },
     defaultVariants: {

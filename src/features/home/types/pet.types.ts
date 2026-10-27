@@ -1,3 +1,12 @@
+export type HealthState =
+  | "upToDate"
+  | "vaccinePending"
+  | "vaccineOverdue"
+  | "dewormingPending"
+  | "checkupPending"
+  | "inTreatment"
+  | "noData";
+
 export interface Pet {
   id: number;
   name: string;
@@ -10,4 +19,5 @@ export interface Pet {
   color: string;
   personality: string;
   temperament: string;
+  healthState: HealthState;
 }

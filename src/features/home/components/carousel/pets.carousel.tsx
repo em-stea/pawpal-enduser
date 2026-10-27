@@ -20,7 +20,9 @@ export const PetsCarousel = ({pets}: PetsCarouselProps) => {
           <PetPrint className="h-6 w-auto text-secondary-500" />
           <Heading variant="subtitle.2">Mis Mascotas</Heading>
         </div>
-        <Text variant="body.1">{pets.length} Registrados</Text>
+        <Text className="text-tertiary-400" variant="body.1.bold">
+          {pets.length} Registrados
+        </Text>
       </Container>
       <Carousel className="pt-2" opts={{align: "start"}}>
         <CarouselContent>

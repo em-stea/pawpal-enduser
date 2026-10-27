@@ -94,7 +94,15 @@ function CardContent({className, ...props}: ComponentProps<"div">) {
 }
 
 function CardFooter({className, ...props}: ComponentProps<"div">) {
-  return <div className={cn(cardFooterVariants(), className)} data-slot="card-footer" {...props} />;
+  const {variant} = useCard();
+
+  return (
+    <div
+      className={cn(cardFooterVariants({variant}), className)}
+      data-slot="card-footer"
+      {...props}
+    />
+  );
 }
 
 export {Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent};
