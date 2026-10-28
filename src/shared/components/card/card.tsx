@@ -88,8 +88,14 @@ function CardAction({className, ...props}: ComponentProps<"div">) {
 }
 
 function CardContent({className, ...props}: ComponentProps<"div">) {
+  const {variant} = useCard();
+
   return (
-    <div className={cn(cardContentVariants(), className)} data-slot="card-content" {...props} />
+    <div
+      className={cn(cardContentVariants({variant}), className)}
+      data-slot="card-content"
+      {...props}
+    />
   );
 }
 

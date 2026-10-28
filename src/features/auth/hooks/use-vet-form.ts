@@ -10,7 +10,7 @@ import {ROUTES} from "@/shared/lib/route";
 import {FormVetValues, vetFormSchema} from "../schemas/vet-schema";
 
 const STEP_FIELDS: (keyof FormVetValues)[][] = [
-  ["name", "lastName", "email", "phone", "password", "confirmPassword", "acceptTerms"],
+  ["name", "lastname", "email", "phone", "password", "confirmPassword", "acceptTerms"],
   [
     "enrollment",
     "college",
@@ -42,7 +42,7 @@ export function useVetForm({currentStep, goToNextStep}: VetFormProps) {
     resolver: standardSchemaResolver(vetFormSchema),
     defaultValues: {
       name: "",
-      lastName: "",
+      lastname: "",
       email: "",
       phone: "",
       password: "",

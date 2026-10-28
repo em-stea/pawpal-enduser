@@ -30,7 +30,7 @@ export const PetsCarousel = ({pets}: PetsCarouselProps) => {
             <CarouselItem
               key={pet.id}
               className={cn(
-                "basis-[85%]",
+                "basis-[80%]",
                 index === 0 && "ml-4",
                 index === pets.length - 1 && "mr-4",
               )}

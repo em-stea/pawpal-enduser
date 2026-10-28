@@ -7,6 +7,7 @@ import {auth} from "@/app/auth";
 import {actionClient} from "@/features/auth/lib/safe-action";
 import {tutorFormSchema} from "@/features/auth/schemas/tutor-schema";
 import {vetFormSchema} from "@/features/auth/schemas/vet-schema";
+import {prisma} from "@/shared/lib/prisma";
 
 export const signupTutor = actionClient
   .inputSchema(tutorFormSchema)
@@ -16,9 +17,17 @@ export const signupTutor = actionClient
         body: {
           email: parsedInput.email,
           password: parsedInput.password,
-          name: `${parsedInput.nombre} ${parsedInput.apellido}`,
+          name: `${parsedInput.name} ${parsedInput.lastname}`,
         },
         headers: await headers(),
+      });
+
+      await prisma.user.update({
+        where: {id: result.user.id},
+        data: {
+          address: parsedInput.address,
+          apartment: parsedInput.apartment ?? null,
+        },
       });
 
       return {userId: result.user.id};
@@ -37,7 +46,7 @@ export const signupVet = actionClient.inputSchema(vetFormSchema).action(async ({
       body: {
         email: parsedInput.email,
         password: parsedInput.password,
-        name: `${parsedInput.name} ${parsedInput.lastName}`,
+        name: `${parsedInput.name} ${parsedInput.lastname}`,
       },
       headers: await headers(),
     });

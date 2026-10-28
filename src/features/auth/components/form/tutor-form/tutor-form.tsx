@@ -1,20 +1,17 @@
 "use client";
 
 import {standardSchemaResolver} from "@hookform/resolvers/standard-schema";
-import {ArrowRightIcon, LockKeyhole, LockKeyholeOpen, Mail, Phone, UserIcon} from "lucide-react";
+import {ArrowRightIcon} from "lucide-react";
 import {useRouter} from "next/navigation";
 import {useAction} from "next-safe-action/hooks";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
 
 import {signupTutor} from "@/features/auth/actions/signup";
+import {SignupAccountFields} from "@/features/auth/components/form/signup-account-fields/signup-account-fields";
 import {tutorFormSchema} from "@/features/auth/schemas/tutor-schema";
 import {Button} from "@/shared/components/button/button";
-import {CheckboxField} from "@/shared/components/form/checkbox-field.form";
 import {Form} from "@/shared/components/form/form";
-import {InputField} from "@/shared/components/form/input-field.form";
-import {InputPasswordField} from "@/shared/components/form/input-password-field.form";
-import {Text} from "@/shared/components/text/text";
 import {toast} from "@/shared/components/toast/toast";
 import {ROUTES} from "@/shared/lib/route";
 
@@ -26,12 +23,14 @@ export default function TutorForm() {
   const form = useForm<FormValues>({
     resolver: standardSchemaResolver(tutorFormSchema),
     defaultValues: {
-      nombre: "",
-      apellido: "",
+      name: "",
+      lastname: "",
       email: "",
-      telefono: "",
+      phone: "",
       password: "",
       confirmPassword: "",
+      address: "",
+      apartment: "",
       acceptTerms: false,
     },
   });
@@ -55,41 +54,7 @@ export default function TutorForm() {
 
   return (
     <Form form={form} onSubmit={onSubmit}>
-      <InputField icon={<UserIcon />} label="Nombre" name="nombre" placeholder="Jordan" />
-      <InputField icon={<UserIcon />} label="Apellido" name="apellido" placeholder="Lee" />
-      <InputField
-        icon={<Mail />}
-        label="Email"
-        name="email"
-        placeholder="name@example.com"
-        type="email"
-      />
-      <InputField
-        icon={<Phone />}
-        label="Teléfono"
-        name="telefono"
-        placeholder="(+54) 11-1234-5678"
-        type="tel"
-      />
-      <InputPasswordField
-        icon={<LockKeyholeOpen />}
-        label="Contraseña"
-        name="password"
-        placeholder="********"
-      />
-      <InputPasswordField
-        icon={<LockKeyhole />}
-        label="Confirmar Contraseña"
-        name="confirmPassword"
-        placeholder="********"
-      />
-      <div className="items-flex-start flex gap-2">
-        <CheckboxField name="acceptTerms">
-          <Text variant="body.1">
-            Acepto los Términos y Condiciones y las Políticas de Privacidad.
-          </Text>
-        </CheckboxField>
-      </div>
+      <SignupAccountFields />
       <Button
         className="mt-4 gap-2"
         loading={isPending}

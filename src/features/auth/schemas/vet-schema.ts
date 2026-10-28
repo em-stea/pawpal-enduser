@@ -6,7 +6,7 @@ export const vetFormSchema = z
       .string()
       .min(5, "El nombre debe tener al menos 5 caracteres.")
       .max(32, "El nombre debe tener como máximo 32 caracteres."),
-    lastName: z
+    lastname: z
       .string()
       .min(5, "El apellido debe tener al menos 5 caracteres.")
       .max(32, "El apellido debe tener como máximo 32 caracteres."),
