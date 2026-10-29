@@ -1,3 +1,5 @@
+import {BottomNavigation} from "@/shared/components/bottom-navigation/bottom-navigation";
+
 type Role = "vet" | "tutor";
 
 function getRole(): Role {
@@ -8,5 +10,10 @@ function getRole(): Role {
 export default function HomeLayout({tutor, vet}: {tutor: React.ReactNode; vet: React.ReactNode}) {
   const role = getRole();
 
-  return role === "vet" ? vet : tutor;
+  return (
+    <>
+      {role === "vet" ? vet : tutor}
+      <BottomNavigation />
+    </>
+  );
 }

@@ -14,6 +14,7 @@ export const textVariants = cva(commonClassnames, {
         "leading-6.4 lg:leading-6.4 text-3 font-semibold tracking-[.15rem] uppercase lg:text-4",
       "caption.1": "leading-6.4 lg:leading-6.4 text-4 font-normal tracking-wide lg:text-4",
       "caption.1.bold": "leading-6.4 lg:leading-6.4 text-4 font-bold tracking-wide lg:text-4",
+      "caption.2": "leading-6.4 lg:leading-6.4 text-3 font-bold tracking-wide lg:text-4",
     },
   },
   defaultVariants: {
