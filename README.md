@@ -1,61 +1,92 @@
-# nextjs-template
+# PawPal — Enduser
 
-Next.js template with App Router, React Compiler, Tailwind CSS v4, design tokens, and ready-to-use UI components.
+App web de PawPal para tutores de mascotas y veterinarios: autenticación, registro por rol e inicio con navegación según el tipo de usuario.
 
 ## Stack
 
-| Area | Technology |
+| Área | Tecnología |
 | --- | --- |
 | Framework | Next.js 16 (App Router, Turbopack) |
 | UI | React 19 + React Compiler |
-| Styles | Tailwind CSS 4 + CSS variables (design tokens) |
-| Components | shadcn/ui (Base UI / base-vega) + CVA |
-| Forms | React Hook Form + Zod + next-safe-action |
-| Auth | Better Auth |
-| Icons | Lucide + custom icons in `shared/components/icons` |
-| Quality | ESLint (Next, React, a11y, Prettier, React Compiler) + Prettier |
+| Estilos | Tailwind CSS 4 + CSS variables (design tokens) |
+| Componentes | shadcn/ui (Base UI / base-vega) + CVA |
+| Formularios | React Hook Form + Zod + next-safe-action |
+| Auth | Better Auth (email/password, Google OAuth, passkeys) |
+| Base de datos | PostgreSQL + Prisma |
+| Mapas / lugares | Google Places (autocomplete + details) |
+| Motion | Motion + Embla Carousel |
+| Iconos | Lucide + iconos custom en `shared/components/icons` |
+| Calidad | ESLint (Next, React, a11y, Prettier, React Compiler) + Prettier |
 | Package manager | pnpm |
-
 
 ## Requirements
 
 - Node.js 22+
 - [pnpm](https://pnpm.io/) 11+
+- PostgreSQL (local o remoto)
+- Variables de entorno (ver `.env.example`)
 
 ## Getting started
 
 ```bash
-# 1. Install dependencies
+# 1. Instalar dependencias
 pnpm install
 
-# 2. Start development (Turbopack)
+# 2. Configurar entorno
+cp .env.example .env
+# Completar DATABASE_URL, DIRECT_URL, AUTH_* y Google Maps / Places
+
+# 3. Generar Prisma Client y aplicar schema
+pnpm exec prisma generate
+pnpm exec prisma db push
+
+# 4. Desarrollo (Turbopack)
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Abrí [http://localhost:3000](http://localhost:3000).
+
+### Variables de entorno
+
+| Variable | Uso |
+| --- | --- |
+| `DATABASE_URL` | Conexión Prisma (PostgreSQL) |
+| `DIRECT_URL` | URL directa (migraciones / tooling) |
+| `AUTH_URL` / `BETTER_AUTH_URL` | Base URL de la app (ej. `http://localhost:3000`) |
+| `AUTH_SECRET` / `BETTER_AUTH_SECRET` | Secret de Better Auth |
+| `AUTH_GOOGLE_ID` / `GOOGLE_CLIENT_ID` | Google OAuth client ID |
+| `AUTH_GOOGLE_SECRET` / `GOOGLE_CLIENT_SECRET` | Google OAuth client secret |
+| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | API key de Google Maps / Places |
+| `NEXT_PUBLIC_PLACES_AUTOCOMPLETE_URL` | Endpoint Places Autocomplete (opcional override) |
+| `NEXT_PUBLIC_PLACES_DETAILS_URL` | Endpoint Places Details (opcional override) |
+
+Redirect URI de Google OAuth: `{AUTH_URL}/api/auth/callback/google`.
 
 ### Scripts
 
-| Command | Description |
+| Comando | Descripción |
 | --- | --- |
-| `pnpm dev` | Development server with Turbopack |
-| `pnpm build` | Production build |
-| `pnpm start` | Production server (after `build`) |
-| `pnpm lint` | Lint with cache |
-| `pnpm lint:fix` | Lint and auto-fix |
+| `pnpm dev` | Servidor de desarrollo con Turbopack |
+| `pnpm build` | Build de producción |
+| `pnpm start` | Servidor de producción (después de `build`) |
+| `pnpm lint` | Lint con cache |
+| `pnpm lint:fix` | Lint y auto-fix |
 
-No `.env` file is required to run the template.
-
-## Structure
+## Estructura
 
 ```text
 src/
-├── app/                 # Routes and layouts (App Router)
-├── features/            # App domains / features (empty by design)
+├── app/
+│   ├── (auth)/auth/     # login, signup (tutor/vet), forgot/reset password
+│   ├── (home)/          # Parallel routes @tutor / @vet + bottom nav
+│   └── api/             # Better Auth + Places (autocomplete, details)
+├── features/
+│   ├── auth/            # Formularios, schemas, hooks, actions, Places
+│   └── home/            # Home tutor: mascotas, cards, carousel
 └── shared/
-    ├── components/      # Reusable UI
-    ├── lib/             # Utilities (e.g. `cn`)
-    └── styles/          # Tokens, foundations, and component styles
+    ├── components/      # UI reutilizable
+    ├── lib/             # prisma, routes, tw-merge
+    └── styles/          # Tokens, foundations, estilos de componentes
 ```
 
 ### TypeScript aliases
@@ -66,47 +97,68 @@ src/
 | `@components/*` | `./src/shared/components/*` |
 | `@styles/*` | `./src/shared/styles/*` |
 | `@utils/*` | `./src/shared/utils/*` |
+| `@types/*` | `./src/types/*` |
 
-## What's included
+### Rutas principales
 
-### Components (`src/shared/components`)
+| Ruta | Descripción |
+| --- | --- |
+| `/auth/login` | Login |
+| `/auth/signup` | Elección de rol |
+| `/auth/signup/tutor` | Registro tutor |
+| `/auth/signup/vet` | Registro veterinario (stepper) |
+| `/auth/forgot-password` | Recuperar contraseña |
+| `/` | Home según rol (`@tutor` / `@vet`) |
+| `/mis-mascotas`, `/turnos`, `/clinicas`, `/perfil` | Secciones tutor |
 
-- **Button** — CVA variants
-- **Input** — base text field
-- **Field** — label, control, description, and errors
-- **Form** — React Hook Form integration
-- **Heading** / **Text** — semantic typography
-- **Toast** — notifications (Toaster in the layout)
-- **Spinner** — loading state
-- **Icons** — directional set (chevron, arrow)
+## Features
 
-### Design system (`src/shared/styles`)
+### Auth (`src/features/auth`)
 
-- **Foundations** — color palette and fonts (`Space Grotesk`)
-- **Semantic tokens** — semantic colors, typography, and text
-- **Component styles** — per-component tokens/styles (button, input, toast, etc.)
-- **globals.css** — Tailwind entry + tokens + base styles
+- Login con email/password y Google
+- Registro de **tutor** y **veterinario** (formulario multi-step para vet)
+- Especialidades, cobertura, modalidad, horarios y Places autocomplete
+- Schemas Zod + React Hook Form
+
+### Home (`src/features/home`)
+
+- Parallel routes por rol en `(home)`
+- Carousel de mascotas, cards de pet y tratamientos activos
+- Bottom navigation compartida
+
+## Design system
+
+### Componentes (`src/shared/components`)
+
+Button, Input, Textarea, Field, Form, Select, Checkbox, Radio Group, Toggle / Toggle Group, Tabs, Card, Badge, Carousel, Progress, Navbar, Bottom Navigation, Logo, Heading / Text, Toast, Spinner, Container, Separator, Icons.
+
+### Tokens (`src/shared/styles`)
+
+- **Foundations** — paleta y fuentes (**DM Sans**, **Manrope**)
+- **Semantic tokens** — colores semánticos, tipografía y texto
+- **Component styles** — tokens por componente (button, card, badge, etc.)
+- **globals.css** — entrada Tailwind + tokens + base
 
 ### Next config
 
-- React Compiler enabled
-- `cacheComponents` enabled
-- Full-URL fetch logging
+- React Compiler habilitado
+- `cacheComponents` habilitado
+- Logging de fetch con URL completa
 
 ### Tooling
 
-- shadcn configured (`components.json`, `base-vega` style, `zinc` base color)
-- ESLint with Next, React, hooks, a11y, imports, Prettier, and React Compiler rules
+- shadcn (`components.json`, estilo `base-vega`, base color `zinc`)
+- ESLint con Next, React, hooks, a11y, imports, Prettier y React Compiler
 - Prettier + `prettier-plugin-tailwindcss`
 
-## Start building
+## Cómo contribuir en el código
 
-1. Edit `src/app/page.tsx` for the home page.
-2. Add features under `src/features/<name>/`.
-3. Reuse UI from `@/shared/components` or `@components/...`.
-4. Extend tokens in `src/shared/styles` before hardcoding colors or typography.
-5. To add shadcn components: `pnpm dlx shadcn@latest add <component>`.
+1. Auth y flujos de registro → `src/features/auth/`.
+2. Home y UI de mascotas → `src/features/home/`.
+3. UI compartida → `@/shared/components` o `@components/...`.
+4. Tokens en `src/shared/styles` antes de hardcodear colores o tipografía.
+5. Nuevos componentes shadcn: `pnpm dlx shadcn@latest add <component>`.
 
 ## License
 
-Private (`private: true` in `package.json`).
+Private (`private: true` en `package.json`).
