@@ -10,6 +10,7 @@ export const cardVariants = cva(
         default: "bg-card",
         petCard: "relative gap-4 bg-tertiary-850 py-5",
         onCallServiceCard: "gap-0 border border-secondary-500 bg-tertiary-850 pt-3 pb-5",
+        treatmentCard: "gap-0 bg-tertiary-850 pt-3 pb-5",
       },
     },
     defaultVariants: {
@@ -29,7 +30,8 @@ export const cardHeaderVariants = cva(
           "grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
         petCard: "flex flex-row items-center px-6",
         onCallServiceCard:
-          "grid auto-rows-min items-start px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
+          "grid auto-rows-min items-start px-4 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
+        treatmentCard: "flex flex-row justify-between",
       },
     },
     defaultVariants: {
@@ -38,12 +40,13 @@ export const cardHeaderVariants = cva(
   },
 );
 
-export const cardTitleVariants = cva("", {
+export const cardTitleVariants = cva(headingVariants({variant: "subtitle.3"}), {
   variants: {
     variant: {
       default: "text-base leading-normal font-medium group-data-[size=sm]/card:text-sm",
-      petCard: headingVariants({variant: "subtitle.3"}),
-      onCallServiceCard: headingVariants({variant: "subtitle.3"}),
+      petCard: "",
+      onCallServiceCard: "",
+      treatmentCard: "",
     },
   },
   defaultVariants: {
@@ -62,7 +65,8 @@ export const cardContentVariants = cva("flex flex-col gap-3 px-(--card-spacing)"
     variant: {
       default: "flex flex-col gap-3 px-(--card-spacing)",
       petCard: "flex flex-col items-start px-6",
-      onCallServiceCard: "flex flex-row items-center px-6",
+      onCallServiceCard: "flex flex-row items-center px-4",
+      treatmentCard: "mt-4 mb-8 flex flex-row items-center px-6",
     },
   },
   defaultVariants: {
@@ -75,7 +79,8 @@ export const cardFooterVariants = cva("flex items-center rounded-b-xl px-(--card
     variant: {
       default: "flex items-center rounded-b-xl px-(--card-spacing)",
       petCard: "flex flex-col items-start px-6",
-      onCallServiceCard: "mt-6 flex flex-row items-center gap-3 px-6",
+      onCallServiceCard: "mt-6 flex flex-row items-center gap-3 px-4",
+      treatmentCard: "flex flex-row items-center gap-3 px-4",
     },
   },
   defaultVariants: {

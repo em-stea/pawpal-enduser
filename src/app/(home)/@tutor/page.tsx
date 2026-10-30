@@ -1,3 +1,4 @@
+import {ActiveTreatmentCard} from "@/features/home/components/card/active-treatment.card";
 import {OnCallServiceCard} from "@/features/home/components/card/on-call-service.card";
 import {PetsCarousel} from "@/features/home/components/carousel/pets.carousel";
 import {PETS_CAROUSEL_DATA} from "@/features/home/data/pet-carousel.data";
@@ -26,8 +27,9 @@ export default function TutorPage() {
 
       <PetsCarousel pets={PETS_CAROUSEL_DATA} />
 
-      <Container className="pt-6">
+      <Container className="flex flex-col gap-6 pt-6">
         <OnCallServiceCard clinic={MOCK_NEAREST_CLINIC} />
+        <ActiveTreatmentCard gender="Hembra" petName="Menta" />
       </Container>
     </div>
   );

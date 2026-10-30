@@ -2,6 +2,7 @@ import {BadgeCheck} from "lucide-react";
 import Image from "next/image";
 
 import {Pet} from "@/features/home/types/pet.types";
+import {genderBar} from "@/features/home/utils/gender.styles";
 import {Badge} from "@/shared/components/badge/badge";
 import {Card, CardFooter, CardHeader, CardTitle} from "@/shared/components/card/card";
 import {Separator} from "@/shared/components/separator/separator";
@@ -9,11 +10,6 @@ import {Text} from "@/shared/components/text/text";
 import {cn} from "@/shared/lib/tw-merge/utils";
 
 import {healthTag} from "../../data/health-tag";
-
-const genderBar: Record<Pet["gender"], string> = {
-  Hembra: "bg-primary-500",
-  Macho: "bg-secondary-500",
-};
 
 export const PetCard = ({pet}: {pet: Pet}) => {
   const {label, className, icon: Icon} = healthTag[pet.healthState];

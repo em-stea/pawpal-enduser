@@ -51,6 +51,11 @@ export const buttonVariants = cva(commonClassnames, {
       isHighlight: true,
       className: "whitespace-nowrap text-secondary-500 hover:text-secondary-600",
     },
+    {
+      variant: "icon",
+      isHighlight: true,
+      className: "bg-tertiary-800",
+    },
   ],
   defaultVariants: {
     variant: "primary",

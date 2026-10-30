@@ -40,11 +40,11 @@ export function OnCallServiceCard({clinic}: Guardia24hsCardProps) {
         </Text>
       </CardContent>
       <CardFooter>
-        <Button className="gap-2" size="fullWidth" variant="primary">
-          <Phone />
+        <Button className="gap-2.5" size="fullWidth" variant="primary">
+          <Phone className="size-4" />
           Llamar Guardia
         </Button>
-        <Button asChild className="gap-2" size="fullWidth" variant="secondary">
+        <Button asChild className="gap-2.5" size="fullWidth" variant="secondary">
           <Link href="" rel="noopener noreferrer" target="_blank">
             <Navigation className="size-4" />
             Cómo llegar

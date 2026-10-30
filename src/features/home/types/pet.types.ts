@@ -7,13 +7,15 @@ export type HealthState =
   | "inTreatment"
   | "noData";
 
+export type PetGender = "Hembra" | "Macho";
+
 export interface Pet {
   id: number;
   name: string;
   image: string;
   age: number;
   breed: string;
-  gender: string;
+  gender: PetGender;
   size: string;
   weight: number;
   color: string;
