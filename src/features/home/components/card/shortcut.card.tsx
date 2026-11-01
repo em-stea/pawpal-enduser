@@ -39,8 +39,10 @@ export const ShortcutCard = ({data}: {data: ShortcutCardData}) => {
         )}
       </CardHeader>
       <CardContent>
-        <Heading variant="subtitle.3">{title}</Heading>
-        <Text variant="body.1">{description}</Text>
+        <Heading variant="subtitle.4">{title}</Heading>
+        <Text className="text-tertiary-400" variant="body.1">
+          {description}
+        </Text>
       </CardContent>
     </Card>
   );

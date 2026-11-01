@@ -47,14 +47,14 @@ export const SHORTCUT_CARD_DATA: ShortcutCardData[] = [
     description: "Zona Norte/ CABA",
     icon: {
       component: Ambulance,
-      color: "text-primary-500",
-      backgroundColor: "bg-primary-700/30",
+      color: "text-primary-400",
+      backgroundColor: "bg-primary-700/50",
     },
   },
   {
     id: 4,
-    title: "Primeros Auxilios",
-    description: "Guía de Toxicidad",
+    title: "Urgencias",
+    description: "Guía y Asistencia",
     icon: {
       component: BriefcaseMedical,
       color: "text-red-200",

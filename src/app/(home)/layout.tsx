@@ -12,7 +12,7 @@ export default function HomeLayout({tutor, vet}: {tutor: React.ReactNode; vet: R
 
   return (
     <>
-      {role === "vet" ? vet : tutor}
+      <div className="pb-(--bottom-nav-height)">{role === "vet" ? vet : tutor}</div>
       <BottomNavigation />
     </>
   );

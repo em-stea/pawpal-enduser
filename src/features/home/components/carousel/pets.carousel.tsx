@@ -18,7 +18,7 @@ export const PetsCarousel = ({pets}: PetsCarouselProps) => {
       <Container className="flex flex-row items-center justify-between pt-4">
         <div className="flex flex-row items-center gap-3.5">
           <PetPrint className="h-6 w-auto text-secondary-500" />
-          <Heading variant="subtitle.2">Mis Mascotas</Heading>
+          <Heading variant="subtitle.3">Mis Mascotas</Heading>
         </div>
         <Text className="text-tertiary-400" variant="body.1.bold">
           {pets.length} Registrados

@@ -29,7 +29,7 @@ export default function TutorPage() {
 
       <PetsCarousel pets={PETS_CAROUSEL_DATA} />
 
-      <Container className="flex flex-col gap-6 pt-6">
+      <Container className="flex flex-col gap-10 pt-10">
         <OnCallServiceCard clinic={MOCK_NEAREST_CLINIC} />
         <ActiveTreatmentCard gender="Hembra" petName="Menta" />
 
