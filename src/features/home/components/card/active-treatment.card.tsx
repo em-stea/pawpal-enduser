@@ -7,6 +7,8 @@ import {Badge} from "@/shared/components/badge/badge";
 import {Button} from "@/shared/components/button/button";
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/shared/components/card/card";
 import {Text} from "@/shared/components/text/text";
+import {truncateText} from "@/shared/utils/truncate-text";
+import {Heading} from "@/shared/components/heading/heading";
 
 export function ActiveTreatmentCard({
   petName = "Menta",
@@ -28,12 +30,20 @@ export function ActiveTreatmentCard({
           <AlarmClock className="text-secondary-500" />
         </div>
         <div className="flex flex-col gap-1">
-          <Text variant="body.2">Amoxicilina + Clavulánico</Text>
+          <Text className="line-clamp-1" variant="body.2">
+            {truncateText("Amoxicilina + Clavulánico", 21)}
+          </Text>
           <div className="flex items-center gap-2.5">
             <Text variant="body.3">250 mg</Text>
             <div className="h-1.5 w-1.5 rounded-full bg-tertiary-400" />
             <Text variant="body.3">Con comida</Text>
           </div>
+        </div>
+        <div className="flex flex-col items-end gap-1">
+          <Heading className="text-secondary-500" variant="subtitle.2">
+            14:00hs
+          </Heading>
+          <Text variant="body.1">en 45 min</Text>
         </div>
       </CardContent>
       <CardFooter>

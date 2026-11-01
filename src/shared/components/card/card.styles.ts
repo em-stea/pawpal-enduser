@@ -10,7 +10,7 @@ export const cardVariants = cva(
         default: "bg-card",
         petCard: "relative gap-4 bg-tertiary-850 py-5",
         onCallServiceCard: "gap-0 border border-secondary-500 bg-tertiary-850 pt-3 pb-5",
-        treatmentCard: "gap-0 bg-tertiary-850 pt-3 pb-5",
+        treatmentCard: "gap-0 bg-tertiary-850 px-4 pt-3 pb-5",
       },
     },
     defaultVariants: {
@@ -22,7 +22,7 @@ export const cardVariants = cva(
 export type CardVariantProps = VariantProps<typeof cardVariants>;
 
 export const cardHeaderVariants = cva(
-  "group/card-header @container/card-header gap-4 rounded-t-xl px-(--card-spacing)",
+  "group/card-header @container/card-header gap-4 rounded-t-xl",
   {
     variants: {
       variant: {
@@ -60,13 +60,13 @@ export const cardActionVariants = cva(
   "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
 );
 
-export const cardContentVariants = cva("flex flex-col gap-3 px-(--card-spacing)", {
+export const cardContentVariants = cva("flex flex-col", {
   variants: {
     variant: {
       default: "flex flex-col gap-3 px-(--card-spacing)",
       petCard: "flex flex-col items-start px-6",
       onCallServiceCard: "flex flex-row items-center px-4",
-      treatmentCard: "mt-4 mb-8 flex flex-row items-center px-6",
+      treatmentCard: "mt-4 mb-8 flex flex-row items-center justify-between px-2",
     },
   },
   defaultVariants: {
@@ -74,13 +74,13 @@ export const cardContentVariants = cva("flex flex-col gap-3 px-(--card-spacing)"
   },
 });
 
-export const cardFooterVariants = cva("flex items-center rounded-b-xl px-(--card-spacing)", {
+export const cardFooterVariants = cva("flex items-center rounded-b-xl", {
   variants: {
     variant: {
       default: "flex items-center rounded-b-xl px-(--card-spacing)",
       petCard: "flex flex-col items-start px-6",
       onCallServiceCard: "mt-6 flex flex-row items-center gap-3 px-4",
-      treatmentCard: "flex flex-row items-center gap-3 px-4",
+      treatmentCard: "flex flex-row items-center gap-3",
     },
   },
   defaultVariants: {
