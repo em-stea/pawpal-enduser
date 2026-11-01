@@ -38,5 +38,19 @@
     --tertiary-850: oklch(0.250 0.003 68.3);
     --tertiary-900: oklch(0.220 0.003 68.3);
     --tertiary-950: oklch(0.150 0.002 68.3);
+
+    /* Red Scale (basada en #FFB4AC claro y #431B1E oscuro) */
+    --red-50:  oklch(0.940 0.040 25.0);
+    --red-100: oklch(0.880 0.080 25.0);
+    --red-200: oklch(0.810 0.120 25.0);
+    --red-300: oklch(0.740 0.155 25.0); /* Cercano a #FFB4AC */
+    --red-400: oklch(0.640 0.170 25.0);
+    --red-500: oklch(0.550 0.165 25.0);
+    --red-600: oklch(0.460 0.150 25.0);
+    --red-700: oklch(0.380 0.120 25.0);
+    --red-800: oklch(0.300 0.090 25.0); /* Cercano a #431B1E */
+    --red-850: oklch(0.240 0.070 25.0);
+    --red-900: oklch(0.200 0.055 25.0);
+    --red-950: oklch(0.140 0.035 25.0);
  
 }

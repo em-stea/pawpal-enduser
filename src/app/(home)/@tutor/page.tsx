@@ -1,7 +1,9 @@
 import {ActiveTreatmentCard} from "@/features/home/components/card/active-treatment.card";
 import {OnCallServiceCard} from "@/features/home/components/card/on-call-service.card";
+import {ShortcutCard} from "@/features/home/components/card/shortcut.card";
 import {PetsCarousel} from "@/features/home/components/carousel/pets.carousel";
 import {PETS_CAROUSEL_DATA} from "@/features/home/data/pet-carousel.data";
+import {SHORTCUT_CARD_DATA} from "@/features/home/data/shortcut-card";
 import {Container} from "@/shared/components/container/container";
 import {Heading} from "@/shared/components/heading/heading";
 import {Text} from "@/shared/components/text/text";
@@ -30,6 +32,15 @@ export default function TutorPage() {
       <Container className="flex flex-col gap-6 pt-6">
         <OnCallServiceCard clinic={MOCK_NEAREST_CLINIC} />
         <ActiveTreatmentCard gender="Hembra" petName="Menta" />
+
+        <div>
+          <Heading variant="subtitle.3">Accesos Rápidos</Heading>
+          <div className="grid grid-cols-2 gap-4">
+            {SHORTCUT_CARD_DATA.map((card) => (
+              <ShortcutCard key={card.id} data={card} />
+            ))}
+          </div>
+        </div>
       </Container>
     </div>
   );
