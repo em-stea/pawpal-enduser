@@ -52,7 +52,7 @@ export const BottomNavigation = () => {
   return (
     <nav
       aria-label="Navegación principal"
-      className="fixed inset-x-0 bottom-0 z-50 bg-tertiary-900 pt-5 pb-4 shadow-[0_-4px_10px_var(--color-tertiary-850)]"
+      className="fixed inset-x-0 bottom-0 z-50 bg-tertiary-900 pt-5 pb-4"
     >
       <Container className="px-8">
         <div className="flex items-center justify-between">

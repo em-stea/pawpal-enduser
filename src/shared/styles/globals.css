@@ -24,7 +24,7 @@
 
 @layer base {
   :root {
-    --bottom-nav-height: 6rem;
+    --bottom-nav-height: 8rem;
   }
 
   * {
