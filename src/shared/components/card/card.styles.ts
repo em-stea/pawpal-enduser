@@ -12,6 +12,8 @@ export const cardVariants = cva(
         onCallServiceCard: "gap-0 border border-secondary-500 bg-tertiary-850 pt-3 pb-5",
         treatmentCard: "gap-0 bg-tertiary-850 px-4 pt-3 pb-5",
         shortcutCard: "flex h-40 flex-col justify-between bg-tertiary-850 p-4",
+        guardStatusCard:
+          "flex flex-row items-center justify-between gap-0 bg-tertiary-850 px-3 py-4",
       },
     },
     defaultVariants: {
@@ -71,6 +73,7 @@ export const cardContentVariants = cva("flex flex-col", {
       onCallServiceCard: "flex flex-row items-center px-4",
       treatmentCard: "mt-4 mb-8 flex flex-row items-center justify-between px-2",
       shortcutCard: "",
+      guardStatusCard: "gap-1",
     },
   },
   defaultVariants: {

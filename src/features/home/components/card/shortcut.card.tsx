@@ -1,5 +1,6 @@
 import type {ShortcutCardData} from "../../data/shortcut-card";
 
+import type {BadgeVariantProps} from "@/shared/components/badge/badge.styles";
 import {Badge} from "@/shared/components/badge/badge";
 import {Card, CardContent, CardHeader} from "@/shared/components/card/card";
 import {Heading} from "@/shared/components/heading/heading";
@@ -10,12 +11,9 @@ export const ShortcutCard = ({data}: {data: ShortcutCardData}) => {
   const {title, description, icon, tag} = data;
   const Icon = icon.component;
 
-  const badgeColor = {
-    "1 Alerta": {
-      bgColor: "bg-red-600/30",
-      textColor: "text-red-200",
-    },
-    Mañana: {bgColor: "bg-tertiary-600/30", textColor: "text-tertiary-200"},
+  const badgeColor: Record<string, NonNullable<BadgeVariantProps["color"]>> = {
+    "1 Alerta": "danger",
+    Mañana: "muted",
   };
 
   return (
@@ -30,10 +28,7 @@ export const ShortcutCard = ({data}: {data: ShortcutCardData}) => {
           <Icon className={icon.color} />
         </div>
         {data.tag && (
-          <Badge
-            className={cn(badgeColor[data.tag].bgColor, badgeColor[data.tag].textColor)}
-            variant="bolder"
-          >
+          <Badge color={badgeColor[data.tag]} variant="bolder">
             {tag}
           </Badge>
         )}

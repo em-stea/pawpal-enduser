@@ -21,7 +21,7 @@ export function ActiveTreatmentCard({
     <Card variant="treatmentCard">
       <CardHeader>
         <CardTitle>Tratamiento activo</CardTitle>
-        <Badge className={genderBadge[gender]} variant="health">
+        <Badge color={genderBadge[gender]} variant="health">
           {petName}
         </Badge>
       </CardHeader>

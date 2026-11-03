@@ -6,7 +6,7 @@ import {Isotipo} from "../icons/isotipo/isotipo";
 const sizes = {
   sm: {
     heading: "text-6 lg:text-8",
-    isotipo: "size-8 lg:size-12",
+    isotipo: "size-9 lg:size-12",
   },
   md: {
     heading: "text-8 lg:text-10",

@@ -1,10 +1,12 @@
 import {BottomNavigation} from "@/shared/components/bottom-navigation/bottom-navigation";
+import {Container} from "@/shared/components/container/container";
+import {Navbar} from "@/shared/components/navbar/navbar";
 
-type Role = "vet" | "tutor";
+export type Role = "vet" | "tutor";
 
 function getRole(): Role {
   // TODO: replace with session/role endpoint
-  return "tutor";
+  return "vet";
 }
 
 export default function HomeLayout({tutor, vet}: {tutor: React.ReactNode; vet: React.ReactNode}) {
@@ -12,6 +14,9 @@ export default function HomeLayout({tutor, vet}: {tutor: React.ReactNode; vet: R
 
   return (
     <>
+      <Container>
+        <Navbar hasNotifications={true} role={role} />
+      </Container>
       <div className="pb-(--bottom-nav-height)">{role === "vet" ? vet : tutor}</div>
       <BottomNavigation />
     </>

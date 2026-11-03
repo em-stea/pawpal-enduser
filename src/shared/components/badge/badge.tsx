@@ -7,12 +7,12 @@ import {badgeVariants, type BadgeVariantProps} from "./badge.styles";
 
 export type BadgeProps = useRender.ComponentProps<"span"> & BadgeVariantProps;
 
-function Badge({className, variant = "default", render, ...props}: BadgeProps) {
+function Badge({className, variant = "default", color = "solid", render, ...props}: BadgeProps) {
   return useRender({
     defaultTagName: "span",
     props: mergeProps<"span">(
       {
-        className: cn(badgeVariants({variant}), className),
+        className: cn(badgeVariants({variant, color}), className),
       },
       props,
     ),
@@ -20,6 +20,7 @@ function Badge({className, variant = "default", render, ...props}: BadgeProps) {
     state: {
       slot: "badge",
       variant,
+      color,
     },
   });
 }

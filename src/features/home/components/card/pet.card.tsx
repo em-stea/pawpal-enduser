@@ -12,7 +12,7 @@ import {cn} from "@/shared/lib/tw-merge/utils";
 import {healthTag} from "../../data/health-tag";
 
 export const PetCard = ({pet}: {pet: Pet}) => {
-  const {label, className, icon: Icon} = healthTag[pet.healthState];
+  const {label, color, icon: Icon} = healthTag[pet.healthState];
 
   const ageUnit = pet.age === 1 ? "año" : "años";
 
@@ -55,7 +55,7 @@ export const PetCard = ({pet}: {pet: Pet}) => {
           </div>
         </div>
 
-        <Badge className={className} variant="health">
+        <Badge color={color} variant="health">
           <Icon className="size-4" />
           {label}
         </Badge>
