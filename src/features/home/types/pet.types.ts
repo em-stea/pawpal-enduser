@@ -9,10 +9,21 @@ export type HealthState =
 
 export type PetGender = "Hembra" | "Macho";
 
+export type AnimalType =
+  | "Canino"
+  | "Felino"
+  | "Ave"
+  | "Roedor"
+  | "Reptil"
+  | "Anfibio"
+  | "Pez"
+  | "Mamífero";
+
 export interface Pet {
   id: number;
   name: string;
   image: string;
+  animalType: AnimalType;
   age: number;
   breed: string;
   gender: PetGender;

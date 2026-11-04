@@ -3,7 +3,7 @@ import {OnCallServiceCard} from "@/features/home/components/card/on-call-service
 import {ShortcutCard} from "@/features/home/components/card/shortcut.card";
 import {PetsCarousel} from "@/features/home/components/carousel/pets.carousel";
 import {PETS_CAROUSEL_DATA} from "@/features/home/data/pet-carousel.data";
-import {SHORTCUT_CARD_DATA} from "@/features/home/data/shortcut-card";
+import {SHORTCUT_CARD_DATA} from "@/features/home/data/shortcut-card.data";
 import {Container} from "@/shared/components/container/container";
 import {Heading} from "@/shared/components/heading/heading";
 import {Text} from "@/shared/components/text/text";

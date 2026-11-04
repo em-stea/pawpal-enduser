@@ -1,4 +1,4 @@
-import type {ShortcutCardData} from "../../data/shortcut-card";
+import type {ShortcutCardData} from "../../data/shortcut-card.data";
 
 import type {BadgeVariantProps} from "@/shared/components/badge/badge.styles";
 import {Badge} from "@/shared/components/badge/badge";

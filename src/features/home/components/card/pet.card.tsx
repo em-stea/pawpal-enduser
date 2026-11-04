@@ -9,7 +9,7 @@ import {Separator} from "@/shared/components/separator/separator";
 import {Text} from "@/shared/components/text/text";
 import {cn} from "@/shared/lib/tw-merge/utils";
 
-import {healthTag} from "../../data/health-tag";
+import {healthTag} from "../../data/health-tag.data";
 
 export const PetCard = ({pet}: {pet: Pet}) => {
   const {label, color, icon: Icon} = healthTag[pet.healthState];

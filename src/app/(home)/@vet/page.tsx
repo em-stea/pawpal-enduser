@@ -1,11 +1,13 @@
+import CurrentAppointmentCard from "@/features/home/components/card/current-appointment.card";
 import {GuardStatusCard} from "@/features/home/components/card/guard-status.card";
+import {CURRENT_APPOINTMENT_DATA} from "@/features/home/data/current-appointment.data";
 import {Badge} from "@/shared/components/badge/badge";
 import {Container} from "@/shared/components/container/container";
 import {Heading} from "@/shared/components/heading/heading";
 
 export default function VetPage() {
   return (
-    <Container>
+    <Container className="flex flex-col gap-4">
       <div className="flex flex-col gap-3 pb-4">
         <Badge color="primary" variant="opal">
           Médico Veterinario
@@ -15,6 +17,7 @@ export default function VetPage() {
         <Heading variant="title.2">Hola, Dr. Martínez Paz</Heading>
       </div>
       <GuardStatusCard />
+      <CurrentAppointmentCard data={CURRENT_APPOINTMENT_DATA} />
     </Container>
   );
 }
