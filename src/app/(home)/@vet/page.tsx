@@ -1,6 +1,7 @@
-import CurrentAppointmentCard from "@/features/home/components/card/current-appointment.card";
+import CurrentAppointmentCard from "@/features/home/components/card/current-appointment-card/current-appointment.card";
 import {GuardStatusCard} from "@/features/home/components/card/guard-status.card";
 import {CURRENT_APPOINTMENT_DATA} from "@/features/home/data/current-appointment.data";
+import {AppointmentMode} from "@/features/home/types/appointment-mode";
 import {Badge} from "@/shared/components/badge/badge";
 import {Container} from "@/shared/components/container/container";
 import {Heading} from "@/shared/components/heading/heading";
@@ -19,7 +20,10 @@ export default function VetPage() {
 
       <GuardStatusCard />
 
-      <CurrentAppointmentCard data={CURRENT_APPOINTMENT_DATA} />
+      <CurrentAppointmentCard
+        appointmentMode={AppointmentMode.ONLINE}
+        data={CURRENT_APPOINTMENT_DATA}
+      />
     </Container>
   );
 }
