@@ -16,7 +16,9 @@ export default function VetPage() {
         </Badge>
         <Heading variant="title.2">Hola, Dr. Martínez Paz</Heading>
       </div>
+
       <GuardStatusCard />
+
       <CurrentAppointmentCard data={CURRENT_APPOINTMENT_DATA} />
     </Container>
   );
