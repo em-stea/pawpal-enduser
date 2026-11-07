@@ -5,6 +5,7 @@ import {AppointmentMode} from "@/features/home/types/appointment-mode";
 import {Badge} from "@/shared/components/badge/badge";
 import {Container} from "@/shared/components/container/container";
 import {Heading} from "@/shared/components/heading/heading";
+import {Text} from "@/shared/components/text/text";
 
 export default function VetPage() {
   return (
@@ -24,6 +25,7 @@ export default function VetPage() {
         appointmentMode={AppointmentMode.ONLINE}
         data={CURRENT_APPOINTMENT_DATA}
       />
+      <Text>A continuacion hoy</Text>
     </Container>
   );
 }
