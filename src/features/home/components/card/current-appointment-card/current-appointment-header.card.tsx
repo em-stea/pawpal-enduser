@@ -14,10 +14,10 @@ export default function CurrentAppointmentHeaderCard({data}: CurrentAppointmentH
 
   return (
     <>
-      <div className="flex h-21 w-18 items-center justify-center overflow-hidden rounded-lg">
+      <div className="flex h-21 w-18 min-w-18 items-center justify-center overflow-hidden rounded-lg">
         <Image alt={name} height={100} src={image} width={100} />
       </div>
-      <div>
+      <div className="w-full">
         <div className="flex flex-row items-center justify-between gap-2">
           <Heading variant="subtitle.2">{name}</Heading>
           <Text className="text-secondary-500" variant="caption.1.bold">

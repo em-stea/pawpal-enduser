@@ -25,7 +25,7 @@ export const AppointmentCard = ({data}: AppointmentCardProps) => {
             {time}
           </Text>
         </div>
-        <Text className="text-tertiary-500" variant="body.3">
+        <Text className="line-clamp-2 text-tertiary-500" variant="body.3">
           {reason}
         </Text>
       </CardContent>

@@ -8,14 +8,14 @@ export const cardVariants = cva(
     variants: {
       variant: {
         default: "bg-card",
-        petCard: "relative gap-4 bg-tertiary-850 py-5",
+        petCard: "relative gap-4 bg-tertiary-850 p-4",
         onCallServiceCard: "gap-0 border border-secondary-500 bg-tertiary-850 pt-3 pb-5",
         treatmentCard: "gap-0 bg-tertiary-850 px-4 pt-3 pb-5",
         shortcutCard: "flex h-40 flex-col justify-between bg-tertiary-850 p-4",
         guardStatusCard:
           "flex flex-row items-center justify-between gap-0 bg-tertiary-850 px-3 py-4",
         appointmentCard:
-          "flex flex-row items-center justify-between gap-0 gap-4 bg-tertiary-850 px-3 py-4",
+          "flex flex-row items-center justify-between gap-0 gap-4 bg-tertiary-850 p-4",
       },
     },
     defaultVariants: {
@@ -33,7 +33,7 @@ export const cardHeaderVariants = cva(
       variant: {
         default:
           "grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
-        petCard: "flex flex-row items-center px-6",
+        petCard: "flex flex-row items-center",
         onCallServiceCard:
           "grid auto-rows-min items-start px-4 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
         treatmentCard: "flex flex-row justify-between",
@@ -76,7 +76,7 @@ export const cardContentVariants = cva("flex flex-col", {
   variants: {
     variant: {
       default: "flex flex-col gap-3 px-(--card-spacing)",
-      petCard: "flex flex-col items-start px-6",
+      petCard: "flex flex-col items-start",
       onCallServiceCard: "flex flex-row items-center px-4",
       treatmentCard: "mt-4 mb-8 flex flex-row items-center justify-between px-2",
       shortcutCard: "",
@@ -93,7 +93,7 @@ export const cardFooterVariants = cva("flex items-center rounded-b-xl", {
   variants: {
     variant: {
       default: "flex items-center rounded-b-xl px-(--card-spacing)",
-      petCard: "flex flex-col items-start px-6",
+      petCard: "flex flex-col items-start",
       onCallServiceCard: "mt-6 flex flex-row items-center gap-3 px-4",
       treatmentCard: "flex flex-row items-center gap-3",
       shortcutCard: "",

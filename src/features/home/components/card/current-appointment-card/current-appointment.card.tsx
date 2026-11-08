@@ -7,8 +7,8 @@ import {Separator} from "@/shared/components/separator/separator";
 import {Text} from "@/shared/components/text/text";
 
 import {CurrentAppointmentData} from "../../../data/current-appointment.data";
-import {AppointmentMode, AppointmentModeType} from "./appointment-mode";
 
+import {AppointmentMode, AppointmentModeType} from "./appointment-mode";
 import CurrentAppointmentFooterCard from "./current-appointment-footer.card";
 import CurrentAppointmentHeaderCard from "./current-appointment-header.card";
 
@@ -54,7 +54,7 @@ export default function CurrentAppointmentCard({
       </div>
 
       <Card variant="petCard">
-        <CardHeader className="flex flex-row items-center justify-between">
+        <CardHeader className="flex flex-row items-center">
           <CurrentAppointmentHeaderCard data={data} />
         </CardHeader>
         <CardContent>
