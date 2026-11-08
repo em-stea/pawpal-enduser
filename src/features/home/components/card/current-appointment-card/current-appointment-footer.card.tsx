@@ -2,7 +2,7 @@ import {Folder, Phone, Video} from "lucide-react";
 
 import {Button} from "@/shared/components/button/button";
 
-import {AppointmentMode, AppointmentModeType} from "../../../types/appointment-mode";
+import {AppointmentMode, AppointmentModeType} from "./appointment-mode";
 
 export default function CurrentAppointmentFooterCard({
   appointmentMode,

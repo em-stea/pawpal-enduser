@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import {Card, CardHeader} from "@/shared/components/card/card";
+import {Card, CardContent, CardHeader} from "@/shared/components/card/card";
 import {Heading} from "@/shared/components/heading/heading";
 import {Text} from "@/shared/components/text/text";
 
@@ -11,21 +11,24 @@ interface AppointmentCardProps {
 }
 
 export const AppointmentCard = ({data}: AppointmentCardProps) => {
-  const {name, image, reason} = data;
+  const {name, image, reason, time} = data;
 
   return (
-    <Card variant="petCard">
+    <Card variant="appointmentCard">
       <CardHeader>
-        <div className="flex h-21 w-18 min-w-18 items-center justify-center overflow-hidden rounded-lg">
-          <Image alt={name} height={100} src={image} width={100} />
-        </div>
-        <div className="flex flex-col items-start">
+        <Image alt={name} height={100} src={image} width={100} />
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-row items-center justify-between">
           <Heading variant="subtitle.2">{name}</Heading>
-          <Text className="text-tertiary-500" variant="body.3">
-            {reason}
+          <Text className="text-secondary-500" variant="caption.1.bold">
+            {time}
           </Text>
         </div>
-      </CardHeader>
+        <Text className="text-tertiary-500" variant="body.3">
+          {reason}
+        </Text>
+      </CardContent>
     </Card>
   );
 };

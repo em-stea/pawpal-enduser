@@ -14,6 +14,8 @@ export const cardVariants = cva(
         shortcutCard: "flex h-40 flex-col justify-between bg-tertiary-850 p-4",
         guardStatusCard:
           "flex flex-row items-center justify-between gap-0 bg-tertiary-850 px-3 py-4",
+        appointmentCard:
+          "flex flex-row items-center justify-between gap-0 gap-4 bg-tertiary-850 px-3 py-4",
       },
     },
     defaultVariants: {
@@ -36,6 +38,9 @@ export const cardHeaderVariants = cva(
           "grid auto-rows-min items-start px-4 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
         treatmentCard: "flex flex-row justify-between",
         shortcutCard: "flex flex-row items-center justify-between",
+        guardStatusCard: "",
+        appointmentCard:
+          "flex h-21 w-18 min-w-18 items-center justify-center overflow-hidden rounded-lg",
       },
     },
     defaultVariants: {
@@ -52,6 +57,8 @@ export const cardTitleVariants = cva(headingVariants({variant: "subtitle.3"}), {
       onCallServiceCard: "",
       treatmentCard: "",
       shortcutCard: "",
+      guardStatusCard: "",
+      appointmentCard: "",
     },
   },
   defaultVariants: {
@@ -74,6 +81,7 @@ export const cardContentVariants = cva("flex flex-col", {
       treatmentCard: "mt-4 mb-8 flex flex-row items-center justify-between px-2",
       shortcutCard: "",
       guardStatusCard: "gap-1",
+      appointmentCard: "w-full",
     },
   },
   defaultVariants: {
@@ -89,6 +97,8 @@ export const cardFooterVariants = cva("flex items-center rounded-b-xl", {
       onCallServiceCard: "mt-6 flex flex-row items-center gap-3 px-4",
       treatmentCard: "flex flex-row items-center gap-3",
       shortcutCard: "",
+      guardStatusCard: "",
+      appointmentCard: "",
     },
   },
   defaultVariants: {

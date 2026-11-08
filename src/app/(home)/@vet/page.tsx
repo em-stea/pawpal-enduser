@@ -3,7 +3,7 @@ import CurrentAppointmentCard from "@/features/home/components/card/current-appo
 import {GuardStatusCard} from "@/features/home/components/card/guard-status.card";
 import {APPOINTMENT_DATA} from "@/features/home/data/appointment.data";
 import {CURRENT_APPOINTMENT_DATA} from "@/features/home/data/current-appointment.data";
-import {AppointmentMode} from "@/features/home/types/appointment-mode";
+import {AppointmentMode} from "@/features/home/components/card/current-appointment-card/appointment-mode";
 import {Badge} from "@/shared/components/badge/badge";
 import {Container} from "@/shared/components/container/container";
 import {Heading} from "@/shared/components/heading/heading";
@@ -27,10 +27,17 @@ export default function VetPage() {
         appointmentMode={AppointmentMode.ONLINE}
         data={CURRENT_APPOINTMENT_DATA}
       />
-      {APPOINTMENT_DATA.map((appointment) => (
-        <AppointmentCard key={appointment.name} data={appointment} />
-      ))}
-      <Text>A continuacion hoy</Text>
+
+      <div className="flex flex-col pt-2">
+        <Text className="pb-2 uppercase" variant="eyebrow">
+          A continuacion hoy
+        </Text>
+        <div className="flex flex-col gap-3">
+          {APPOINTMENT_DATA.map((appointment) => (
+            <AppointmentCard key={appointment.name} data={appointment} />
+          ))}
+        </div>
+      </div>
     </Container>
   );
 }

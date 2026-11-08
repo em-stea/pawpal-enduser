@@ -7,7 +7,7 @@ import {Separator} from "@/shared/components/separator/separator";
 import {Text} from "@/shared/components/text/text";
 
 import {CurrentAppointmentData} from "../../../data/current-appointment.data";
-import {AppointmentMode, AppointmentModeType} from "../../../types/appointment-mode";
+import {AppointmentMode, AppointmentModeType} from "./appointment-mode";
 
 import CurrentAppointmentFooterCard from "./current-appointment-footer.card";
 import CurrentAppointmentHeaderCard from "./current-appointment-header.card";
@@ -59,7 +59,7 @@ export default function CurrentAppointmentCard({
         </CardHeader>
         <CardContent>
           <Separator />
-          <Text className="pt-2 pb-2" variant="caption.2">
+          <Text className="pt-2 pb-2" variant="eyebrow">
             MOTIVO DE CONSULTA
           </Text>
           <Text className="text-tertiary-500" variant="body.3">
