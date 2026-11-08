@@ -1,5 +1,7 @@
+import {AppointmentCard} from "@/features/home/components/card/appintment.card";
 import CurrentAppointmentCard from "@/features/home/components/card/current-appointment-card/current-appointment.card";
 import {GuardStatusCard} from "@/features/home/components/card/guard-status.card";
+import {APPOINTMENT_DATA} from "@/features/home/data/appointment.data";
 import {CURRENT_APPOINTMENT_DATA} from "@/features/home/data/current-appointment.data";
 import {AppointmentMode} from "@/features/home/types/appointment-mode";
 import {Badge} from "@/shared/components/badge/badge";
@@ -25,6 +27,9 @@ export default function VetPage() {
         appointmentMode={AppointmentMode.ONLINE}
         data={CURRENT_APPOINTMENT_DATA}
       />
+      {APPOINTMENT_DATA.map((appointment) => (
+        <AppointmentCard key={appointment.name} data={appointment} />
+      ))}
       <Text>A continuacion hoy</Text>
     </Container>
   );
