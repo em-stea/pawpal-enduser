@@ -17,7 +17,7 @@ export const PetCard = ({pet}: {pet: Pet}) => {
   const ageUnit = pet.age === 1 ? "año" : "años";
 
   return (
-    <Card variant="petCard">
+    <Card className="px-5" variant="petCard">
       <span className={cn("absolute inset-y-0 left-0 w-1.5", genderBar[pet.gender])} />
       <CardHeader>
         <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-3xl">
