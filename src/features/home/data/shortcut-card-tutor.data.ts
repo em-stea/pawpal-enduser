@@ -2,6 +2,8 @@ import type {ComponentType, SVGProps} from "react";
 
 import {Ambulance, BookOpenText, BriefcaseMedical, Calendar1} from "lucide-react";
 
+import {TagVetData} from "./shortcut-card-vet.data";
+
 type TagData = "1 Alerta" | "Mañana";
 
 type ShortcutIcon = ComponentType<SVGProps<SVGSVGElement>>;
@@ -15,18 +17,18 @@ export interface ShortcutCardData {
     color: string;
     backgroundColor: string;
   };
-  tag?: TagData;
+  tag?: TagData | TagVetData;
 }
 
-export const SHORTCUT_CARD_DATA: ShortcutCardData[] = [
+export const SHORTCUT_TUTOR_DATA: ShortcutCardData[] = [
   {
     id: 1,
     title: "Libreta Digital",
     description: "Vacunas y Pipetas",
     icon: {
       component: BookOpenText,
-      color: "text-primary-300",
-      backgroundColor: "bg-primary-300/30",
+      color: "text-primary-200",
+      backgroundColor: "bg-primary-600/30",
     },
     tag: "1 Alerta",
   },
@@ -36,8 +38,8 @@ export const SHORTCUT_CARD_DATA: ShortcutCardData[] = [
     description: "Dr.Gómez (10.30hs)",
     icon: {
       component: Calendar1,
-      color: "text-secondary-500",
-      backgroundColor: "bg-secondary-200/30",
+      color: "text-secondary-400",
+      backgroundColor: "bg-secondary-800/50",
     },
     tag: "Mañana",
   },

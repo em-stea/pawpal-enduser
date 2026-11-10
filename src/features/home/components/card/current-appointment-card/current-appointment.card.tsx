@@ -35,7 +35,7 @@ export default function CurrentAppointmentCard({
   } as const;
 
   return (
-    <div className="flex flex-col gap-3 pt-6">
+    <div className="flex flex-col gap-3">
       <div className="flex flex-row items-center justify-between pl-2">
         <div className="flex flex-row items-center gap-3">
           <div className="relative flex items-center justify-center">

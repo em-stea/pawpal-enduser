@@ -1,6 +1,6 @@
-import type {ShortcutCardData} from "../../data/shortcut-card.data";
-
+import type {ShortcutCardData} from "../../data/shortcut-card-tutor.data";
 import type {BadgeVariantProps} from "@/shared/components/badge/badge.styles";
+
 import {Badge} from "@/shared/components/badge/badge";
 import {Card, CardContent, CardHeader} from "@/shared/components/card/card";
 import {Heading} from "@/shared/components/heading/heading";
@@ -14,6 +14,7 @@ export const ShortcutCard = ({data}: {data: ShortcutCardData}) => {
   const badgeColor: Record<string, NonNullable<BadgeVariantProps["color"]>> = {
     "1 Alerta": "danger",
     Mañana: "muted",
+    "2 pendientes": "muted",
   };
 
   return (
@@ -21,7 +22,7 @@ export const ShortcutCard = ({data}: {data: ShortcutCardData}) => {
       <CardHeader>
         <div
           className={cn(
-            "flex h-12 w-12 items-center justify-center rounded-lg",
+            "flex h-12 w-12 min-w-12 items-center justify-center rounded-lg",
             icon.backgroundColor,
           )}
         >

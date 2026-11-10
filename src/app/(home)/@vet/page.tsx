@@ -1,43 +1,29 @@
-import {AppointmentCard} from "@/features/home/components/card/appintment.card";
-import CurrentAppointmentCard from "@/features/home/components/card/current-appointment-card/current-appointment.card";
-import {GuardStatusCard} from "@/features/home/components/card/guard-status.card";
-import {APPOINTMENT_DATA} from "@/features/home/data/appointment.data";
-import {CURRENT_APPOINTMENT_DATA} from "@/features/home/data/current-appointment.data";
 import {AppointmentMode} from "@/features/home/components/card/current-appointment-card/appointment-mode";
-import {Badge} from "@/shared/components/badge/badge";
+import CurrentAppointmentCard from "@/features/home/components/card/current-appointment-card/current-appointment.card";
+import {CareHistory} from "@/features/home/components/care-history/care-history";
+import {QuickActionModule} from "@/features/home/components/quick-action-module/quick-action-module";
+import {UpcomingAppointments} from "@/features/home/components/upcoming-appointments/upcoming-appointments";
+import {VetWelcomeModule} from "@/features/home/components/vet-welcome-module/vet-welcome-module";
+import {APPOINTMENT_DATA} from "@/features/home/data/appointment.data";
+import {CARE_HISTORY_DATA} from "@/features/home/data/care-history.data";
+import {CURRENT_APPOINTMENT_DATA} from "@/features/home/data/current-appointment.data";
+import {SHORTCUT_VET_DATA} from "@/features/home/data/shortcut-card-vet.data";
 import {Container} from "@/shared/components/container/container";
-import {Heading} from "@/shared/components/heading/heading";
-import {Text} from "@/shared/components/text/text";
 
 export default function VetPage() {
   return (
-    <Container className="flex flex-col gap-4">
-      <div className="flex flex-col gap-3 pb-4">
-        <Badge color="primary" variant="opal">
-          Médico Veterinario
-          <div className="h-1.5 w-1.5 rounded-full bg-primary-200" />
-          M.P. 4821
-        </Badge>
-        <Heading variant="title.2">Hola, Dr. Martínez Paz</Heading>
-      </div>
-
-      <GuardStatusCard />
+    <Container className="flex flex-col gap-9">
+      <VetWelcomeModule />
 
       <CurrentAppointmentCard
         appointmentMode={AppointmentMode.ONLINE}
         data={CURRENT_APPOINTMENT_DATA}
       />
 
-      <div className="flex flex-col pt-2">
-        <Text className="pb-2 uppercase" variant="eyebrow">
-          A continuacion hoy
-        </Text>
-        <div className="flex flex-col gap-3">
-          {APPOINTMENT_DATA.map((appointment) => (
-            <AppointmentCard key={appointment.name} data={appointment} />
-          ))}
-        </div>
-      </div>
+      <UpcomingAppointments data={APPOINTMENT_DATA} />
+
+      <QuickActionModule data={SHORTCUT_VET_DATA} />
+      <CareHistory data={CARE_HISTORY_DATA} />
     </Container>
   );
 }
