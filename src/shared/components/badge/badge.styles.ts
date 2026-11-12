@@ -24,6 +24,7 @@ export const badgeVariants = cva(
         danger: "bg-red-600/30 text-red-200",
         dangerMuted: "bg-red-500/15 text-red-300",
         dangerStrong: "bg-red-500/25 text-red-300",
+        dangerSolid: "bg-red-600 font-semibold text-white",
         warning: "bg-amber-500/15 text-amber-300",
         muted: "bg-tertiary-600/30 text-tertiary-200",
         neutral: "bg-tertiary-700 text-tertiary-300",

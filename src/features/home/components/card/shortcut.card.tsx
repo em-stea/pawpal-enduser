@@ -8,13 +8,12 @@ import {Text} from "@/shared/components/text/text";
 import {cn} from "@/shared/lib/tw-merge/utils";
 
 export const ShortcutCard = ({data}: {data: ShortcutCardData}) => {
-  const {title, description, icon, tag} = data;
+  const {title, description, icon, tag, badgeCount} = data;
   const Icon = icon.component;
 
   const badgeColor: Record<string, NonNullable<BadgeVariantProps["color"]>> = {
     "1 Alerta": "danger",
     Mañana: "muted",
-    "2 pendientes": "muted",
   };
 
   return (
@@ -22,10 +21,18 @@ export const ShortcutCard = ({data}: {data: ShortcutCardData}) => {
       <CardHeader>
         <div
           className={cn(
-            "flex h-12 w-12 min-w-12 items-center justify-center rounded-lg",
+            "relative flex h-12 w-12 min-w-12 items-center justify-center rounded-lg",
             icon.backgroundColor,
           )}
         >
+          {badgeCount && (
+            <div className="absolute -top-2 -right-5 z-10">
+              <Badge className="rounded-full" color="dangerSolid" variant="bolder">
+                {badgeCount}
+              </Badge>
+            </div>
+          )}
+
           <Icon className={icon.color} />
         </div>
         {data.tag && (

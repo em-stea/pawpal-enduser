@@ -2,7 +2,7 @@ import type {ComponentType, SVGProps} from "react";
 
 import {Ambulance, BookOpenText, BriefcaseMedical, Calendar1} from "lucide-react";
 
-import {TagVetData} from "./shortcut-card-vet.data";
+import {PendingMessages} from "./shortcut-card-vet.data";
 
 type TagData = "1 Alerta" | "Mañana";
 
@@ -17,7 +17,8 @@ export interface ShortcutCardData {
     color: string;
     backgroundColor: string;
   };
-  tag?: TagData | TagVetData;
+  tag?: TagData;
+  badgeCount?: PendingMessages;
 }
 
 export const SHORTCUT_TUTOR_DATA: ShortcutCardData[] = [

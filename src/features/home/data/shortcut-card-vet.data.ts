@@ -2,7 +2,7 @@ import {BellPlus, FileText, MessageSquareText, Share2} from "lucide-react";
 
 import {ShortcutCardData} from "./shortcut-card-tutor.data";
 
-export type TagVetData = "2 pendientes";
+export type PendingMessages = "2";
 
 export const SHORTCUT_VET_DATA: ShortcutCardData[] = [
   {
@@ -44,6 +44,6 @@ export const SHORTCUT_VET_DATA: ShortcutCardData[] = [
       color: "text-red-200",
       backgroundColor: "bg-red-600/30",
     },
-    tag: "2 pendientes",
+    badgeCount: "2",
   },
 ];
