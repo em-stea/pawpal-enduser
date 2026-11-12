@@ -18,27 +18,29 @@ export default function CurrentAppointmentHeaderCard({data}: CurrentAppointmentH
         <Image alt={name} height={100} src={image} width={100} />
       </div>
       <div className="w-full">
-        <div className="flex flex-row items-center justify-between gap-2">
-          <Heading variant="subtitle.2">{name}</Heading>
+        <div className="flex flex-row items-center justify-between pb-1">
+          <Heading className="font-semibold" variant="subtitle.3">
+            {name}
+          </Heading>
           <Text className="text-secondary-500" variant="caption.1.bold">
             10.30hs
           </Text>
         </div>
         <div className="flex flex-row items-center gap-2">
-          <Text className="text-tertiary-500" variant="body.3">
+          <Text className="text-tertiary-500" variant="body.1">
             {animalType}
           </Text>
           <div className="mx-.5 h-1.5 w-1.5 rounded-full bg-tertiary-500" />
-          <Text className="text-tertiary-500" variant="body.3">
+          <Text className="text-tertiary-500" variant="body.1">
             {breed}
           </Text>
-          <Text className="text-tertiary-500" variant="body.3">
+          <Text className="text-tertiary-500" variant="body.1">
             ({age} {age === 1 ? "año" : "años"})
           </Text>
         </div>
         <div className="flex flex-row items-center gap-2 pt-1">
           <User className="h-4 w-4 text-tertiary-500" />
-          <Text className="text-tertiary-500" variant="body.3">
+          <Text className="text-tertiary-500" variant="body.1">
             {tutor}
           </Text>
         </div>

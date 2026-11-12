@@ -34,9 +34,9 @@ export function ActiveTreatmentCard({
             {truncateText("Amoxicilina + Clavulánico", 21)}
           </Text>
           <div className="flex items-center gap-2.5">
-            <Text variant="body.3">250 mg</Text>
+            <Text variant="body.1">250 mg</Text>
             <div className="h-1.5 w-1.5 rounded-full bg-tertiary-400" />
-            <Text variant="body.3">Con comida</Text>
+            <Text variant="body.1">Con comida</Text>
           </div>
         </div>
         <div className="flex flex-col items-end gap-1">

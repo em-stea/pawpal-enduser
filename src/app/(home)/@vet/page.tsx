@@ -12,7 +12,7 @@ import {Container} from "@/shared/components/container/container";
 
 export default function VetPage() {
   return (
-    <Container className="flex flex-col gap-9">
+    <Container className="flex flex-col gap-10">
       <VetWelcomeModule />
 
       <CurrentAppointmentCard

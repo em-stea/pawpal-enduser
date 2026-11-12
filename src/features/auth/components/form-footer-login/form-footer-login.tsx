@@ -51,7 +51,7 @@ export const FormFooterLogin = () => {
       </div>
 
       <div className="mt-4 flex flex-row items-center justify-center gap-2">
-        <Text className="whitespace-nowrap" variant="body.3">
+        <Text className="whitespace-nowrap" variant="body.1">
           ¿No tienes una cuenta aún?
         </Text>
         <Button asChild isHighlight size="intrinsic" variant="tertiary">

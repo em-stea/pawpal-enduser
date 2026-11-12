@@ -6,7 +6,7 @@ export const selectGroupVariants = cva("scroll-my-1 p-1");
 
 export const selectValueVariants = cva([
   "flex flex-1 text-left text-white data-placeholder:text-tertiary-500",
-  textVariants({variant: "body.3"}),
+  textVariants({variant: "body.1"}),
 ]);
 
 export const selectTriggerVariants = cva(
@@ -28,7 +28,7 @@ export const selectLabelVariants = cva([
 
 export const selectItemVariants = cva([
   "focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground relative flex w-full cursor-default items-start gap-2 rounded-sm px-3 py-1.5 outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
-  textVariants({variant: "body.3"}),
+  textVariants({variant: "body.1"}),
 ]);
 
 export const selectItemTextVariants = cva("flex max-w-[22rem] min-w-0 flex-1 gap-2 break-words");

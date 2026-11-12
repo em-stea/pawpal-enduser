@@ -58,11 +58,11 @@ export default function CurrentAppointmentCard({
           <CurrentAppointmentHeaderCard data={data} />
         </CardHeader>
         <CardContent>
-          <Separator />
+          <Separator className="my-2" />
           <Text className="pt-2 pb-2" variant="eyebrow">
             MOTIVO DE CONSULTA
           </Text>
-          <Text className="text-tertiary-500" variant="body.3">
+          <Text className="text-tertiary-500" variant="body.1">
             {data.reason}
           </Text>
         </CardContent>

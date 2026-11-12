@@ -7,7 +7,7 @@ import {AppointmentData} from "../../data/appointment.data";
 export const CareHistory = ({data}: {data: AppointmentData[]}) => {
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between pb-2">
         <Heading variant="subtitle.3">Últimas atenciones</Heading>
         <Button isHighlight size="sm" variant="tertiary">
           Ver todas
