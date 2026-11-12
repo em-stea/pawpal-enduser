@@ -18,7 +18,7 @@ export const SHORTCUT_VET_DATA: ShortcutCardData[] = [
   {
     id: 2,
     title: "Compartir HC",
-    description: "Derivación a colega",
+    description: "Enviar historia clínica",
     icon: {
       component: Share2,
       color: "text-tertiary-100",
