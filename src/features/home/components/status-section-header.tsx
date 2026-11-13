@@ -1,4 +1,4 @@
-import {Building, Video} from "lucide-react";
+import {Building, Check, Video} from "lucide-react";
 
 import {Badge} from "@/shared/components/badge/badge";
 import {Heading} from "@/shared/components/heading/heading";
@@ -11,29 +11,37 @@ import {
   AppointmentModeType,
 } from "./card/current-appointment-card/appointment-mode";
 
+export type HeaderBadgeVariant = AppointmentModeType | "al-dia";
+
 interface StatusSectionHeaderProps {
-  appointmentMode: AppointmentModeType;
+  badgeType: HeaderBadgeVariant;
   title?: string;
   shiftStatus?: ShiftStatus;
 }
 
-export function StatusSectionHeader({
-  appointmentMode,
-  title,
-  shiftStatus,
-}: StatusSectionHeaderProps) {
-  const modalityBadge = {
-    [AppointmentMode.ONLINE]: {
-      icon: <Video className="h-4 w-4" />,
-      label: "ONLINE",
-      color: "primary",
-    },
-    [AppointmentMode.PRESENCIAL]: {
-      icon: <Building className="h-4 w-4" />,
-      label: "PRESENCIAL",
-      color: "muted",
-    },
-  } as const;
+const BADGE_CONFIG = {
+  [AppointmentMode.ONLINE]: {
+    icon: <Video className="h-4 w-4" />,
+    label: "ONLINE",
+    color: "primary",
+    variant: "opal",
+  },
+  [AppointmentMode.PRESENCIAL]: {
+    icon: <Building className="h-4 w-4" />,
+    label: "PRESENCIAL",
+    color: "muted",
+    variant: "opal",
+  },
+  "al-dia": {
+    icon: <Check className="h-4 w-4" />,
+    label: "AL DÍA",
+    color: "secondaryOutline",
+    variant: "default",
+  },
+} as const;
+
+export function StatusSectionHeader({badgeType, title, shiftStatus}: StatusSectionHeaderProps) {
+  const currentBadge = BADGE_CONFIG[badgeType];
 
   return (
     <div className="flex flex-row items-center justify-between pl-2">
@@ -52,9 +60,9 @@ export function StatusSectionHeader({
           {title}
         </Heading>
       </div>
-      <Badge color={modalityBadge[appointmentMode].color} variant="opal">
-        {modalityBadge[appointmentMode].icon}
-        {modalityBadge[appointmentMode].label}
+      <Badge color={currentBadge.color} variant="opal">
+        {currentBadge.icon}
+        {currentBadge.label}
       </Badge>
     </div>
   );
