@@ -50,7 +50,7 @@ export const SHORTCUT_TUTOR_DATA: ShortcutCardData[] = [
     description: "Zona Norte/ CABA",
     icon: {
       component: Ambulance,
-      color: "text-primary-400",
+      color: "text-primary-300",
       backgroundColor: "bg-primary-700/50",
     },
   },

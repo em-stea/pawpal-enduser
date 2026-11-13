@@ -33,7 +33,7 @@ export function OnCallServiceCard({clinic}: Guardia24hsCardProps) {
           {clinic.name}
         </Text>
 
-        <div className="h-1.5 w-1.5 rounded-full bg-tertiary-400" />
+        <div className="mx-2 h-1.5 w-1.5 rounded-full bg-tertiary-400" />
 
         <Text className="text-tertiary-400" variant="body.1">
           {clinic.distanceLabel}
