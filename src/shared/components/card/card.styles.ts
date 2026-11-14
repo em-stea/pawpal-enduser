@@ -17,7 +17,7 @@ export const cardVariants = cva(
         patientActivity:
           "flex flex-row items-center justify-between gap-0 gap-4 bg-tertiary-850 p-4",
         dailyCompletion:
-          "flex-column flex items-center justify-between gap-0 gap-4 border border-tertiary-800 bg-tertiary-850 p-6",
+          "flex-column flex items-center justify-between gap-0 gap-4 border border-tertiary-800 bg-tertiary-850 px-4 py-6",
       },
     },
     defaultVariants: {
@@ -43,7 +43,7 @@ export const cardHeaderVariants = cva(
         guardStatusCard: "",
         patientActivity:
           "flex h-18 w-18 min-w-18 items-center justify-center overflow-hidden rounded-lg",
-        dailyCompletion: "flex items-center justify-center",
+        dailyCompletion: "flex w-full flex-col items-center justify-center gap-0",
       },
     },
     defaultVariants: {
@@ -85,6 +85,7 @@ export const cardContentVariants = cva("flex flex-col", {
       shortcutCard: "",
       guardStatusCard: "gap-1",
       patientActivity: "w-full",
+      dailyCompletion: "flex w-full flex-row items-center justify-center gap-6",
     },
   },
   defaultVariants: {
