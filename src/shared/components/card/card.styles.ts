@@ -85,7 +85,7 @@ export const cardContentVariants = cva("flex flex-col", {
       shortcutCard: "",
       guardStatusCard: "gap-1",
       patientActivity: "w-full",
-      dailyCompletion: "flex w-full flex-row items-center justify-center gap-6",
+      dailyCompletion: "flex w-full flex-row items-center justify-center gap-4",
     },
   },
   defaultVariants: {

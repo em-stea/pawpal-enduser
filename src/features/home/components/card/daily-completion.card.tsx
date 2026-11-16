@@ -23,20 +23,24 @@ export const DailyCompletionCard = () => {
       </CardHeader>
       <Separator />
       <CardContent>
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex w-full flex-col items-center justify-center">
           <Heading variant="subtitle.3">4 Atendidos</Heading>
           <Text>100% completado</Text>
         </div>
         <Separator className="h-14" orientation="vertical" />
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex w-full flex-col items-center justify-center">
           <Heading variant="subtitle.3">0 Pendientes</Heading>
           <Text>Sin demoras</Text>
         </div>
       </CardContent>
       <Separator />
       <CardFooter>
-        <Button variant="secondary">Agenda de mañana</Button>
-        <Button variant="secondary">Resumen del día</Button>
+        <Button className="whitespace-nowrap" size="fullWidth" variant="secondary">
+          Agenda mañana
+        </Button>
+        <Button className="whitespace-nowrap" size="fullWidth" variant="secondary">
+          Ver resumen
+        </Button>
       </CardFooter>
     </Card>
   );
