@@ -103,6 +103,7 @@ export const cardFooterVariants = cva("flex items-center rounded-b-xl", {
       shortcutCard: "",
       guardStatusCard: "",
       patientActivity: "",
+      dailyCompletion: "flex w-full flex-row items-center justify-center gap-4",
     },
   },
   defaultVariants: {

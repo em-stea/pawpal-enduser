@@ -1,9 +1,10 @@
 import {CheckCheck} from "lucide-react";
 
-import {Card, CardContent, CardHeader} from "@/shared/components/card/card";
+import {Card, CardContent, CardFooter, CardHeader} from "@/shared/components/card/card";
 import {Separator} from "@/shared/components/separator/separator";
 import {Heading} from "@/shared/components/heading/heading";
 import {Text} from "@/shared/components/text/text";
+import {Button} from "@/shared/components/button/button";
 
 export const DailyCompletionCard = () => {
   return (
@@ -32,6 +33,11 @@ export const DailyCompletionCard = () => {
           <Text>Sin demoras</Text>
         </div>
       </CardContent>
+      <Separator />
+      <CardFooter>
+        <Button variant="secondary">Agenda de mañana</Button>
+        <Button variant="secondary">Resumen del día</Button>
+      </CardFooter>
     </Card>
   );
 };
