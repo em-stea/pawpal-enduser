@@ -1,42 +1,16 @@
 "use client";
 
-import {Calendar, Hospital, House, type LucideIcon, PawPrint, User} from "lucide-react";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 
+import {Role} from "@/app/(home)/layout";
 import {ROUTES} from "@/shared/lib/route";
 import {cn} from "@/shared/lib/tw-merge/utils";
 
 import {Container} from "../container/container";
 import {Text} from "../text/text";
 
-const navigation: {label: string; href: string; icon: LucideIcon}[] = [
-  {
-    label: "Home",
-    href: ROUTES.home,
-    icon: House,
-  },
-  {
-    label: "Mis Mascotas",
-    href: ROUTES.misMascotas,
-    icon: PawPrint,
-  },
-  {
-    label: "Turnos",
-    href: ROUTES.turnos,
-    icon: Calendar,
-  },
-  {
-    label: "Clínicas",
-    href: ROUTES.clinicas,
-    icon: Hospital,
-  },
-  {
-    label: "Perfil",
-    href: ROUTES.perfil,
-    icon: User,
-  },
-];
+import {navigation} from "./bottom-navigation.data";
 
 function isActivePath(pathname: string, href: string) {
   if (href === ROUTES.home) {
@@ -46,8 +20,9 @@ function isActivePath(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export const BottomNavigation = () => {
+export const BottomNavigation = ({role}: {role: Role}) => {
   const pathname = usePathname();
+  const navigationItems = navigation.find((item) => item.role === role)?.items ?? [];
 
   return (
     <nav
@@ -56,7 +31,7 @@ export const BottomNavigation = () => {
     >
       <Container className="px-8">
         <div className="flex items-center justify-between">
-          {navigation.map((item) => {
+          {navigationItems.map((item) => {
             const Icon = item.icon;
             const isActive = isActivePath(pathname, item.href);
 
