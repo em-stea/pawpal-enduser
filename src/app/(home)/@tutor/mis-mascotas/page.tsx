@@ -1,14 +1,15 @@
+import {MyPetsCarousel} from "@/features/mis-mascotas/components/carousel/my-pets.carousel";
+import {HeaderSection} from "@/features/mis-mascotas/components/header-section/header-section";
+import {MY_PETS_DATA} from "@/features/mis-mascotas/data/my-pets.data";
 import {Container} from "@/shared/components/container/container";
-import {Heading} from "@/shared/components/heading/heading";
-import {Text} from "@/shared/components/text/text";
 
 export default function MisMascotasPage() {
   return (
-    <div>
+    <>
       <Container>
-        <Heading variant="title.2">Mis Mascotas</Heading>
-        <Text className="pt-1 pb-3 text-tertiary-400">2 perfiles vinculados</Text>
+        <HeaderSection />
       </Container>
-    </div>
+      <MyPetsCarousel pets={MY_PETS_DATA} />
+    </>
   );
 }

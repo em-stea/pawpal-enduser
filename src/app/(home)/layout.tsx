@@ -17,7 +17,9 @@ export default function HomeLayout({tutor, vet}: {tutor: React.ReactNode; vet: R
       <Container>
         <Navbar hasNotifications={true} role={role} />
       </Container>
-      <div className="pb-(--bottom-nav-height)">{role === "vet" ? vet : tutor}</div>
+      {/* <div className="pb-(--bottom-nav-height)"> */}
+      {role === "vet" ? vet : tutor}
+      {/* </div> */}
       <BottomNavigation role={role} />
     </>
   );

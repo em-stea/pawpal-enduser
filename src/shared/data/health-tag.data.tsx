@@ -1,8 +1,8 @@
-import {CheckCircle2, Clock, AlertTriangle, Pill, HelpCircle, LucideIcon} from "lucide-react";
-
 import type {BadgeVariantProps} from "@/shared/components/badge/badge.styles";
 
-import {HealthState} from "../types/pet.types";
+import {CheckCircle2, Clock, AlertTriangle, Pill, HelpCircle, LucideIcon} from "lucide-react";
+
+import {HealthState} from "../../features/home/types/pet.types";
 
 export const healthTag: Record<
   HealthState,

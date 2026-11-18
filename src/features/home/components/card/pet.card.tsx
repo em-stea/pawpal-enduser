@@ -1,5 +1,4 @@
 import {BadgeCheck} from "lucide-react";
-import Image from "next/image";
 
 import {Pet} from "@/features/home/types/pet.types";
 import {genderBar} from "@/features/home/utils/gender.styles";
@@ -8,8 +7,9 @@ import {Card, CardFooter, CardHeader, CardTitle} from "@/shared/components/card/
 import {Separator} from "@/shared/components/separator/separator";
 import {Text} from "@/shared/components/text/text";
 import {cn} from "@/shared/lib/tw-merge/utils";
+import {PetAvatar} from "@/shared/components/pet-avatar/pet-avatar";
 
-import {healthTag} from "../../data/health-tag.data";
+import {healthTag} from "../../../../shared/data/health-tag.data";
 
 export const PetCard = ({pet}: {pet: Pet}) => {
   const {label, color, icon: Icon} = healthTag[pet.healthState];
@@ -20,9 +20,7 @@ export const PetCard = ({pet}: {pet: Pet}) => {
     <Card className="px-5" variant="petCard">
       <span className={cn("absolute inset-y-0 left-0 w-1.5", genderBar[pet.gender])} />
       <CardHeader>
-        <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-3xl">
-          <Image alt={pet.name} height={100} src={pet.image} width={100} />
-        </div>
+        <PetAvatar image={pet.image} name={pet.name} />
         <div>
           <div className="flex items-center gap-3">
             <CardTitle>{pet.name}</CardTitle>
