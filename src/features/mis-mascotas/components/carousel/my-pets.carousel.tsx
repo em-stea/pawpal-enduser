@@ -4,7 +4,13 @@ import {cn} from "@/shared/lib/tw-merge/utils";
 import {MyPetCard} from "../cards/my-pet.card";
 import {MyPet} from "../../data/my-pets.data";
 
-export const MyPetsCarousel = ({pets}: {pets: MyPet[]}) => {
+interface MyPetsCarouselProps {
+  pets: MyPet[];
+  selectedPetId: MyPet["id"];
+  onSelectPet: (petId: MyPet["id"]) => void;
+}
+
+export const MyPetsCarousel = ({pets, selectedPetId, onSelectPet}: MyPetsCarouselProps) => {
   return (
     <Carousel className="pt-2" opts={{align: "start"}}>
       <CarouselContent>
@@ -18,7 +24,11 @@ export const MyPetsCarousel = ({pets}: {pets: MyPet[]}) => {
               index === pets.length - 1 && "mr-4",
             )}
           >
-            <MyPetCard pet={pet} />
+            <MyPetCard
+              isSelected={pet.id === selectedPetId}
+              pet={pet}
+              onSelect={() => onSelectPet(pet.id)}
+            />
           </CarouselItem>
         ))}
       </CarouselContent>

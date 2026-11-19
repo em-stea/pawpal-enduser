@@ -35,7 +35,7 @@ export const cardHeaderVariants = cva(
       variant: {
         default:
           "grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
-        petCard: "flex flex-row items-center",
+        petCard: "flex min-w-full flex-row items-center",
         onCallServiceCard:
           "grid auto-rows-min items-start px-4 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
         treatmentCard: "flex flex-row justify-between",
@@ -62,6 +62,7 @@ export const cardTitleVariants = cva(headingVariants({variant: "subtitle.3"}), {
       shortcutCard: "",
       guardStatusCard: "",
       patientActivity: "",
+      dailyCompletion: "",
     },
   },
   defaultVariants: {

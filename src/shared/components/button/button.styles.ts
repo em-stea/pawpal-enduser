@@ -21,8 +21,7 @@ export const buttonVariants = cva(commonClassnames, {
       // "text-link":
       //   "tracking-1.6 text-foreground hover:text-highlight flex items-center gap-2 disabled:text-gray-400",
       ghost: "flex size-10 h-auto items-center justify-center bg-tertiary-850 py-4",
-      // "ghost-outline":
-      //   "group dark:border-basic-00 dark:text-basic-00 flex items-center justify-center rounded-full border border-gray-800 p-1 text-gray-800 transition-colors hover:border-blue-600 hover:text-blue-600 active:border-blue-600 active:text-blue-600 disabled:pointer-events-none disabled:opacity-40 dark:hover:border-blue-200 dark:hover:text-blue-200 dark:active:border-blue-200 dark:active:text-blue-200",
+      "ghost-outline": "h-full w-full items-start",
       icon: "flex size-10 h-auto items-center justify-center bg-transparent",
       tertiary: "flex flex-col items-start bg-transparent text-left text-tertiary-200",
     },
