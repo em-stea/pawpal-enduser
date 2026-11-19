@@ -8,7 +8,7 @@ export const cardVariants = cva(
     variants: {
       variant: {
         default: "bg-card",
-        petCard: "relative gap-4 bg-tertiary-850 p-4",
+        petCard: "relative h-full gap-4 bg-tertiary-850 p-4",
         onCallServiceCard: "gap-0 border border-secondary-500 bg-tertiary-850 pt-3 pb-5",
         treatmentCard: "gap-0 bg-tertiary-850 px-4 pt-3 pb-5",
         shortcutCard: "flex h-40 flex-col justify-between overflow-visible bg-tertiary-850 p-4",

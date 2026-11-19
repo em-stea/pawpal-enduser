@@ -52,5 +52,9 @@
     --red-850: oklch(0.240 0.070 25.0);
     --red-900: oklch(0.200 0.055 25.0);
     --red-950: oklch(0.140 0.035 25.0);
+
+    /* Amber Scale (basada en #FFD700 claro y #FFA500 oscuro) */
+    --amber-300: oklch(0.770 0.140 65.2); 
+    --amber-500: oklch(0.665 0.146 65.2);
  
 }

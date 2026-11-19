@@ -12,7 +12,8 @@ export const MyPetsCarousel = ({pets}: {pets: MyPet[]}) => {
           <CarouselItem
             key={pet.id}
             className={cn(
-              "basis-[80%]",
+              "basis-[60%]",
+              "min-h-7rem",
               index === 0 && "ml-4",
               index === pets.length - 1 && "mr-4",
             )}

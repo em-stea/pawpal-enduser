@@ -51,4 +51,14 @@
   --color-red-850: var(--red-850);
   --color-red-900: var(--red-900);
   --color-red-950: var(--red-950);
+
+  --color-amber-300: var(--amber-300);
+  --color-amber-500: var(--amber-500);
+
+  /* Semantic status tokens */
+  --color-status-success: var(--secondary-500);
+  --color-status-info: var(--primary-300);
+  --color-status-warning: var(--amber-300);
+  --color-status-danger: var(--red-300);
+  --color-status-neutral: var(--tertiary-300);
 }

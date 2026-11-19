@@ -1,5 +1,7 @@
 {
   "color": [
+    "amber-300",
+    "amber-500",
     "primary-50",
     "primary-100",
     "primary-200",
@@ -34,6 +36,11 @@
     "secondary-800",
     "secondary-900",
     "secondary-950",
+    "status-danger",
+    "status-info",
+    "status-neutral",
+    "status-success",
+    "status-warning",
     "tertiary-50",
     "tertiary-100",
     "tertiary-200",

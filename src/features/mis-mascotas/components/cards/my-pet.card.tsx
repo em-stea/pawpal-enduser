@@ -9,7 +9,7 @@ import {MyPet} from "../../data/my-pets.data";
 export const MyPetCard = ({pet}: {pet: MyPet}) => {
   const {name, image, healthState} = pet;
 
-  const {label} = healthTag[healthState];
+  const {label, dotColor, textColor} = healthTag[healthState];
 
   return (
     <Card variant="petCard">
@@ -18,9 +18,9 @@ export const MyPetCard = ({pet}: {pet: MyPet}) => {
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
             <Heading variant="subtitle.4">{name}</Heading>
-            <div className="h-2.5 w-2.5 rounded-full bg-secondary-500" />
+            <span className={`h-2.5 w-2.5 rounded-full ${dotColor}`} />
           </div>
-          <Text className="text-tertiary-400">{label}</Text>
+          <Text className={textColor}>{label}</Text>
         </div>
       </CardHeader>
     </Card>

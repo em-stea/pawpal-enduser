@@ -13,6 +13,6 @@ export const MY_PETS_DATA: MyPet[] = [
     id: 2,
     name: "Limón",
     image: "/images/limon.jpg",
-    healthState: "vaccinePending",
+    healthState: "dewormingPending",
   },
 ];

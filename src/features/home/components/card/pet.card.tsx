@@ -12,7 +12,7 @@ import {PetAvatar} from "@/shared/components/pet-avatar/pet-avatar";
 import {healthTag} from "../../../../shared/data/health-tag.data";
 
 export const PetCard = ({pet}: {pet: Pet}) => {
-  const {label, color, icon: Icon} = healthTag[pet.healthState];
+  const {label, icon: Icon, badgeColor} = healthTag[pet.healthState];
 
   const ageUnit = pet.age === 1 ? "año" : "años";
 
@@ -53,7 +53,7 @@ export const PetCard = ({pet}: {pet: Pet}) => {
           </div>
         </div>
 
-        <Badge color={color} variant="health">
+        <Badge color={badgeColor} variant="health">
           <Icon className="size-4" />
           {label}
         </Badge>

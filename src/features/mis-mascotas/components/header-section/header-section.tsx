@@ -8,7 +8,7 @@ import {Text} from "@/shared/components/text/text";
 
 export const HeaderSection = () => {
   return (
-    <div className="flex items-center justify-between gap-2">
+    <div className="flex items-center justify-between gap-2 pb-4">
       <div>
         <Heading variant="title.2">Mis Mascotas</Heading>
         <Text className="text-tertiary-400">2 perfiles vinculados</Text>
