@@ -18,6 +18,7 @@ export const cardVariants = cva(
           "flex flex-row items-center justify-between gap-0 gap-4 bg-tertiary-850 p-4",
         dailyCompletion:
           "flex-column flex items-center justify-between gap-0 gap-4 border border-tertiary-800 bg-tertiary-850 px-4 py-6",
+        mediaSummary: "relative h-full gap-4 bg-tertiary-850 p-4",
       },
     },
     defaultVariants: {
@@ -44,6 +45,7 @@ export const cardHeaderVariants = cva(
         patientActivity:
           "flex h-18 w-18 min-w-18 items-center justify-center overflow-hidden rounded-lg",
         dailyCompletion: "flex w-full flex-col items-center justify-center gap-0",
+        mediaSummary: "h-60 overflow-hidden rounded-md",
       },
     },
     defaultVariants: {
