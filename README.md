@@ -2,6 +2,8 @@
 
 App web de PawPal para tutores de mascotas y veterinarios: autenticación, registro por rol e inicio con navegación según el tipo de usuario.
 
+<br/>
+
 ## Stack
 
 | Área | Tecnología |
