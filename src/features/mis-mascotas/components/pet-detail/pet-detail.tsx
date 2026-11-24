@@ -27,6 +27,7 @@ export const PetDetail = ({pet}: {pet: MyPet}) => {
             <Text>{age} años</Text>
           </div>
         </div>
+        <div className="absolute right-4 bottom-7 text-amber-500">Peso actual</div>
       </CardHeader>
     </Card>
   );
