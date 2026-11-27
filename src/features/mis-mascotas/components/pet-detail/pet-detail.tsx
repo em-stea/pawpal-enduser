@@ -6,7 +6,7 @@ import {Text} from "@/shared/components/text/text";
 import {MyPet} from "../../data/my-pets.data";
 
 export const PetDetail = ({pet}: {pet: MyPet}) => {
-  const {name, breed, age, image, healthState} = pet;
+  const {name, breed, age, image, healthState, weight} = pet;
 
   return (
     <Card variant="mediaSummary">
@@ -27,8 +27,11 @@ export const PetDetail = ({pet}: {pet: MyPet}) => {
             <Text>{age} años</Text>
           </div>
         </div>
-        <div className="absolute right-4 bottom-7 bg-tertiary-950 px-2 text-secondary-500">
-          Peso actual
+        <div className="absolute right-6 bottom-7 flex flex-col items-center rounded-lg bg-tertiary-950/80 p-4">
+          <Text variant="caption.2"> PESO ACT.</Text>
+          <Text className="text-secondary-500">
+            <span className="text-8 font-bold">{weight}</span> kg
+          </Text>
         </div>
       </CardHeader>
     </Card>
